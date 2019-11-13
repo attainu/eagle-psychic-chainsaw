@@ -15,11 +15,34 @@ app.engine('.hbs', hbs.engine);
 app.set('view engine', '.hbs');
 
 
+var pageController = require('./routes/e-commerce.js');
 
-//Home Route
-app.get('/', function (req, res) {
-    return res.send('Hello World!');
-})
+// Home route
+app.get('/', pageController.home)
+
+// Product List
+app.get('/', pageController.list)
+
+// Product Content
+app.get('/', pageController.content)
+
+// Order Page
+app.get('/', pageController.cart)
+
+// Login/Registration (User)
+app.get('/', pageController.user_login)
+
+// Login/Registration (Seller)
+app.get('/', pageController.seller_login)
+
+// User Profile
+app.get('/', pageController.user_profile)
+
+// Seller Profile
+app.get('/', pageController.seller_profile)
+
+// Order History
+app.get('/', pageController.order_history)
 
 
 
