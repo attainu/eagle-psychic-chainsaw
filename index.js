@@ -2,7 +2,7 @@ const fs = require('fs');
 const express = require('express');
 const app = express();
 const exphbs = require('express-handlebars');
-const PORT = 8000;
+const PORT = 8005;
 
 app.use(express.json());
 app.use(express.urlencoded());
@@ -14,37 +14,41 @@ const hbs = exphbs.create({
 app.engine('.hbs', hbs.engine);
 app.set('view engine', '.hbs');
 
-
-var pageController = require('./routes/e-commerce.js');
+ 
+var pageController = require('./controllers/e-commerce.js');
 
 // Home route
 app.get('/', pageController.home)
 
 // Product List
-app.get('/', pageController.list)
+app.get('/product-list', pageController.list)
 
 // Product Content
-app.get('/', pageController.content)
+app.get('/product-content', pageController.content)
 
 // Order Page
-app.get('/', pageController.cart)
+app.get('/cart', pageController.cart)
 
 // Login/Registration (User)
-app.get('/', pageController.user_login)
+app.get('/user-login', pageController.user_login)
 
 // Login/Registration (Seller)
-app.get('/', pageController.seller_login)
+app.get('/seller-login', pageController.seller_login)
 
 // User Profile
-app.get('/', pageController.user_profile)
+app.get('/user-profile', pageController.user_profile)
 
 // Seller Profile
-app.get('/', pageController.seller_profile)
+app.get('/seller-profile', pageController.seller_profile)
 
 // Order History
-app.get('/', pageController.order_history)
+app.get('/order-history', pageController.order_history)
 
+// Address From Page
+app.get('/address-form', pageController.add_form)
 
+// Product List Form Page
+app.get('/product-list-form', pageController.product_form)
 
 //Port
 app.listen(PORT, function () {
