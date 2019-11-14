@@ -1,0 +1,122 @@
+
+*{
+	margin: 0px;
+	padding: 0px;
+	
+}
+.container{
+	width:1000px;
+	height:1000px;
+	background-color:rgba(132, 116, 111,0.2);
+	margin:auto;
+}
+#menu{
+	position: fixed;
+	width:250px;
+	height:100%;
+	padding:30px 30px;
+	margin:20px 20px;
+	background-image: linear-gradient(to bottom right, #FF4B2B ,  #FF416C);
+	left: -280px;
+	transition:all 1s linear;
+}
+#menu.active{
+	left:0px;
+}
+#menu ul li{
+	
+	list-style:none;
+	padding:20px 20px;
+	font-family:sans-serif;
+	//border-bottom:10px solid rgba(255, 0, 0, 0.2);
+	
+}
+a{
+	color:rgb(250,250,250);
+	text-decoration:none;
+}
+#menu .toggle-btn{
+	position:relative;
+	left:270px;
+	height:20px;
+}
+#menu .toggle-btn span{
+	display:block;
+	height:5px;
+	width:30px;
+	background:#151719;
+	margin:3px 0px;
+}
+#ordersinfo{
+	display:block;
+    position:relative;
+	width:800px;
+	height:Auto;
+	background-color:white;
+	left:100px;
+	top:50px;
+	box-shadow:4px 3px 2px gray;
+	padding:7px;
+}
+#basicOrder{
+	position:fixed;
+	top:0px;
+	left:300px;
+	color:black;
+}
+.card-horizontal {
+    display: flex;
+    flex: 1 1 auto;
+}
+
+/*search bar*/
+
+
+@import url(https://fonts.googleapis.com/css?family=Open+Sans);
+
+.search {
+  width: 50%;
+  position: fixed;
+  display: flex;
+  top:90px;
+  left:500px;
+}
+
+.searchTerm {
+  width: 100%;
+  border: 3px solid #EC7063 ;
+  border-right: none;
+  padding: 5px;
+  height: 35px;
+  border-radius: 5px 0 0 5px;
+  outline: none;
+  color: #9DBFAF;
+}
+
+.searchTerm:focus{
+  color: #00B4CC;
+}
+
+.searchButton {
+  width: 40px;
+  height: 36px;
+  border: 1px solid #EC7063 ;
+  background: #EC7063 ;
+  text-align: center;
+  color: #fff;
+  border-radius: 0 5px 5px 0;
+  cursor: pointer;
+  font-size: 20px;
+}
+
+
+
+/*Resize the wrap to see the search bar change!*/
+.wrap{
+  width: 50%;
+  position: absolute;
+  top: 13%;
+  left: 38%;
+  transform: translate(-50%, -50%);
+}
+/*search bar end*/

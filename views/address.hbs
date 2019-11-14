@@ -1,0 +1,65 @@
+<div class="container">
+		<div id="menu" >
+			<div class="toggle-btn" onclick="getsideBar()">
+				<span></span>
+				<span></span>
+				<span></span>
+			</div>
+			 <ul>
+				<li><a href="overview.html">Overview</a></li>
+				<li><a href="orders.html.html">Orders</a></li>
+				<li><a href="address.html">Saved Address</a></li> 
+				<li><a href="profile.html">Profile</a></li>
+			 </ul>
+		</div>
+		
+		<h1 id="address">Saved Addresses</h1>
+	
+	    <div id="addressinfo">
+			<div class="card" style="width: 20rem;height:15rem;margin:20px;display:inline-block;">
+				
+				  <div class="card-body">
+					<h5 class="card-title">Address1</h5>
+					<hr>
+					<p class="card-text">name:User1</p>
+					<p class="card-text">Address:Lig2,Banglore</p>
+					<p class="card-text">pincode:50095</p>
+					<a href="#" class="btn btn-danger" style="width:5rem;background-color:#FF4B2B;border-radius:5px;margin:0px 20px;">remove</a>
+					<a href="#" class="btn btn-danger" style="width:4rem;background-color:#FF4B2B;border-radius:5px;margin:0px 20px">Edit</a>
+				  </div>
+			</div>
+			<div class="card" style="width: 20rem;height:15rem;margin:20px;display:inline-block;">
+				
+				  <div class="card-body">
+					<h5 class="card-title">Address2</h5>
+					<hr>
+					<p class="card-text">name:User1</p>
+					<p class="card-text">Address:Lig2,Banglore</p>
+					<p class="card-text">pincode:50095</p>
+					<a href="#" class="btn btn-danger" style="width:5rem;background-color:#FF4B2B;border-radius:5px;margin:0px 20px;">remove</a>
+					<a href="#" class="btn btn-danger" style="width:5rem;background-color:#FF4B2B;border-radius:5px;margin:0px 20px">Edit</a>
+				  </div>
+			</div>
+			
+			<div class="card" style="width: 20rem;height:15rem;margin:20px;display:inline-block;">
+				
+				  <div class="card-body">
+					<h5 class="card-title">Address3</h5>
+					<hr>
+					<p class="card-text">name:User1</p>
+					<p class="card-text">Address:Lig2,Banglore</p>
+					<p class="card-text">pincode:50095</p>
+					<a href="#" class="btn btn-danger" style="width:5rem;background-color:#FF4B2B;border-radius:5px ;margin:0px 20px">remove</a>
+					<a href="#" class="btn btn-danger" style="width:5rem;background-color:#FF4B2B;border-radius:5px;margin:0px 20px">Edit</a>
+				  </div>
+			</div>
+			<button type="button" class="btn btn-lighter" style="width:8rem; margin-bottom:200px;margin-left:120px;" value="AddAddress">Add Address</button>
+		</div>
+		
+	</div>
+<script>
+function getsideBar(){
+document.getElementById("menu").classList.toggle("active");
+}
+
+</script>

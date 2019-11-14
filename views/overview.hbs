@@ -1,0 +1,40 @@
+<div class="container">
+	<div id="menu" >
+		<div class="toggle-btn" onclick="getsideBar()">
+			<span></span>
+			<span></span>
+			<span></span>
+		</div>
+	 <ul>
+	    <li><a href="overview.html" style="color:rgb(250,250,250);">Overview</a></li>
+	    <li><a href="orders.html" style="color:rgb(250,250,250);">Orders</a></li>
+	    <li><a href="address.html" style="color:rgb(250,250,250);">Saved Address</a></li> 
+	    <li><a href="profile.html" style="color:rgb(250,250,250);">Profile</a></li>
+	 </ul>
+	</div>
+	<h1 id="profilename">Overview</h1>
+	<div id="SectionwithProfilepic">
+		
+	</div>
+	<div id="overview">
+			
+			<div class="flex-container">
+			  <div><i class='fas fa-address-card' style='font-size:24px;padding-top:60px;'></i>
+			       <p style="margin:0px"><a href="address.html" class="cart">Address</a></p>
+			  </div>
+			  <div><i class='fas fa-cart-arrow-down' style='font-size:24px ;padding-top:60px;'></i> 
+				<p><a href="orders.html" class="cart">Orders</a></p>
+				</div>
+              
+			</div>
+
+			
+	</div>
+		
+</div>
+<script>
+function getsideBar(){
+document.getElementById("menu").classList.toggle("active");
+}
+
+</script>

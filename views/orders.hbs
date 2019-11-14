@@ -1,0 +1,88 @@
+<div class="container">
+		<div id="menu" >
+			<div class="toggle-btn" onclick="getsideBar()">
+				<span></span>
+				<span></span>
+				<span></span>
+			</div>
+			 <ul>
+				<li><a href="overview.html">Overview</a></li>
+				<li><a href="orders.html">Orders</a></li>
+				<li><a href="address.html">Saved Address</a></li> 
+				<li><a href="profile.html">Profile</a></li>
+			 </ul>
+		</div>
+		<div class="wrap">
+            <div class="search">
+			<input type="text" class="searchTerm" placeholder="Search Orders...">
+			<button type="submit" class="searchButton">
+			<i class="fa fa-search"></i>
+           </button>
+           </div>
+        </div>
+		<h1 id="basicOrder">Your Orders</h1>
+	
+	    <div id="ordersinfo">
+			<div class="container-fluid">
+       <div class="row">
+	   <div class="col-2 mt-3"></div>
+        <div class="col mt-3">
+            <div class="card">
+                <div class="card-horizontal">
+                    <div class="img-square-wrapper">
+                        <img class="" src="prid1.jpg" alt="Card image cap" width="100px" height="100px" style="margin-top:50px;margin-left:50px;">
+                    </div>
+                    <div class="card-body">
+                        <p class="card-title">productName</p>
+						<p class="card-title">SoldBy</p>
+						<p class="card-title">Return Eligible Through 01/10/34</p>
+						<p class="card-title">$56.50</p>
+						<button class="btn btn-danger" style="background-color:#FF4B2B">Buy It Again</button>
+                        
+                    </div>
+                </div>
+                <div class="card-footer">
+                    <span><small class="text-muted">OrderPlaced<br>16 Oct 2019<br></small></span>
+					
+                </div>
+            </div>
+        </div>
+		<div class="col-2 mt-3"></div>
+     </div>
+   </div>
+   <div class="container-fluid">
+    <div class="row">
+	<div class="col-2 mt-3"></div>
+        <div class="col mt-3">
+            <div class="card">
+                <div class="card-horizontal">
+                    <div class="img-square-wrapper">
+                        <img class="" src="prid1.jpg" alt="Card image cap" width="100px" height="100px" style="margin-top:50px;margin-left:50px;">
+                    </div>
+                    <div class="card-body">
+                        <p class="card-title">productName</p>
+						<p class="card-title">SoldBy</p>
+						<p class="card-title">Return Eligible Through 01/10/34</p>
+						<p class="card-title">$56.50</p>
+						<button class="btn btn-danger" style="background-color:#FF4B2B">Buy It Again</button>
+                        
+                    </div>
+                </div>
+                <div class="card-footer">
+                   <span><small class="text-muted">OrderPlaced<br>16 Oct 2019<br></small></span>
+                </div>
+            </div>
+        </div>
+		<div class="col-2 mt-3"></div>
+     </div>
+   </div>
+			
+		</div>
+		
+	</div>
+<script>
+function getsideBar(){
+document.getElementById("menu").classList.toggle("active");
+}
+
+</script>

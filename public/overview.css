@@ -1,0 +1,155 @@
+*{
+	margin: 0px;
+	padding: 0px;
+	
+}
+.container{
+	width:1000px;
+	height:1000px;
+	background-color:rgba(132, 116, 111,0.2);
+	margin:auto;
+}
+#menu{
+	position: fixed;
+	width:250px;
+	height:100%;
+	padding:30px 30px;
+	margin:20px 20px;
+	background-image: linear-gradient(to bottom right,#FF416C,#FF4B2B );
+	left: -320px;
+	transition:all 1s linear;
+	border-radius:5px;
+	box-shadow:2px 2px 2px gray;
+	
+}
+#menu.active{
+	left:0px;
+}
+#menu ul li{
+	
+	list-style:none;
+	padding:20px 20px;
+	font-family:sans-serif;
+	//border-bottom:10px solid rgba(255, 0, 0, 0.2);
+	
+	
+}
+a{
+	color:rgb(250,250,250);
+	text-decoration:none;
+}
+#menu .toggle-btn{
+	position:fixed;
+	left:230px;
+	height:20px;
+}
+#menu .toggle-btn span{
+	display:block;
+	height:5px;
+	width:30px;
+	background:#151719;
+	margin:3px 0px;
+}
+/*#SectionwithProfilepic{
+	position:absolute;
+	width:750px;
+	height:250px;
+	background-color:white;
+	left:300px;
+	top:50px;
+	box-shadow:1px 1px 2px gray;
+	border-radius:5px;
+}*/
+
+
+
+
+.text {
+  color: white;
+  font-size: 20px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+  text-align: center;
+}
+/*.boygirl{
+   position:absolute;
+   width:200px;
+   height:100px;
+   background-size:cover;
+   top:-40px;
+   left:-40px;
+      
+}*/
+.imgsection{
+	overflow: auto;
+    background-size: cover;
+    background-position: left;
+    background-image: url('welcome.jpg');
+	/*width:700px;
+	height:200px;
+	position:absolute;
+	top:100px;
+	left:280px;*/
+}
+#profilename{
+	position:fixed;
+	top:0px;
+	left:300px;
+	color:black;
+	font-family:arial;
+}
+#overview{
+	
+    position:fixed;
+	width:600px;
+	height:auto;
+	background-color:white;
+	left:300px;
+	top:50px;
+	text-align:center;
+	
+}
+.flex-container {
+  display: flex;
+  
+  text-align: center;
+  margin-left:80px;
+  
+}
+
+.flex-container > div {
+  
+  color: black;
+  width: 200px;
+  height:200px;
+  margin: 10px;
+  text-align: center;
+  line-height: 75px;
+  font-size: 30px;
+}
+.cards{
+	display:block;
+	width:30rem;
+	height:15rem;
+	background-color:#F6F5F7;
+	/*border:1px dashed #CB4335;*/
+	margin:20px 60px;;
+	text-align:center;
+	padding:70px 0px;
+	border:1px dotted gray;
+	
+	
+}
+.cart{
+ color:gray;
+ text-decoration:none;
+ font-size:15px;
+}
+.cart:hover{
+	color:#FF4B2B;
+}
+	
