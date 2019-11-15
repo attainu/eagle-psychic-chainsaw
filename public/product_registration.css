@@ -1,0 +1,27 @@
+#ui
+{
+ background-color: #000000;
+    padding: 30px;
+    margin-top: 60px;
+    border-radius: 10px;
+}
+#ui label,h1
+{
+	color:#fff;
+
+}
+body
+{ background-size: cover;  
+  background-position: center center; 
+  background-attachment: fixed;
+  background-color:rgba(255, 33, 75, 0.74);
+}
+input[type=button].btn-block, input[type=reset].btn-block, input[type=submit].btn-block {
+    width: 100%;
+    background-color: unset;
+    margin-bottom: -27px;
+}
+.form-group {
+    margin-bottom: 3rem;
+    font-family: sans-serif;
+}
