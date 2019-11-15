@@ -45,7 +45,7 @@ Controller.cart = function (req, res) {
 Controller.user_login = function (req, res) {
     var random = null;
     model.user_login(random, function (error, info) {
-        return res.render('user-login', {
+        return res.render('user-signup-signin', {
             title: 'E-Commerce Website',
         });
     })
