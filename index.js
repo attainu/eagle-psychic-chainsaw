@@ -35,6 +35,8 @@ app.get('/cart', pageController.cart)
 app.get('/user-login', pageController.user_login)
 app.post('/user-signin', userController.user_signin)
 app.post('/user-signup', userController.user_signup)
+app.delete('/user-delete', userController.user_delete)
+app.put('/user-update', userController.user_update)
 
 // Login/Registration (Seller)
 app.get('/seller-login', pageController.seller_login)
