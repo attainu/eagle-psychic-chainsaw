@@ -1,10 +1,30 @@
 const express = require('express');
 const app = express();
 const exphbs = require('express-handlebars');
+const mongoose = require('mongoose');
 const PORT = 8081;
 
+mongoose.connect('mongodb://localhost:27017/ecommerce-app',
+{    useNewUrlParser : true,
+    useUnifiedTopology: true
+ 
+})
+
+let db = mongoose.connection;
+
+// check DB connection
+db.once('open',function(){
+    console.log('connected to mongodb');
+})
+
+//check for DB errors
+db.on('error',function(err){
+    console.log(err);
+}) 
+
+
 app.use(express.json());
-app.use(express.urlencoded());
+app.use(express.urlencoded({extended:true}));
 app.use('/public', express.static('public'));
 const hbs = exphbs.create({
     extname: '.hbs'
@@ -16,6 +36,9 @@ app.set('view engine', '.hbs');
  
 var pageController = require('./controllers/e-commerce.js');
 
+const productRouter = require('./controllers/products')
+
+
 // Home route
 //app.get('/', pageController.home)
 
@@ -23,7 +46,7 @@ var pageController = require('./controllers/e-commerce.js');
 app.get('/product-list', pageController.list)
 
 // Product Content
-app.get('/product_display', pageController.product_display)
+app.use('/products', productRouter)
 
 // Order Page
 app.get('/cart', pageController.cart)
