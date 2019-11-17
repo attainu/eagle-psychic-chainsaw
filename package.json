@@ -17,7 +17,9 @@
   },
   "homepage": "https://github.com/attainu/eagle-psychic-chainsaw#readme",
   "dependencies": {
+    "epxress": "0.0.1-security",
     "express": "^4.17.1",
     "express-handlebars": "^3.1.0"
-  }
+  },
+  "devDependencies": {}
 }
