@@ -1,8 +1,7 @@
- 
 const express = require('express');
 const app = express();
 const exphbs = require('express-handlebars');
-const PORT = 8080;
+const PORT = 8081;
 
 app.use(express.json());
 app.use(express.urlencoded());
@@ -14,15 +13,45 @@ const hbs = exphbs.create({
 app.engine('.hbs', hbs.engine);
 app.set('view engine', '.hbs');
 
+ 
+var pageController = require('./controllers/e-commerce.js');
 
+// Home route
+//app.get('/', pageController.home)
 
-//Home Route
-app.get('/', function (req, res) {
-     res.render('product_display',{
-     	title:"product_display"
-     });
-});
+// Product List
+app.get('/product-list', pageController.list)
 
+// Product Content
+app.get('/product_display', pageController.product_display)
+
+// Order Page
+app.get('/cart', pageController.cart)
+
+// Login/Registration (User)
+app.get('/user-login', pageController.user_login)
+
+// Login/Registration (Seller)
+app.get('/seller-login', pageController.seller_login)
+
+// User Profile
+app.get('/user-profile', pageController.user_profile)
+
+// Seller Profile
+app.get('/seller_profile', pageController.seller_profile)
+
+// Order History
+app.get('/order-history', pageController.order_history)
+
+// Address From Page
+app.get('/address-form', pageController.add_form)
+
+// Product List Form Page
+app.get('/product-list-form', pageController.product_form)
+//
+app.get('/product_registration', pageController.product_registration)
+
+ 
 
 
 //Port
