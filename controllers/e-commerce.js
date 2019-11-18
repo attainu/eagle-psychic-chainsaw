@@ -60,8 +60,9 @@ Controller.user_login = function (req, res) {
 Controller.seller_login = function (req, res) {
     var random = null;
     model.seller_login(random, function (error, info) {
-        return res.render('seller-login', {
+        return res.render('seller-signup-signin', {
             title: 'E-Commerce Website',
+            css: 'signup-signin.css'
         });
     })
 }
