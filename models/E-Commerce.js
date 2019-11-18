@@ -66,7 +66,10 @@ Model.product_form = function (random, cb) {
     var newData = null;
     return cb(null, newData);
 }
+<<<<<<< HEAD
 
+=======
+>>>>>>> feature/profile_seller
 //Product-registration
 Model.product_registration = function (random, cb) {
     var newData = null;
@@ -74,4 +77,8 @@ Model.product_registration = function (random, cb) {
 }
 
 
+<<<<<<< HEAD
 module.exports = Model;
+=======
+module.exports = Model;
+>>>>>>> feature/profile_seller
