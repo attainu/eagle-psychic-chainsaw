@@ -37,8 +37,6 @@ app.set('view engine', '.hbs');
 
 
 var pageController = require('./controllers/e-commerce.js');
-var userController = require('./controllers/user-login.js');
-const productRouter = require('./controllers/products');
 
 // Home route
 app.get('/', pageController.home)
@@ -48,17 +46,13 @@ app.get('/', pageController.home)
 app.get('/product-list', pageController.list)
 
 // Product Content
-app.use('/products', productRouter)
+// app.use('/products', productRouter)
 
 // Order Page
 app.get('/cart', pageController.cart)
 
 // Login/Registration (User)
 app.get('/user-login', pageController.user_login)
-app.post('/user-signin', userController.user_signin)
-app.post('/user-signup', userController.user_signup)
-app.delete('/user-delete', userController.user_delete)
-app.put('/user-update', userController.user_update)
 
 // Login/Registration (Seller)
 app.get('/seller-login', pageController.seller_login)

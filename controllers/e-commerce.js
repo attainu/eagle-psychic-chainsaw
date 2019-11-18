@@ -99,8 +99,9 @@ Controller.order_history = function (req, res) {
 Controller.add_form = function (req, res) {
     var random = null;
     model.add_form(random, function (error, info) {
-        return res.render('address-form', {
+        return res.render('address', {
             title: 'E-Commerce Website',
+            css: 'address.css'
         });
     })
 }
