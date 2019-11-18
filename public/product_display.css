@@ -165,3 +165,6 @@ span.glyphicon.glyphicon-user {
 .review1 {
     margin-bottom: 13px;
 }
+.inline{
+    display: inline-block;
+}

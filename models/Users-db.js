@@ -3,7 +3,7 @@ var uniqueValidator = require('mongoose-unique-validator');
 var db = mongoose.model;
 var Schema = mongoose.Schema;
 const Users = {};
-const url = 'mongodb://localhost:27017/eagle-test';
+const url = 'mongodb://localhost:27017/ecommerce-app';
 const express = require('express');
 const app = express();
 

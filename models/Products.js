@@ -14,4 +14,4 @@ const productSchema = new Schema({
     userReview : {type:String}
 }) 
 
-module.exports = mongoose.model('Product',productSchema);
+module.exports = mongoose.model('Product',productSchema,'product');
