@@ -18,6 +18,7 @@ Controller.list = function (req, res) {
     model.list(random, function (error, info) {
         return res.render('listpage', {
             title: 'E-Commerce Website',
+            css: 'style.css'
         });
     })
 }
@@ -39,6 +40,7 @@ Controller.cart = function (req, res) {
     model.cart(random, function (error, info) {
         return res.render('cartpage', {
             title: 'E-Commerce Website',
+            css: 'style.css'
         });
     })
 }
