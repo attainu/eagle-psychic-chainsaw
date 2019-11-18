@@ -1,5 +1,7 @@
 const Controller = {};
+
 var Users = require('./../models/Users-db');
+const Product = require('../models/Products');
 
 // SignIn
 Controller.user_signup = function (req, res) {
@@ -75,6 +77,44 @@ Controller.user_update = function (req, res) {
     })
 }
 
+Product.cart = function (req, res) {
+    var id = req.body.productid;
+    console.log(req.body);
+    Product.findOne({productName: id})
+        .exec()
+        .then(doc => {
+            if (doc) {
+                return res.render('cartpage', {
+                    title: "product_display",
+                    href: '../public/style.css',
+                    productId: doc._id,
+                    productName: doc.productName,
+                    productPrice: doc.productPrice,
+                    productImage: doc.productImage,
+                    productImage1: doc.productImage1,
+                    productImage2: doc.productImage2,
+                    productHighlights: doc.productHighlights,
+                    productHighlights1: doc.productHighlights1,
+                    productHighlights2: doc.productHighlights2,
+                    productHighlights3: doc.productHighlights3,
+                    userReview: doc.userReview
+                });
+            } else {
+                 return res.status(500).json({
+                    message: 'No valid entry Found for provided Id'
+                })
+            }
+
+        })
+        .catch(err => {
+            console.log(err);
+            res.status(500).json({ Error: err });
+        })
+}
 
 
-module.exports = Controller;
+
+module.exports = {
+    Controller: Controller,
+    Product :Product
+}
