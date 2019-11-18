@@ -1,3 +1,4 @@
+const fs = require('fs');
 const express = require('express');
 const app = express();
 const exphbs = require('express-handlebars');
@@ -34,23 +35,30 @@ db.on('error', function (err) {
 app.engine('.hbs', hbs.engine);
 app.set('view engine', '.hbs');
 
- 
+
 var pageController = require('./controllers/e-commerce.js');
+var userController = require('./controllers/user-login.js');
+const productRouter = require('./controllers/products');
 
 // Home route
 app.get('/', pageController.home)
+
 
 // Product List
 app.get('/product-list', pageController.list)
 
 // Product Content
-app.get('/product_display', pageController.product_display)
+app.use('/products', productRouter)
 
 // Order Page
 app.get('/cart', pageController.cart)
 
 // Login/Registration (User)
 app.get('/user-login', pageController.user_login)
+app.post('/user-signin', userController.user_signin)
+app.post('/user-signup', userController.user_signup)
+app.delete('/user-delete', userController.user_delete)
+app.put('/user-update', userController.user_update)
 
 // Login/Registration (Seller)
 app.get('/seller-login', pageController.seller_login)
@@ -59,7 +67,7 @@ app.get('/seller-login', pageController.seller_login)
 app.get('/user-profile', pageController.user_profile)
 
 // Seller Profile
-app.get('/seller_profile', pageController.seller_profile)
+app.get('/seller-profile', pageController.seller_profile)
 
 // Order History
 app.get('/order-history', pageController.order_history)
@@ -72,7 +80,7 @@ app.get('/product-list-form', pageController.product_form)
 //
 app.get('/product_registration', pageController.product_registration)
 
- 
+
 
 
 //Port
