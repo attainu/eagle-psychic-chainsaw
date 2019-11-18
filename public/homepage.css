@@ -163,8 +163,8 @@ body{
 	margin-right: 8px;
 	float: right; 
 }
-.slider{
-	width: 100%;
+.sliderdiv{
+	width: 95%;
     padding: 0 10px;
     white-space:nowrap;
     overflow-x:auto;
