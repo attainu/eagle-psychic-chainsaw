@@ -7,6 +7,7 @@ Controller.home = function (req, res) {
     model.home(random, function (error, info) {
         return res.render('homepage', {
             title: 'E-Commerce Website',
+            css: 'homepage.css'
         });
     })
 }
@@ -47,6 +48,7 @@ Controller.user_login = function (req, res) {
     model.user_login(random, function (error, info) {
         return res.render('user-signup-signin', {
             title: 'E-Commerce Website',
+            css: 'signup-signin.css'
         });
     })
 }

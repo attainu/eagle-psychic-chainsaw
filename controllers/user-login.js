@@ -2,7 +2,7 @@ const Controller = {};
 var Users = require('./../models/Users-db');
 
 // SignIn
-Controller.user_signin = function (req, res) {
+Controller.user_signup = function (req, res) {
     const users = new Users.register({
         username: req.body.name,
         email: req.body.email,
@@ -13,16 +13,7 @@ Controller.user_signin = function (req, res) {
     users
         .save()
         .then(result => {
-            res.status(201).json({
-                message: "User Added",
-                createdUser: {
-                    username: result.username,
-                    email: result.email,
-                    mobile_number: result.mobile_number,
-                    password: result.password,
-                    address: result.address
-                }
-            })
+            return res.redirect('/user-login')
         })
         .catch(err => {
             res.status(500).json({ Error: err })
@@ -30,7 +21,7 @@ Controller.user_signin = function (req, res) {
 }
 
 // SignUp
-Controller.user_signup = function (req, res) {
+Controller.user_signin = function (req, res) {
     var data = req.body;
     console.log(data);
     Users.register.findOne({
@@ -44,7 +35,7 @@ Controller.user_signup = function (req, res) {
             return res.status(400).send("No user found");
         }
 
-        return res.status(200).send(user);
+        return res.redirect('/');;
     })
 }
 
