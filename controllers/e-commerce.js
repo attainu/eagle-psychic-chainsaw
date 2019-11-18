@@ -23,11 +23,12 @@ Controller.list = function (req, res) {
 }
 
 // Product Content
-Controller.content = function (req, res) {
+Controller.product_display = function (req, res) {
     var random = null;
-    model.content(random, function (error, info) {
-        return res.render('contentpage', {
+    model.product_display(random, function (error, info) {
+        return res.render('product_display', {
             title: 'E-Commerce Website',
+            href: '../../public/product_display.css'
         });
     })
 }
@@ -77,8 +78,9 @@ Controller.user_profile = function (req, res) {
 Controller.seller_profile = function (req, res) {
     var random = null;
     model.seller_profile(random, function (error, info) {
-        return res.render('seller-profile', {
-            title: 'E-Commerce Website',
+        return res.render('seller_profile', {
+             title: 'seller_profile',
+             href:'../../public/seller_profile.css'
         });
     })
 }
@@ -109,6 +111,16 @@ Controller.product_form = function (req, res) {
     model.product_form(random, function (error, info) {
         return res.render('product-list-form', {
             title: 'E-Commerce Website',
+        });
+    })
+}
+// Product Registration Form
+Controller.product_registration = function (req, res) {
+    var random = null;
+    model.product_form(random, function (error, info) {
+        return res.render('product_registration', {
+            title: 'Product registration',
+           href:"../../public/product_registration.css"
         });
     })
 }

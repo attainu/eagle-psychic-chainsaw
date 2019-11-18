@@ -14,7 +14,7 @@ Model.list = function (random, cb) {
 }
 
 // Product Content
-Model.content = function (random, cb) {
+Model.product_display= function (random, cb) {
     var newData = null;
     return cb(null, newData);
 }
@@ -63,6 +63,12 @@ Model.add_form = function (random, cb) {
 
 // Product List Form
 Model.product_form = function (random, cb) {
+    var newData = null;
+    return cb(null, newData);
+}
+
+//Product-registration
+Model.product_registration = function (random, cb) {
     var newData = null;
     return cb(null, newData);
 }
