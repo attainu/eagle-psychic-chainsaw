@@ -10,7 +10,7 @@ Controller.home = function (req, res) {
  
             css: 'homepage.css'
  
->>>>>>> feature/profile_seller
+ 
         });
     })
 }
@@ -21,10 +21,9 @@ Controller.list = function (req, res) {
     model.list(random, function (error, info) {
         return res.render('listpage', {
             title: 'E-Commerce Website',
-<<<<<<< HEAD
+ 
             css: 'style.css'
-=======
->>>>>>> feature/profile_seller
+ 
         });
     })
 }
