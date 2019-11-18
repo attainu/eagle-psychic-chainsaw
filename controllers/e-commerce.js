@@ -7,10 +7,7 @@ Controller.home = function (req, res) {
     model.home(random, function (error, info) {
         return res.render('homepage', {
             title: 'E-Commerce Website',
- 
             css: 'homepage.css'
- 
- 
         });
     })
 }
@@ -21,25 +18,18 @@ Controller.list = function (req, res) {
     model.list(random, function (error, info) {
         return res.render('listpage', {
             title: 'E-Commerce Website',
- 
             css: 'style.css'
- 
         });
     })
 }
 
 // Product Content
-<<<<<<< HEAD
 Controller.product_display = function (req, res) {
-=======
-Controller.product_display= function (req, res) {
->>>>>>> feature/profile_seller
     var random = null;
     model.product_display(random, function (error, info) {
         return res.render('product_display', {
             title: 'E-Commerce Website',
             href: '../../public/product_display.css'
- 
         });
     })
 }
@@ -51,7 +41,6 @@ Controller.cart = function (req, res) {
         return res.render('cartpage', {
             title: 'E-Commerce Website',
             css: 'style.css'
- 
         });
     })
 }
@@ -60,11 +49,9 @@ Controller.cart = function (req, res) {
 Controller.user_login = function (req, res) {
     var random = null;
     model.user_login(random, function (error, info) {
- 
         return res.render('user-signup-signin', {
             title: 'E-Commerce Website',
             css: 'signup-signin.css'
- 
         });
     })
 }
@@ -73,11 +60,9 @@ Controller.user_login = function (req, res) {
 Controller.seller_login = function (req, res) {
     var random = null;
     model.seller_login(random, function (error, info) {
- 
         return res.render('seller-signup-signin', {
             title: 'E-Commerce Website',
             css: 'signup-signin.css'
- 
         });
     })
 }
@@ -97,8 +82,8 @@ Controller.seller_profile = function (req, res) {
     var random = null;
     model.seller_profile(random, function (error, info) {
         return res.render('seller_profile', {
-             title: 'seller_profile',
-             href:'../../public/seller_profile.css'
+            title: 'seller_profile',
+            href: '../../public/seller_profile.css'
         });
     })
 }
@@ -117,11 +102,10 @@ Controller.order_history = function (req, res) {
 Controller.add_form = function (req, res) {
     var random = null;
     model.add_form(random, function (error, info) {
- 
+
         return res.render('address', {
             title: 'E-Commerce Website',
             css: 'address.css'
- 
         });
     })
 }
@@ -141,7 +125,7 @@ Controller.product_registration = function (req, res) {
     model.product_form(random, function (error, info) {
         return res.render('product_registration', {
             title: 'Product registration',
-           href:"../../public/product_registration.css"
+            href: "../../public/product_registration.css"
         });
     })
 }
