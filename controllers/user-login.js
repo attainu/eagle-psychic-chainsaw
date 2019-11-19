@@ -16,10 +16,15 @@ Controller.user_signup = function (req, res) {
     users
         .save()
         .then(result => {
-            return res.redirect('/user-login')
+            if (result) {
+                return res.redirect('/user-login')
+            }
         })
         .catch(err => {
-            res.status(500).json({ Error: err })
+            console.log(err)
+            res.status(500).json({
+                msg: "Email Already Used!"
+            })
         })
 }
 
@@ -39,6 +44,7 @@ Controller.user_signin = function (req, res) {
             flag = false;;
         }
         else {
+            req.session.user = user;
             flag = true;
         }
         console.log(flag)
@@ -119,6 +125,26 @@ Product.cart = function (req, res) {
         })
 }
 
+//logout route
+Controller.logout = function (req, res) {
+
+    req.session.destroy();
+    res.clearCookie("guest-login");
+    return res.send({
+        status: true,
+        message: "Logged Out"
+    })
+}
+
+Controller.validate = function (req, res, next) {
+
+    Users.verify(req, function (error, info) {
+        if (error) {
+            return next();
+        }
+        return res.redirect('/user-login');
+    });
+}
 
 
 module.exports = {

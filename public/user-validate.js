@@ -22,8 +22,9 @@ $(document).ready(function () {
             success: function (data) {
                 console.log(data);
                 if (data.flag == true) {
-                    setTimeout(function () { $('<p/>').text("Succefully Login").addClass("alert alert-success mt-4").appendTo("#r-alert-box"); }, 1000);
-                    $(location).attr('href', '/')
+                    $('<p/>').text("Succefully Login").addClass("alert alert-success mt-4").appendTo("#r-alert-box");
+                    setTimeout(function () { $(location).attr('href', '/') }, 1000);
+
                 }
                 else {
                     $('<p/>').text("Wrong Username or Password").addClass("alert alert-danger mt-4").appendTo("#r-alert-box");
@@ -63,14 +64,18 @@ $(document).ready(function () {
                 password: password
             },
             dataType: 'json',
-            success: function () {
-                $(location).attr('href', '/user-login')
+            success: function (data) {
+
+console.log(data)
+
             },
             error: function () {
 
             }
         });
-        $(location).attr('href', '/user-login')
+        $('<p/>').text("Succefully Register").addClass("alert alert-success mt-4").appendTo("#r-alert-box");
+        setTimeout(function () { $(location).attr('href', '/user-login') }, 1000);
+
     });
     $("#container").click(function () {
         $("#r-alert-box").empty();
