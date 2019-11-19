@@ -2,7 +2,8 @@ const fs = require('fs');
 const express = require('express');
 const app = express();
 const exphbs = require('express-handlebars');
-const PORT = 8081;
+const session = require('express-session');
+const PORT = 8005;
 
 // Configuration
 app.use(express.json());
@@ -20,6 +21,21 @@ mongoose.connect('mongodb://localhost:27017/ecommerce-app',
 
     })
 
+//session configuration
+app.use(session({
+    name: 'guest-login',
+    secret: 'ndnjsnvnskkvm#@R$',
+    resave: true,
+    saveUninitialized: false,
+    cookie: {
+        httpOnly: true,
+        maxAge: 60000, // 1 minute
+        path: '/',
+        sameSite: true,
+        secure: false
+    }
+}))
+
 let db = mongoose.connection;
 
 // check DB connection
@@ -30,7 +46,7 @@ db.once('open', function () {
 //check for DB errors
 db.on('error', function (err) {
     console.log(err);
-}) 
+})
 
 app.engine('.hbs', hbs.engine);
 app.set('view engine', '.hbs');
@@ -39,6 +55,9 @@ app.set('view engine', '.hbs');
 var pageController = require('./controllers/e-commerce.js');
 var user = require('./controllers/user-login.js');
 const productRouter = require('./controllers/products');
+
+// Validation Middleware
+app.use(user.Controller.validate);
 
 // Home route
 app.get('/', pageController.home)
@@ -52,7 +71,7 @@ app.use('/products', productRouter)
 
 // Order Page
 app.get('/cart', pageController.cart)
-app.post('/cart',user.Product.cart)
+app.post('/cart', user.Product.cart)
 
 // Login/Registration (User)
 app.get('/user-login', pageController.user_login)
@@ -60,6 +79,7 @@ app.post('/user-signin', user.Controller.user_signin)
 app.post('/user-signup', user.Controller.user_signup)
 app.delete('/user-delete', user.Controller.user_delete)
 app.put('/user-update', user.Controller.user_update)
+app.get('/user-logout', user.Controller.logout)
 
 // Login/Registration (Seller)
 app.get('/seller-login', pageController.seller_login)

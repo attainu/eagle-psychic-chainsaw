@@ -48,4 +48,25 @@ var userAddress = new Schema({
 Users.register = db('Users', usersSchema, 'users');
 Users.address = db('Address', userAddress, 'address');
 
+//middleware verification model
+Users.verify = function (req, cb) {
+    if (req.originalUrl === '/' || req.originalUrl === '/product-list' ||
+        req.originalUrl === '/products' || req.originalUrl === '/user-login' ||
+        req.originalUrl === '/user-signin' || req.originalUrl === '/user-signup' ||
+        req.originalUrl === '/user-logout') {
+        return cb(true);
+    }
+
+    if (typeof req.session.user === "undefined") {
+        return cb(null, {
+            status: false,
+            message: "First Login (Unauthorized)"
+        })
+    }
+    else {
+        return cb(true);
+    }
+
+}
+
 module.exports = Users;
