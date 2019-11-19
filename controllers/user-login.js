@@ -5,7 +5,6 @@ const Product = require('../models/Products');
 
 // SignUp
 Controller.user_signup = function (req, res) {
-    console.log(req.body)
     const users = new Users.register({
         username: req.body.name,
         email: req.body.email,
@@ -17,13 +16,14 @@ Controller.user_signup = function (req, res) {
         .save()
         .then(result => {
             if (result) {
-                return res.redirect('/user-login')
+                return res.status(200).json({
+                    msg: true
+                })
             }
         })
         .catch(err => {
-            console.log(err)
-            res.status(500).json({
-                msg: "Email Already Used!"
+            return res.status(500).json({
+                msg: false
             })
         })
 }
@@ -32,7 +32,6 @@ Controller.user_signup = function (req, res) {
 var flag = null;
 Controller.user_signin = function (req, res) {
     var data = req.body;
-    console.log(data);
     Users.register.findOne({
         $and: [
             { email: data.email }, { password: data.password }]
@@ -47,7 +46,6 @@ Controller.user_signin = function (req, res) {
             req.session.user = user;
             flag = true;
         }
-        console.log(flag)
         res.json({
             flag: flag
         })
@@ -76,13 +74,11 @@ Controller.user_delete = function (req, res) {
 // Update User
 Controller.user_update = function (req, res) {
     var data = req.body;
-    console.log(data);
     Users.register.updateOne({ username: data.username }, { $set: data }, { multi: true, new: true }, function (err, user) {
         if (err) {
             return res.status(500).send(err);
         }
         if (!user) {
-            console.log(user)
             return res.status(400).send("No user found");
         }
 
@@ -92,7 +88,6 @@ Controller.user_update = function (req, res) {
 
 Product.cart = function (req, res) {
     var id = req.body.productid;
-    console.log(req.body);
     Product.findOne({ productName: id })
         .exec()
         .then(doc => {
