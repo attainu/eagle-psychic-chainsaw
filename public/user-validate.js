@@ -4,7 +4,6 @@ $(document).ready(function () {
     $('#login-form').on('submit', function () {
         var email = $('#l-email').val();
         var password = $('#l-password').val();
-        console.log("hello");
         $("#r-alert-box").empty();
         if (email.trim() == '' || password == '') {
             $('<p/>').text("Username or Password not Entered").addClass("alert alert-primary mt-4").appendTo("#r-alert-box");
@@ -20,7 +19,6 @@ $(document).ready(function () {
             },
             dataType: 'json',
             success: function (data) {
-                console.log(data);
                 if (data.flag == true) {
                     $('<p/>').text("Succefully Login").addClass("alert alert-success mt-4").appendTo("#r-alert-box");
                     setTimeout(function () { $(location).attr('href', '/') }, 1000);
@@ -44,7 +42,6 @@ $(document).ready(function () {
         var number = $('#r-number').val();
         var email = $('#r-email').val();
         var c_password = $('#r-password1').val();
-        console.log("hello");
         $("#r-alert-box").empty();
         if (name.trim() == '' || password == '' || number == '' || email == '') {
             $('<p/>').text("All Field Are Required").addClass("alert alert-primary mt-4").appendTo("#r-alert-box");
@@ -54,6 +51,7 @@ $(document).ready(function () {
             $('<p/>').text("Password Not Matched").addClass("alert alert-danger mt-4").appendTo("#r-alert-box");
             return;
         }
+        var flag= null;
         $.ajax({
             method: "POST",
             url: "/user-signup",
@@ -65,16 +63,14 @@ $(document).ready(function () {
             },
             dataType: 'json',
             success: function (data) {
-
-console.log(data)
-
+                $('<p/>').text("Succefully Register").addClass("alert alert-success mt-4").appendTo("#r-alert-box");
+                setTimeout(function () { $(location).attr('href', '/user-login') }, 1000);
             },
             error: function () {
-
+                $('<p/>').text("Email Already In Use").addClass("alert alert-success mt-4").appendTo("#r-alert-box");
             }
         });
-        $('<p/>').text("Succefully Register").addClass("alert alert-success mt-4").appendTo("#r-alert-box");
-        setTimeout(function () { $(location).attr('href', '/user-login') }, 1000);
+
 
     });
     $("#container").click(function () {
