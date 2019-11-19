@@ -64,17 +64,17 @@ $(document).ready(function () {
                 password: password
             },
             dataType: 'json',
-            success: function (data) {
-
-console.log(data)
-
+            success: function (data, error) {
+                console.log("1")
+                $('<p/>').text("Succefully Register").addClass("alert alert-success mt-4").appendTo("#r-alert-box");
+                setTimeout(function () { $(location).attr('href', '/user-login') }, 1000);
             },
             error: function () {
-
+                console.log("0")
+                $('<p/>').text("Email Already In Use").addClass("alert alert-success mt-4").appendTo("#r-alert-box");
             }
         });
-        $('<p/>').text("Succefully Register").addClass("alert alert-success mt-4").appendTo("#r-alert-box");
-        setTimeout(function () { $(location).attr('href', '/user-login') }, 1000);
+
 
     });
     $("#container").click(function () {

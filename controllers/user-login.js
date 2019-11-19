@@ -120,8 +120,9 @@ Product.cart = function (req, res) {
 
         })
         .catch(err => {
-            console.log(err);
-            res.status(500).json({ Error: err });
+            res.status(500).json({
+                status: false
+            })
         })
 }
 
@@ -140,6 +141,7 @@ Controller.validate = function (req, res, next) {
 
     Users.verify(req, function (error, info) {
         if (error) {
+            console.log("again");
             return next();
         }
         return res.redirect('/user-login');
