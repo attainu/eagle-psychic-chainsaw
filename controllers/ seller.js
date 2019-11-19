@@ -1,4 +1,4 @@
-const Seller=require('./../models/Users.js');
+const Seller=require('./../models/Seller.js');
  
 const SellerController={};
 SellerController.create=function(req,res){

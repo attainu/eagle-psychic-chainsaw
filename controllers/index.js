@@ -1,3 +1,3 @@
 module.exports={
-	SellerController:require('./users.js')
+	SellerController:require('./seller.js')
 }
