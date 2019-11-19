@@ -1,22 +1,23 @@
 <div class="container" id="container">
     <div class="form-container sign-up-container">
-        <form action="/user-signup" method="POST" class="form-group">
+        <form onsubmit="return false;" class="form-group" id="register-form">
             <h1>Create Account</h1>
-            <input type="text" name="name" id="name" placeholder="Name">
-            <input type="email" name="email" id="email1" placeholder="Email">
-            <input type="number" name="number" id="number" placeholder="Mobile number">
-            <input type="password" name="password" id="password" placeholder="Password">
-            <input type="password" name="confimr-password" id="password1" placeholder="Confirm-password">
-            <button type="submit" id="submit">Sign Up</button>
+            <input type="text" name="name" id="r-name" placeholder="Name">
+            <input type="email" name="email" id="r-email" placeholder="Email">
+            <input type="number" name="number" id="r-number" placeholder="Mobile number">
+            <input type="password" name="password" id="r-password" placeholder="Password">
+            <input type="password" name="confimr-password" id="r-password1" placeholder="Confirm-password">
+            <button type="submit" id="r-submit" value="Submit">Sign Up</button>
         </form>
+        
     </div>
     <div class="form-container sign-in-container">
-        <form action="/user-signin" method="POST">
+        <form onsubmit="return false;" class="form-group" id="login-form">
             <h1>Sign In</h1>
-            <input type="email" name="email" id="email2" placeholder="Email">
-            <input type="password" name="password" id="user-password" placeholder="Password">
+            <input type="email" name="email" id="l-email" placeholder="Email">
+            <input type="password" name="password" id="l-password" placeholder="Password">
             <a href="#">Forgot your Password?</a>
-            <button type="submit">Sign In</button>
+            <button type="submit" id="l-submit" value="Submit">Sign In</button>
         </form>
     </div>
     <div class="overlay-container">
@@ -38,3 +39,4 @@
         </div>
     </div>
 </div>
+<div id="r-alert-box" role="alert"></div>
