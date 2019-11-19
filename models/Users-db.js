@@ -17,7 +17,7 @@ if ('development' == app.get('env')) {
 }
 // User Registration Schema
 var usersSchema = new Schema({
-    username: { type: String, lowercase: true, unique: true, required: [true, "can't be blank"], index: true },
+    username: { type: String, unique: true, required: [true, "can't be blank"], index: true },
     email: { type: String, lowercase: true, unique: true, required: [true, "can't be blank"], match: [/\S+@\S+\.\S+/, 'is invalid'], index: true },
     mobile_number: { type: String, required: true },
     password: { type: String, required: true },

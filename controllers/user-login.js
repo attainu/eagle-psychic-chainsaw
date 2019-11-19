@@ -3,8 +3,9 @@ const Controller = {};
 var Users = require('./../models/Users-db');
 const Product = require('../models/Products');
 
-// SignIn
+// SignUp
 Controller.user_signup = function (req, res) {
+    console.log(req.body)
     const users = new Users.register({
         username: req.body.name,
         email: req.body.email,
@@ -22,7 +23,8 @@ Controller.user_signup = function (req, res) {
         })
 }
 
-// SignUp
+// SignIn
+var flag = null;
 Controller.user_signin = function (req, res) {
     var data = req.body;
     console.log(data);
@@ -31,13 +33,18 @@ Controller.user_signin = function (req, res) {
             { email: data.email }, { password: data.password }]
     }, function (err, user) {
         if (err) {
-            return res.status(500).send(err);
+            console.log(err);
         }
         if (!user) {
-            return res.status(400).send("No user found");
+            flag = false;;
         }
-
-        return res.redirect('/');;
+        else {
+            flag = true;
+        }
+        console.log(flag)
+        res.json({
+            flag: flag
+        })
     })
 }
 
@@ -80,7 +87,7 @@ Controller.user_update = function (req, res) {
 Product.cart = function (req, res) {
     var id = req.body.productid;
     console.log(req.body);
-    Product.findOne({productName: id})
+    Product.findOne({ productName: id })
         .exec()
         .then(doc => {
             if (doc) {
@@ -100,7 +107,7 @@ Product.cart = function (req, res) {
                     userReview: doc.userReview
                 });
             } else {
-                 return res.status(500).json({
+                return res.status(500).json({
                     message: 'No valid entry Found for provided Id'
                 })
             }
@@ -116,5 +123,5 @@ Product.cart = function (req, res) {
 
 module.exports = {
     Controller: Controller,
-    Product :Product
+    Product: Product
 }
