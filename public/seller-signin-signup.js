@@ -1,4 +1,3 @@
-
 $(document).ready(function () {
     $('#signUp').on('click',function(){
         $('#container').addClass('right-panel-active');
