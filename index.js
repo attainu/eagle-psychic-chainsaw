@@ -77,8 +77,8 @@ app.use(user.Controller.validate);
 app.get('/', pageController.home)
 
 
-// Product List
-app.get('/product-list', pageController.list)
+// // Product List
+// app.get('/product-list', pageController.list)
 
 // Product Content
 app.use('/products', productRouter)

@@ -17,7 +17,7 @@ if ('development' == app.get('env')) {
 }
 // User Registration Schema
 var usersSchema = new Schema({
-    username: { type: String, unique: true, required: [true, "can't be blank"], index: true },
+    username: { type: String, required: [true, "can't be blank"], index: true },
     email: { type: String, lowercase: true, unique: true, required: [true, "can't be blank"], match: [/\S+@\S+\.\S+/, 'is invalid'], index: true },
     mobile_number: { type: String, required: true },
     password: { type: String, required: true },
@@ -50,10 +50,21 @@ Users.address = db('Address', userAddress, 'address');
 
 //middleware verification model
 Users.verify = function (req, cb) {
-    if (req.originalUrl === '/' || req.originalUrl === '/product-list' ||
-        req.originalUrl === '/products' || req.originalUrl === '/user-login' ||
-        req.originalUrl === '/user-signin' || req.originalUrl === '/user-signup' ||
-        req.originalUrl === '/user-logout') {
+    if (req.originalUrl === '/' ||
+        req.originalUrl === '/product-list' ||
+        req.originalUrl === '/products' ||
+        req.originalUrl === '/user-login' ||
+        req.originalUrl === '/user-signin' ||
+        req.originalUrl === '/user-signup' ||
+        req.originalUrl === '/user-logout' ||
+        req.originalUrl === '/user-profile' ||
+        req.originalUrl === '/seller-profile' ||
+        req.originalUrl === '/seller-login' ||
+        req.originalUrl === '/order-history' ||
+        req.originalUrl === '/address-form' ||
+        req.originalUrl === '/product-list-form' ||
+        req.originalUrl === '/product-display' ||
+        req.originalUrl === '/product_registration') {
         return cb(true);
     }
 

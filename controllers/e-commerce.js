@@ -81,8 +81,9 @@ Controller.seller_login = function (req, res) {
 Controller.user_profile = function (req, res) {
     var random = null;
     model.user_profile(random, function (error, info) {
-        return res.render('user-profile', {
+        return res.render('profile-page', {
             title: 'E-Commerce Website',
+            css: 'profile-page.css'
         });
     })
 }
@@ -102,8 +103,9 @@ Controller.seller_profile = function (req, res) {
 Controller.order_history = function (req, res) {
     var random = null;
     model.order_history(random, function (error, info) {
-        return res.render('order-history', {
+        return res.render('product-order-history', {
             title: 'E-Commerce Website',
+            css: 'product-order-history.css'
         });
     })
 }
