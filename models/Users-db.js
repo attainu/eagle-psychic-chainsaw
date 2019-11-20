@@ -35,7 +35,7 @@ var userAddress = new Schema({
     name: { type: String, required: true },
     number: String,
     temp_number: String,
-    address: { type: String, required: true },
+    user_address: { type: String, required: true },
     pincode: { type: String, required: true },
     locality: { type: String, required: true },
     city: { type: String, required: true },
@@ -58,10 +58,10 @@ Users.verify = function (req, cb) {
         req.originalUrl === '/user-signup' ||
         req.originalUrl === '/user-logout' ||
         req.originalUrl === '/user-profile' ||
+        req.originalUrl === '/user-address' ||
         req.originalUrl === '/seller-profile' ||
         req.originalUrl === '/seller-login' ||
         req.originalUrl === '/order-history' ||
-        req.originalUrl === '/address-form' ||
         req.originalUrl === '/product-list-form' ||
         req.originalUrl === '/product-display' ||
         req.originalUrl === '/product_registration') {

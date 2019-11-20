@@ -6,7 +6,6 @@ Controller.home = function (req, res) {
     var random = null;
     model.home(random, function (error, info) {
         if (req.session.user) {
-            console.log(req.session.user);
             return res.render('homepage', {
                 title: 'E-Commerce Website',
                 css: 'homepage.css',

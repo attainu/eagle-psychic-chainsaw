@@ -29,7 +29,7 @@ app.use(session({
     saveUninitialized: false,
     cookie: {
         httpOnly: true,
-        maxAge: 600000, // 10 minute
+        maxAge: 600000, // 30 minute
         path: '/',
         sameSite: true,
         secure: false
@@ -96,6 +96,8 @@ app.post('/user-signup', user.Controller.user_signup)
 app.delete('/user-delete', user.Controller.user_delete)
 app.put('/user-update', user.Controller.user_update)
 app.get('/user-logout', user.Controller.logout)
+app.post('/user-address', user.Controller.address_add)
+app.get('/user-address-get', user.Controller.address_get)
 
 // Login/Registration (Seller)
 app.get('/seller-login', pageController.seller_login)
