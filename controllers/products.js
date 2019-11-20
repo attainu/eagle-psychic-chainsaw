@@ -2,7 +2,7 @@ const express = require("express");
 
 const router = express.Router();
 
-const Product = require('../models/Products');
+const Product = require('./../models/Products');
 
 router.get('/:productId', (req, res, next) => {
     var id = req.params.productId;

@@ -7,7 +7,7 @@ const PORT = 8005;
 
 // Configuration
 app.use(express.json());
-app.use(express.urlencoded());
+app.use(express.urlencoded({extended:true}));
 app.use('/public', express.static('public'));
 const hbs = exphbs.create({
     extname: '.hbs'
@@ -56,6 +56,20 @@ var pageController = require('./controllers/e-commerce.js');
 var user = require('./controllers/user-login.js');
 const productRouter = require('./controllers/products');
 
+// product registration controller
+const product_registration = require('./controllers/product-registration');
+
+// product registration
+app.use('/product_registration',product_registration);
+
+
+// product list controller
+const product_listRouter = require('./controllers/product-list');
+
+// product list
+app.use('/product_list',product_listRouter);
+
+
 // Validation Middleware
 app.use(user.Controller.validate);
 
@@ -68,6 +82,8 @@ app.get('/product-list', pageController.list)
 
 // Product Content
 app.use('/products', productRouter)
+
+
 
 // Order Page
 app.get('/cart', pageController.cart)
