@@ -8,8 +8,12 @@
     </div>
     <div class="menu-bar">
         <ul>
-
+            {{#if user}}
+            <li><a href="/user-login">Profile</a></li>
+            <li><a href="/user-logout">Log Out</a></li>
+            {{else}}
             <li><a href="/user-login">Log In & Sign Up</a></li>
+            {{/if}}
             <li><a href="/cart"><i class="fa fa-shopping-cart fa-2x" aria-hidden="true"></i></a></li>
         </ul>
 
@@ -481,3 +485,4 @@
     <!-- Footer Links -->
 </footer>
 <!-- Footer -->
+{{session.email}}

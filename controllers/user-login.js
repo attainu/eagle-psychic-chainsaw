@@ -86,26 +86,18 @@ Controller.user_update = function (req, res) {
     })
 }
 
+// User Cart
 Product.cart = function (req, res) {
     var id = req.body.productid;
     Product.findOne({ productName: id })
         .exec()
         .then(doc => {
             if (doc) {
+                console.log(doc)
                 return res.render('cartpage', {
                     title: "product_display",
                     href: '../public/style.css',
-                    productId: doc._id,
-                    productName: doc.productName,
-                    productPrice: doc.productPrice,
-                    productImage: doc.productImage,
-                    productImage1: doc.productImage1,
-                    productImage2: doc.productImage2,
-                    productHighlights: doc.productHighlights,
-                    productHighlights1: doc.productHighlights1,
-                    productHighlights2: doc.productHighlights2,
-                    productHighlights3: doc.productHighlights3,
-                    userReview: doc.userReview
+                    product: doc
                 });
             } else {
                 return res.status(500).json({
@@ -124,14 +116,13 @@ Product.cart = function (req, res) {
 //logout route
 Controller.logout = function (req, res) {
 
-    req.session.destroy();
-    res.clearCookie("guest-login");
-    return res.send({
-        status: true,
-        message: "Logged Out"
-    })
+    req.session.destroy(function (err) {
+        res.clearCookie("user-login");
+        res.redirect('/');
+    });
 }
 
+// Authentication middleware
 Controller.validate = function (req, res, next) {
 
     Users.verify(req, function (error, info) {

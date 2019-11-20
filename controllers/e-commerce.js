@@ -5,10 +5,20 @@ const model = require('./../models/E-Commerce.js');
 Controller.home = function (req, res) {
     var random = null;
     model.home(random, function (error, info) {
-        return res.render('homepage', {
-            title: 'E-Commerce Website',
-            css: 'homepage.css'
-        });
+        if (req.session.user) {
+            console.log(req.session.user);
+            return res.render('homepage', {
+                title: 'E-Commerce Website',
+                css: 'homepage.css',
+                user: req.session.user
+            });
+        }
+        else {
+            return res.render('homepage', {
+                title: 'E-Commerce Website',
+                css: 'homepage.css'
+            });
+        }
     })
 }
 

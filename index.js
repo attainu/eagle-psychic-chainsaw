@@ -23,13 +23,13 @@ mongoose.connect('mongodb://localhost:27017/ecommerce-app',
 
 //session configuration
 app.use(session({
-    name: 'guest-login',
+    name: 'user-login',
     secret: 'ndnjsnvnskkvm#@R$',
     resave: true,
     saveUninitialized: false,
     cookie: {
         httpOnly: true,
-        maxAge: 60000, // 1 minute
+        maxAge: 600000, // 10 minute
         path: '/',
         sameSite: true,
         secure: false
