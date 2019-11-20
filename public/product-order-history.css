@@ -1,0 +1,17 @@
+.my-list {
+    width: 100%;
+    padding: 10px;
+    text-align: center;
+    height: 250px;
+    background: #f8f9fa;
+    text-align: left;
+}
+
+.order {
+    background: #f8f9fa;
+}
+
+.button {
+    width: 100%;
+    background: #00000017;
+}
