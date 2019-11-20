@@ -1,0 +1,291 @@
+#property1 {
+    margin-top: 17px;
+    text-align: center;
+    padding-top: 0px;
+    padding-bottom: 30px;
+    margin-bottom: 30px;
+    color: white;
+    background-color: #ff4b2b;
+    height: -2px;
+    height: 77px;
+    border: 1px;
+    width: 937px;
+    margin-right: 96px;
+}
+
+#property2 {
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    max-width: 300px;
+    margin: auto;
+    text-align: center;
+    font-family: arial;
+    margin-left: -47px;
+    margin-right: 23px;
+    float: left;
+    margin-top: 41px;
+}
+
+#card1 {
+    position: relative;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    min-width: 0;
+    word-wrap: break-word;
+    background-color: #ffe0e094;
+    background-clip: border-box;
+    border: 1px solid rgba(0, 0, 0, .125);
+    border-radius: .25rem;
+    height: 620px;
+    margin-bottom: 15px;
+    margin-top: 15px;
+}
+
+#card2 {
+    position: relative;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    min-width: 0;
+    word-wrap: break-word;
+    background-clip: border-box;
+    border: 1px solid rgba(0, 0, 0, .125);
+    border-radius: .25rem;
+    height: 390px;
+    margin-bottom: 15px;
+    margin-top: 15px;
+    margin-right: 50px;
+    margin-left: 45px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+}
+
+#card-profile {
+    position: relative;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    min-width: 0;
+    word-wrap: break-word;
+    background-clip: border-box;
+    border: 1px solid rgba(0, 0, 0, .125);
+    border-radius: .25rem;
+    height: 390px;
+    margin-bottom: 15px;
+    margin-top: 15px;
+    margin-left: 95px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+}
+
+#container2 {
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    max-width: 300px;
+    text-align: center;
+    font-family: arial;
+    margin-left: 31px;
+    float: left;
+    margin-left: 36px;
+    margin-top: 36px;
+    width: 244px;
+}
+
+table,
+th,
+td {
+    border: 1px solid black;
+    border-collapse: collapse;
+}
+
+th,
+td {
+    padding: 5px;
+    text-align: left;
+}
+
+.btn1 {
+    border: none;
+    outline: 0;
+    display: inline-block;
+    padding: 6px;
+    color: #ffffff;
+    background-color: #ff4b2b;
+    text-align: center;
+    cursor: pointer;
+    width: 100%;
+    font-size: 18px;
+    width: 2;
+    width: 115px;
+    margin-top: 15px;
+    border-radius: 13px
+}
+
+.btn3 {
+    background-color: #ff4b2b;
+    text-align: center;
+    cursor: pointer;
+    width: 58%;
+    font-size: 18px;
+    color: #ffffff;
+    border: none;
+    border-radius: 42px;
+    margin-left: 42px;
+    margin-top: 10px;
+    align-content: center
+}
+
+.btn4 {
+    background-color: #ff4b2b;
+    text-align: center;
+    cursor: pointer;
+    width: 58%;
+    font-size: 18px;
+    border: none;
+    border-radius: 42px;
+    margin-top: -15px;
+    color: #ffffff;
+    margin-bottom: 9px;
+    margin-left: 41px;
+}
+
+.social {
+    text-decoration: none;
+    font-size: 22px;
+    color: black;
+}
+
+button:hover,
+a:hover {
+    opacity: 0.7;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+
+/* Style the input container */
+
+.input-container {
+    display: flex;
+    width: 100%;
+    margin-bottom: 10px;
+}
+
+
+/* Style the form icons */
+
+.icon {
+    padding: 10px;
+    background: #ff4b2b;
+    color: white;
+    min-width: 50px;
+    text-align: center;
+}
+
+
+/* Style the input fields */
+
+#userdetail {
+    width: 100%;
+    padding: 10px;
+    outline: none;
+}
+
+#productimage {
+    vertical-align: middle;
+    width: 192px;
+    height: 154px;
+    margin-left: 8px;
+}
+
+.profileImage {
+    height: 215px;
+}
+
+#card3 {
+    margin-top: 14px;
+    margin-bottom: 14px;
+}
+
+
+/* Set a style for the submit button */
+
+img {
+    max-width: 100%;
+}
+
+* {
+    transition: all .5s ease;
+    -moz-transition: all .5s ease;
+    -webkit-transition: all .5s ease
+}
+
+.my-list {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #f5efef;
+    float: left;
+    margin: 15px 0;
+    border-radius: 5px;
+    box-shadow: 2px 3px 0px #eaeaea;
+    position: relative;
+    overflow: hidden;
+    background-color: #eaeaea;
+    text-align: center;
+    height: 100%;
+}
+
+.my-list h3 {
+    text-align: left;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 21px;
+    margin: 0px;
+    padding: 0px;
+    border-bottom: 1px solid #ccc4c4;
+    margin-bottom: 5px;
+    padding-bottom: 5px;
+}
+
+.my-list .offer {
+    width: 100%;
+    float: left;
+    margin: 5px 0;
+    border-top: 1px solid #ccc4c4;
+    margin-top: 5px;
+    padding-top: 5px;
+    color: #afadad;
+}
+
+.detail {
+    position: absolute;
+    top: -100%;
+    left: 0;
+    text-align: center;
+    background: #fff;
+    height: 100%;
+    width: 100%;
+}
+
+.my-list:hover .detail {
+    top: 0;
+}
+
+#productimage {
+    vertical-align: middle;
+    width: 186px;
+    height: 145px;
+}
+
+.col-md-8 {
+    -ms-flex: 0 0 66.666667%;
+    flex: 0 0 66.666667%;
+    margin-left: 97px;
+    max-width: 66.666667%;
+}
+
+.add-address {
+    margin-top: 50%;
+}
