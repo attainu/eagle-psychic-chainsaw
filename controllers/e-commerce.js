@@ -63,7 +63,8 @@ Controller.user_login = function (req, res) {
     model.user_login(random, function (error, info) {
         return res.render('user-signup-signin', {
             title: 'E-Commerce Website',
-            css: 'signup-signin.css'
+            css: 'signup-signin.css',
+            href: '../../public/homepage.css',
         });
     })
 }
