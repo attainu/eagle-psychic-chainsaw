@@ -1,5 +1,6 @@
 const Controller = {};
 const model = require('./../models/E-Commerce.js');
+const user = require('./user-login');
 
 // Home route
 Controller.home = function (req, res) {
@@ -79,10 +80,11 @@ Controller.seller_login = function (req, res) {
 // User Profile
 Controller.user_profile = function (req, res) {
     var random = null;
-    model.user_profile(random, function (error, info) {
+    user.Controller.address_get(req, function (error, info) {
         return res.render('profile-page', {
             title: 'E-Commerce Website',
-            css: 'profile-page.css'
+            css: 'profile-page.css',
+            user: info
         });
     })
 }

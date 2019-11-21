@@ -3,11 +3,11 @@ const express = require('express');
 const app = express();
 const exphbs = require('express-handlebars');
 const session = require('express-session');
-const PORT = 8005;
+const PORT = 8006;
 
 // Configuration
 app.use(express.json());
-app.use(express.urlencoded({extended:true}));
+app.use(express.urlencoded({ extended: true }));
 app.use('/public', express.static('public'));
 const hbs = exphbs.create({
     extname: '.hbs'
@@ -17,7 +17,8 @@ const mongoose = require('mongoose');
 mongoose.connect('mongodb://localhost:27017/ecommerce-app',
     {
         useNewUrlParser: true,
-        useUnifiedTopology: true
+        useUnifiedTopology: true,
+        useCreateIndex: true
 
     })
 
@@ -60,14 +61,14 @@ const productRouter = require('./controllers/products');
 const product_registration = require('./controllers/product-registration');
 
 // product registration
-app.use('/product_registration',product_registration);
+app.use('/product_registration', product_registration);
 
 
 // product list controller
 const product_listRouter = require('./controllers/product-list');
 
 // product list
-app.use('/product_list',product_listRouter);
+app.use('/product_list', product_listRouter);
 
 
 // Validation Middleware
@@ -98,6 +99,8 @@ app.put('/user-update', user.Controller.user_update)
 app.get('/user-logout', user.Controller.logout)
 app.post('/user-address', user.Controller.address_add)
 app.get('/user-address-get', user.Controller.address_get)
+app.put('/user-address-update', user.Controller.address_update)
+app.delete('/user-address-delete', user.Controller.address_delete)
 
 // Login/Registration (Seller)
 app.get('/seller-login', pageController.seller_login)

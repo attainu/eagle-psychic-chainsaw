@@ -142,10 +142,7 @@ Controller.address_get = function (req, res) {
     })
         .populate('users')
         .exec(function (err, docs) {
-            var i = 0;
-            console.log("docs>>>", docs)
             var iter = function (user, callback) {
-                console.log("user>>>", user, ++i)
                 Users.address.populate(user, {
                     path: 'address'
                 },
@@ -154,12 +151,39 @@ Controller.address_get = function (req, res) {
 
             async.each(docs, iter, function done(err) {
 
-                res.send({
-                    1: docs,
-                    i: i
-                });
+                res(null,docs);
             });
         });
+}
+
+// Update Address
+Controller.address_update = function (req, res) {
+    var data = req.body;
+    Users.address.updateOne({ _id: data.id }, { $set: data.update }, { multi: true, new: true }, function (err, user) {
+        if (err) {
+            return res.status(500).send(err);
+        }
+        if (!user) {
+            return res.status(400).send("Wrong ID");
+        }
+
+        return res.status(200).send(user);
+    })
+}
+
+// Delete Address
+Controller.address_delete = function (req, res) {
+    var data = req.body;
+    Users.address.findByIdAndRemove(data.id, function (err, user) {
+        if (err) {
+            return res.status(500).send(err);
+        }
+        if (!user) {
+            return res.status(400).send("Wrong ID");
+        }
+
+        return res.status(200).send(user);
+    })
 }
 
 // Add Address
@@ -179,9 +203,6 @@ Controller.address_add = function (req, res) {
     address
         .save()
         .then(result => {
-            console.log("1")
-
-            console.log(req.session.user.password)
             Users.register.updateOne({ username: req.session.user.username },
                 { $push: { address: result._id } },
                 { multi: true, new: true },
@@ -196,8 +217,7 @@ Controller.address_add = function (req, res) {
                     console.log(user);
                 })
             return res.status(200).json({
-                msg: result,
-                id: result._id
+                msg: result
             })
         })
         .catch(err => {
