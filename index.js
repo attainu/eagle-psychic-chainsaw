@@ -3,7 +3,7 @@ const express = require('express');
 const app = express();
 const exphbs = require('express-handlebars');
 const session = require('express-session');
-const PORT = 8006;
+const PORT = 8005;
 
 // Configuration
 app.use(express.json());
@@ -101,7 +101,8 @@ app.get('/user-login', pageController.user_login)
 app.post('/user-signin', user.Controller.user_signin)
 app.post('/user-signup', user.Controller.user_signup)
 app.post('/user-delete', user.Controller.user_delete)
-app.put('/user-update', user.Controller.user_update)
+app.get('/user-update-form', pageController.user_profile_edit)
+app.post('/user-update', user.Controller.user_update) //working here
 app.get('/user-logout', user.Controller.logout)
 app.post('/user-add', user.Controller.add_get)
 app.post('/user-address', user.Controller.address_add)

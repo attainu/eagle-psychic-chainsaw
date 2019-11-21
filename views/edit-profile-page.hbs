@@ -1,0 +1,44 @@
+<div class="container">
+    <h1>Edit User Information</h1>
+    <form action="/user-update" method="POST" class="form-group">
+        <div class="form-row">
+            <div class="col mx-auto">
+                <input type="text" class="form-control" name="username" placeholder="Name"value="{{user.username}}">
+            </div>
+            <div class="col mx-auto">
+                <input type="text" class="form-control" name="email" placeholder="Email-ID" value="{{user.email}}">
+            </div>
+        </div>
+
+
+
+        <div class="form-row">
+            <div class="col mt-3 mx-auto">
+                <input type="text" class="form-control" name="gender" placeholder="Gender" value="{{user.gender}}">
+            </div>
+            <div class="col mt-3 mx-auto">
+                <input type="date" class="form-control" name="dob" placeholder="Date Of Birth" value="{{user.dob}}">
+            </div>
+        </div>
+
+
+        <div class="form-row">
+            <div class="col mt-3 mx-auto">
+                <input type="number" class="form-control" name="mobile_Number" placeholder="10-digit mobile number" value="{{user.mobile_number}}">
+            </div>
+            <div class="col mt-3 mx-auto">
+                <input type="number" class="form-control" name="phone" placeholder="Alternate Phone(optional)">
+            </div>
+        </div>
+
+        <div class="form-row buttons">
+            <div class="form-check-inline">
+                <button type="submit" class="btn button1">Update</button>
+            </div>
+    </form>
+    <form method="get" action="../user-profile">
+        <div class="form-check-inline3">
+            <button type="submit" class="button2">Cancel</button>
+        </div>
+    </form>
+</div>

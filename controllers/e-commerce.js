@@ -92,6 +92,17 @@ Controller.user_profile = function (req, res) {
     })
 }
 
+// User Edit Form
+Controller.user_profile_edit = function (req, res) {
+
+    return res.render('edit-profile-page', {
+        title: 'E-Commerce Website',
+        css: 'edit-profile-page.css',
+        // href: '../../public/homepage.css',
+        user: req.session.user,
+    });
+}
+
 // Seller Profile
 Controller.seller_profile = function (req, res) {
     var random = null;

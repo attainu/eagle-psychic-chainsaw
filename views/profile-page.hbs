@@ -20,118 +20,126 @@
 </div>
 
 <div class="container">
-    <div class="row">
-        <div class="col-md-3" id="card-profile">
-            <div class="my-list">
-                <h1 class="add-address">
-                    <span>+</span>
-                    <span>
-                        <h2>Add Image</h2>
-                    </span>
-                </h1>
+
+    <div class="row mt-5 mb-5 my-list jumbotron">
+
+        <div class="col-md-4">
+            <div>
+                <img class="rounded-circle img"
+                    src="https://www.pngfind.com/pngs/m/110-1102775_download-empty-profile-hd-png-download.png"
+                    alt="Avatar">
             </div>
         </div>
-
-        <div class="col-md-6" id="card-profile">
-            <div class="my-list">
-
-                <h2>User Information</h2>
-                <input class="input-field" type="text" placeholder="User Name" name="usrnm" readonly="true"
-                    id="userdetail" value="{{user.username}}">
-                <input class="input-field" type="text" placeholder="User Email" name="email" readonly="true"
-                    id="userdetail" value="{{user.email}}">
-                <input class="input-field" type="text" placeholder="User Phone Number" name="phonenumber"
-                    readonly="true" id="userdetail" value="{{user.mobile_number}}">
-                <input class="input-field" type="text" placeholder="User Gender" name="gender" readonly="true"
-                    id="userdetail" value="">
-                <input class="input-field" type="text" placeholder="User Date of Birth" name="dob" readonly="true"
-                    id="userdetail" value="">
-                <div class="detail">
-                    <p><strong>
-                            <h2>More Actions</h2>
-                        </strong></p>
-                    <a href="#" class="btn btn-info">Edit User Information</a><br><br>
-                    <form action="/user-delete" method="POST">
-                        <button type="submit" class="btn btn-danger">
-                            Delete Profile
-                        </button>
-                    </form>
-                </div><br><br>
+        <div class="col-md-5">
+            <div>
+                <h1>User Information</h1>
+                <input class="input-field input-box" type="text" placeholder="User Name" name="usrnm" readonly="true"
+                    id="userdetail" value="{{user.username}}"><br>
+                <input class="input-field input-box" type="text" placeholder="User Email" name="email" readonly="true"
+                    id="userdetail" value="{{user.email}}"><br>
+                <input class="input-field input-box" type="text" placeholder="User Phone Number" name="phonenumber"
+                    readonly="true" id="userdetail" value="{{user.mobile_number}}"><br>
+                <input class="input-field input-box" type="text" placeholder="User Gender" name="gender" readonly="true"
+                    id="userdetail" value="{{user.gender}}"><br>
+                <input class="input-field input-box" type="text" placeholder="User Date of Birth" name="dob"
+                    readonly="true" id="userdetail" value="{{user.dob}}"><br><br>
             </div>
         </div>
-
-
+        <div class="col-md-3 m-auto">
+            <a href="/user-update-form" class="btn color-gradient inline mb-2">Edit User Information</a>
+            <form action="/user-delete" method="POST" class="inline">
+                <button type="submit" class="btn color-gradient ml-2 inline">
+                    Delete Profile
+                </button>
+            </form>
+        </div>
     </div>
     <div class="row">
-        <div class="col-md-12">
-            <div class="row" style="margin-top: 27px;">
-                <div class="col-md-12">
-                    <div class="row">
-                        {{#each user.address}}
 
-                        <br>
-                        <div class=" col-md-3" id="card2">
-                            <div class="my-list">
-
-                                <h2>Address {{inc @index}}</h2>
-                                <input class="input-field" type="text" placeholder="Name" name="address" readonly="true"
-                                    id="userdetail" value="{{this.name}}">
-                                <input class="input-field" type="text" placeholder="Number" name="address"
-                                    readonly="true" id="userdetail" value="{{this.number}}">
-                                <input class="input-field" type="text" placeholder="Area & Street" name="address"
-                                    readonly="true" id="userdetail" value="{{this.user_address}}">
-                                <input class="input-field" type="text" placeholder="Pincode" name="address"
-                                    readonly="true" id="userdetail" value="{{this.pincode}}">
-                                <input class="input-field" type="text" placeholder="Locality" name="address"
-                                    readonly="true" id="userdetail" value="{{this.locality}}">
-                                <input class="input-field" type="text" placeholder="City" name="address" readonly="true"
-                                    id="userdetail" value="{{this.city}}">
-                                <input class="input-field" type="text" placeholder="State" name="address"
-                                    readonly="true" id="userdetail" value="{{this.state}}">
-                                <input class="input-field" type="text" placeholder="Landmark" name="address"
-                                    readonly="true" id="userdetail" value="{{this.landmark}}">
-                                <input class="input-field" type="text" placeholder="Address Type" name="address"
-                                    readonly="true" id="userdetail" value="{{this.add_type}}">
-
-                                <div class="detail">
-                                    <p><strong>
-                                            <h2>More Actions</h2>
-                                        </strong></p>
-                                    <form action="/user-add" method="POST">
-                                        <input name="id" value="{{this._id}}" style="display: none">
-                                        <button type="submit" class="btn btn-info" id="btn6 ">
-                                            Edit Address
-                                        </button>
-                                    </form><br><br>
-                                    <form action="/user-address-delete" method="POST">
-                                        <input name="value" value="{{this._id}}" style="display: none">
-                                        <button type="submit" class="btn btn-warning">
-                                            Delete Address
-                                        </button>
-                                    </form>
-                                </div><br><br>
-
-                                <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
-                                    <label class="form-check-label" for="defaultCheck1">
-                                        Deliver to this Address
-                                    </label>
-                                </div>
-                            </div>
-                        </div>
-                        {{/each}}
-                        <div class=" col-md-3" id="card2" style="">
-                            <div class="my-list">
-                                <h1 class="add-address">
-                                    <a href="/address-form"> <span>+</span>
-                                        <span>
-                                            <h2>Add Address</h2>
-                                        </span></a>
-                                </h1>
-                            </div>
-                        </div>
+        {{#each user.address}}
+        <div class=" col-md-5 jumbotron p-3" id="card-address">
+            <div class=" jumbotron-address pt-0">
+                <h2 class="text-center">Address {{inc @index}}</h2><br>
+                <div class="row">
+                    <div class="col-4">
+                        <h6>Area & Street :</h6>
+                    </div>
+                    <div class="col-8">
+                        <input class="input-field input-box-address" type="text" placeholder="Area & Street "
+                            name="address" readonly="true" id="userdetail" value="{{this.user_address}}"><br>
                     </div>
                 </div>
+                <div class="row">
+                    <div class="col-4">
+                        <h6>Pincode :</h6>
+                    </div>
+                    <div class="col-8">
+                        <input class="input-field input-box-address" type="text" placeholder="Pincode" name="address"
+                            readonly="true" id="userdetail" value="{{this.pincode}}"><br>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-4">
+                        <h6>Locality :</h6>
+                    </div>
+                    <div class="col-8">
+                        <input class="input-field input-box-address" type="text" placeholder="Locality" name="address"
+                            readonly="true" id="userdetail" value="{{this.locality}}"><br>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-4">
+                        <h6>City :</h6>
+                    </div>
+                    <div class="col-8">
+                        <input class="input-field input-box-address" type="text" placeholder="City" name="address"
+                            readonly="true" id="userdetail" value="{{this.city}}"><br>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-4">
+                        <h6>State :</h6>
+                    </div>
+                    <div class="col-8">
+                        <input class="input-field input-box-address" type="text" placeholder="State" name="address"
+                            readonly="true" id="userdetail" value="{{this.state}}"><br>
+                    </div>
+                </div><br>
+
+                <div class="more-actions-address">
+                    <form action="/user-add" class="inline" method="POST">
+                        <input name="id" value="{{this._id}}" style="display: none">
+                        <button type="submit" class="btn color-gradient" id="btn6 ">
+                            Edit Address
+                        </button>
+                    </form>
+                    <form action="/user-address-delete" class="inline" method="POST">
+                        <input name="value" value="{{this._id}}" style="display: none">
+                        <button type="submit" class="btn color-gradient">
+                            Delete Address
+                        </button>
+                </div><br>
+
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
+                    <label class="form-check-label" for="defaultCheck1">
+                        Deliver to this Address
+                    </label>
+                </div>
+            </div>
+        </div>
+        {{/each}}
+
+        <div class=" col-md-5 jumbotron pt-1" id="card-address">
+            <div class="my-list jumbotron">
+                <h1 class="add-address">
+                    <a href="/address-form"> <span>+</span>
+                        <span>
+                            <h2>Add Address</h2>
+                        </span>
+                    </a>
+
+                </h1>
             </div>
         </div>
     </div>
