@@ -1,4 +1,24 @@
-<header></header>
+<div class="top-nav-bar">
+
+    <div class="search-box">
+        <img src="https://i-love-png.com/images/characters-angry-birds-141904.png" class="ml-3 logo">
+        <input type="text" class="form-control srch">
+        <span class="input-group-text"><i class="fa fa-search" aria-hidden="true"></i></span>
+    </div>
+    <div class="menu-bar">
+        <ul>
+            {{#if user}}
+            <li><a href="/user-profile">Profile</a></li>
+            <li><a href="/user-logout">Log Out</a></li>
+            {{else}}
+            <li><a href="/user-login">Log In & Sign Up</a></li>
+            {{/if}}
+            <li><a href="/cart"><i class="fa fa-shopping-cart fa-2x" aria-hidden="true"></i></a></li>
+        </ul>
+
+    </div>
+</div>
+
 
 <div class="container mt-5">
     <div class="row mb-2">
@@ -56,48 +76,6 @@
     </div>
     {{/if}}
     {{/each}}
-    {{!-- <div class="row">
-        <div class="col-8  list-box p-2 jumbotron">
-            <img class="rounded img-box" src="https://assets.myntassets.com/h_1440,q_100,w_1080/v1/assets/images/2493419/2018/2/22/11519275161812-AKS-Women-Red--Beige-Printed-A-Line-Kurta-4251519275161613-1.jpg" alt="" height="230px" width="173px">
-            <div class="float-right mt-4 mr-5"><b>$40.42</b></div>
-            <div class="desc ml-4">
-                <p class="mb-0"><b>Chritsmas T-shirt</b></p>
-                <p class="disc mb-0">Men Red Round Neck Full Sleve T-shirt</p>
-                <p class="disc">Peter England</p>
-                <br><br><br>
-                <div class="dropdown">
-                    Size:
-                    <select
-                        class="btn btn-sm dropdown-toggle click text-white drp pl-4 text-white btn-hover color-11 m-0"
-                        type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true"
-                        aria-expanded="false">
-                        <option class="dropdown-item mx-auto drp" href="#">S</option>
-                        <option class="dropdown-item mx-auto drp" href="#">M</option>
-                        <option class="dropdown-item mx-auto drp" href="#">L</option>
-                        <option class="dropdown-item mx-auto drp" href="#">XL</option>
-                    </select>
-                </div>
-                <div class="dropdown ml-3">
-                    Quantity:
-                    <select class="btn btn-sm dropdown-toggle click drp pl-4 text-white btn-hover color-11 m-0"
-                        type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true"
-                        aria-expanded="false">
-                        <option class="dropdown-item mx-auto drp" href="#">1</option>
-                        <option class="dropdown-item mx-auto drp" href="#">2</option>
-                        <option class="dropdown-item mx-auto drp" href="#">3</option>
-                        <option class="dropdown-item mx-auto drp" href="#">4</option>
-                        <option class="dropdown-item mx-auto drp" href="#">5</option>
-                        <option class="dropdown-item mx-auto drp" href="#">6</option>
-                        <option class="dropdown-item mx-auto drp" href="#">7</option>
-                        <option class="dropdown-item mx-auto drp" href="#">8</option>
-                    </select>
-                </div><br>
-
-            </div>
-            <div><button class=" btn text-white bottom-right click del btn-hover color-11"><b>Remove</b></button>
-            </div>
-        </div>
-    </div> --}}
     <div class="jumbotron place-order pt-3">
         <button type="button" class="btn mx-auto text-white order-btn btn-lg btn-block btn-hover color-11">
             <h4 class="mb-0"><b>PLACE ORDER</b></h4>

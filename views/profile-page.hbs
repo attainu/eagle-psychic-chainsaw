@@ -1,3 +1,24 @@
+<div class="top-nav-bar">
+
+    <div class="search-box">
+        <img src="https://i-love-png.com/images/characters-angry-birds-141904.png" class="ml-3 logo">
+        <input type="text" class="form-control srch">
+        <span class="input-group-text"><i class="fa fa-search" aria-hidden="true"></i></span>
+    </div>
+    <div class="menu-bar">
+        <ul>
+            {{#if user}}
+            {{!-- <li><a href="/user-profile">Profile</a></li> --}}
+            <li><a href="/user-logout">Log Out</a></li>
+            {{else}}
+            <li><a href="/user-login">Log In & Sign Up</a></li>
+            {{/if}}
+            <li><a href="/cart"><i class="fa fa-shopping-cart fa-2x" aria-hidden="true"></i></a></li>
+        </ul>
+
+    </div>
+</div>
+
 <div class="container">
     <div class="row">
         <div class="col-md-3" id="card-profile">
@@ -30,7 +51,11 @@
                             <h2>More Actions</h2>
                         </strong></p>
                     <a href="#" class="btn btn-info">Edit User Information</a><br><br>
-                    <a href="#" class="btn btn-warning">Delete User Information</a>
+                    <form action="/user-delete" method="POST">
+                        <button type="submit" class="btn btn-danger">
+                            Delete Profile
+                        </button>
+                    </form>
                 </div><br><br>
             </div>
         </div>
@@ -44,13 +69,13 @@
                     <div class="row">
                         {{#each user.address}}
 
-
+                        <br>
                         <div class=" col-md-3" id="card2">
                             <div class="my-list">
 
-                                <h2>Address 1</h2>
-                                <input class="input-field" type="text" placeholder="Name" name="address"
-                                    readonly="true" id="userdetail" value="{{this.name}}">
+                                <h2>Address {{inc @index}}</h2>
+                                <input class="input-field" type="text" placeholder="Name" name="address" readonly="true"
+                                    id="userdetail" value="{{this.name}}">
                                 <input class="input-field" type="text" placeholder="Number" name="address"
                                     readonly="true" id="userdetail" value="{{this.number}}">
                                 <input class="input-field" type="text" placeholder="Area & Street" name="address"
@@ -59,8 +84,8 @@
                                     readonly="true" id="userdetail" value="{{this.pincode}}">
                                 <input class="input-field" type="text" placeholder="Locality" name="address"
                                     readonly="true" id="userdetail" value="{{this.locality}}">
-                                <input class="input-field" type="text" placeholder="City" name="address"
-                                    readonly="true" id="userdetail" value="{{this.city}}">
+                                <input class="input-field" type="text" placeholder="City" name="address" readonly="true"
+                                    id="userdetail" value="{{this.city}}">
                                 <input class="input-field" type="text" placeholder="State" name="address"
                                     readonly="true" id="userdetail" value="{{this.state}}">
                                 <input class="input-field" type="text" placeholder="Landmark" name="address"
@@ -72,8 +97,18 @@
                                     <p><strong>
                                             <h2>More Actions</h2>
                                         </strong></p>
-                                    <a href="#" class="btn btn-info">Edit Address</a><br><br>
-                                    <a href="#" class="btn btn-warning">Delete Address</a>
+                                    <form action="/user-add" method="POST">
+                                        <input name="id" value="{{this._id}}" style="display: none">
+                                        <button type="submit" class="btn btn-info" id="btn6 ">
+                                            Edit Address
+                                        </button>
+                                    </form><br><br>
+                                    <form action="/user-address-delete" method="POST">
+                                        <input name="value" value="{{this._id}}" style="display: none">
+                                        <button type="submit" class="btn btn-warning">
+                                            Delete Address
+                                        </button>
+                                    </form>
                                 </div><br><br>
 
                                 <div class="form-check">
@@ -85,105 +120,13 @@
                             </div>
                         </div>
                         {{/each}}
-                        <div class=" col-md-3" id="card2">
-                            <div class="my-list">
-
-                                <h2>Address 2</h2>
-                                <input class="input-field" type="text" placeholder="Area & Street" name="address"
-                                    readonly="true" id="userdetail">
-                                <input class="input-field" type="text" placeholder="Pincode" name="address"
-                                    readonly="true" id="userdetail">
-                                <input class="input-field" type="text" placeholder="Locality" name="address"
-                                    readonly="true" id="userdetail">
-                                <input class="input-field" type="text" placeholder="City" name="address" readonly="true"
-                                    id="userdetail">
-                                <input class="input-field" type="text" placeholder="State" name="address"
-                                    readonly="true" id="userdetail">
-                                <div class="detail">
-                                    <p><strong>
-                                            <h2>More Actions</h2>
-                                        </strong></p>
-                                    <a href="#" class="btn btn-info">Edit Address</a><br><br>
-                                    <a href="#" class="btn btn-warning">Delete Address</a>
-                                </div> <br><br>
-
-                                <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
-                                    <label class="form-check-label" for="defaultCheck1">
-                                        Deliver to this Address
-                                    </label>
-                                </div>
-                            </div>
-                        </div>
-                        {{!-- 
-                        <div class=" col-md-3" id="card2">
-                            <div class="my-list">
-
-                                <h2>Address 3</h2>
-                                <input class="input-field" type="text" placeholder="Area & Street" name="address"
-                                    readonly="true" id="userdetail">
-                                <input class="input-field" type="text" placeholder="Pincode" name="address"
-                                    readonly="true" id="userdetail">
-                                <input class="input-field" type="text" placeholder="Locality" name="address"
-                                    readonly="true" id="userdetail">
-                                <input class="input-field" type="text" placeholder="City" name="address" readonly="true"
-                                    id="userdetail">
-                                <input class="input-field" type="text" placeholder="State" name="address"
-                                    readonly="true" id="userdetail">
-                                <div class="detail">
-                                    <p><strong>
-                                            <h2>More Actions</h2>
-                                        </strong></p>
-                                    <a href="#" class="btn btn-info">Edit Address</a><br><br>
-                                    <a href="#" class="btn btn-warning">Delete Address</a>
-                                </div><br><br>
-
-                                <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
-                                    <label class="form-check-label" for="defaultCheck1">
-                                        Deliver to this Address
-                                    </label>
-                                </div>
-                            </div>
-                        </div>
-                        <div class=" col-md-3" id="card2">
-                            <div class="my-list">
-
-                                <h2>Address 4</h2>
-                                <input class="input-field" type="text" placeholder="Area & Street" name="address"
-                                    readonly="true" id="userdetail">
-                                <input class="input-field" type="text" placeholder="Pincode" name="address"
-                                    readonly="true" id="userdetail">
-                                <input class="input-field" type="text" placeholder="Locality" name="address"
-                                    readonly="true" id="userdetail">
-                                <input class="input-field" type="text" placeholder="City" name="address" readonly="true"
-                                    id="userdetail">
-                                <input class="input-field" type="text" placeholder="State" name="address"
-                                    readonly="true" id="userdetail">
-
-                                <div class="detail">
-                                    <p><strong>
-                                            <h2>More Actions</h2>
-                                        </strong></p>
-                                    <a href="#" class="btn btn-info">Edit Address</a><br><br>
-                                    <a href="#" class="btn btn-warning">Delete Address</a>
-                                </div><br><br>
-
-                                <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
-                                    <label class="form-check-label" for="defaultCheck1">
-                                        Deliver to this Address
-                                    </label>
-                                </div>
-                            </div>
-                        </div> --}}
-                        <div class=" col-md-3" id="card2">
+                        <div class=" col-md-3" id="card2" style="">
                             <div class="my-list">
                                 <h1 class="add-address">
-                                    <span>+</span>
-                                    <span>
-                                        <h2>Add Address</h2>
-                                    </span>
+                                    <a href="/address-form"> <span>+</span>
+                                        <span>
+                                            <h2>Add Address</h2>
+                                        </span></a>
                                 </h1>
                             </div>
                         </div>

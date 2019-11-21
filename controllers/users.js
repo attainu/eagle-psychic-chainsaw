@@ -1,6 +1,6 @@
 const Controller = {};
 const async = require('async');
-var Users = require('./../models/Users-db');
+var Users = require('../models/Users-db');
 const Product = require('../models/Products');
 
 // SignUp
@@ -54,27 +54,29 @@ Controller.user_signin = function (req, res) {
 
 // Delete User
 Controller.user_delete = function (req, res) {
-    var data = req.body;
+    var data = req.session.user;
     console.log(data);
-    Users.register.findOneAndRemove({
-        $and: [
-            { email: data.email }, { password: data.password }]
-    }, function (err, user) {
+    Users.register.findByIdAndRemove(data._id, function (err, user) {
         if (err) {
             return res.status(500).send(err);
         }
         if (!user) {
+
             return res.status(400).send("No user found");
         }
-
-        return res.status(200).send(user);
+        req.session.destroy(function (err) {
+            res.clearCookie("user-login");
+            res.redirect('/');
+        });
+        
     })
 }
 
 // Update User
 Controller.user_update = function (req, res) {
-    var data = req.body;
-    Users.register.updateOne({ password: data.password }, { $set: data }, { multi: true, new: true }, function (err, user) {
+    var id = req.session.user._id;
+    var data = req.body
+    Users.register.findByIdAndUpdate(id, { $set: data }, { multi: true, new: true }, function (err, user) {
         if (err) {
             return res.status(500).send(err);
         }
@@ -82,7 +84,7 @@ Controller.user_update = function (req, res) {
             return res.status(400).send("No user found");
         }
 
-        return res.status(200).send(user);
+        return res.status(200).redirect('/user-profile');
     })
 }
 
@@ -113,12 +115,12 @@ Product.cart = function (req, res) {
         })
 }
 
-//logout route
+// Logout route
 Controller.logout = function (req, res) {
 
     req.session.destroy(function (err) {
         res.clearCookie("user-login");
-        res.redirect('/');
+        return res.status(200).redirect('/');
     });
 }
 
@@ -129,12 +131,12 @@ Controller.validate = function (req, res, next) {
         if (error) {
             return next();
         }
-        return res.redirect('/user-login');
+        return res.status(200).redirect('/');
     });
 }
 
 
-// get user data Address
+// Get User Data with Address
 Controller.address_get = function (req, res) {
     var user = req.session.user;
     Users.register.findOne({
@@ -151,15 +153,36 @@ Controller.address_get = function (req, res) {
 
             async.each(docs, iter, function done(err) {
 
-                res(null,docs);
+                res(null, docs);
             });
         });
 }
 
+// Get Address
+Controller.add_get = function (req, res) {
+    var id = req.body.id;
+    Users.address.findById(id, function (err, address) {
+        if (err) {
+            return res.status(500).send(err);
+        }
+        if (!address) {
+            return res.status(400).send("Not Found");
+        }
+        console.log(address)
+        return res.render('address', {
+            title: 'E-Commerce Website',
+            css: 'address.css',
+            address: address,
+            flag: true
+        });
+    })
+}
+
+
 // Update Address
 Controller.address_update = function (req, res) {
-    var data = req.body;
-    Users.address.updateOne({ _id: data.id }, { $set: data.update }, { multi: true, new: true }, function (err, user) {
+    var id = req.body.id;
+    Users.address.findByIdAndUpdate(id, { $set: req.body }, { multi: true, new: true }, function (err, user) {
         if (err) {
             return res.status(500).send(err);
         }
@@ -167,14 +190,14 @@ Controller.address_update = function (req, res) {
             return res.status(400).send("Wrong ID");
         }
 
-        return res.status(200).send(user);
+        return res.status(200).redirect('/user-profile');
     })
 }
 
 // Delete Address
 Controller.address_delete = function (req, res) {
-    var data = req.body;
-    Users.address.findByIdAndRemove(data.id, function (err, user) {
+    var id = req.body.value;
+    Users.address.findByIdAndRemove(id, function (err, user) {
         if (err) {
             return res.status(500).send(err);
         }
@@ -182,7 +205,7 @@ Controller.address_delete = function (req, res) {
             return res.status(400).send("Wrong ID");
         }
 
-        return res.status(200).send(user);
+        return res.status(200).redirect('/user-profile');
     })
 }
 
@@ -216,9 +239,7 @@ Controller.address_add = function (req, res) {
 
                     console.log(user);
                 })
-            return res.status(200).json({
-                msg: result
-            })
+            return res.status(200).redirect('/user-profile');
         })
         .catch(err => {
             return res.status(500).json({

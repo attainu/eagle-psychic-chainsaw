@@ -51,7 +51,7 @@ $(document).ready(function () {
             $('<p/>').text("Password Not Matched").addClass("alert alert-danger mt-4").appendTo("#r-alert-box");
             return;
         }
-        var flag= null;
+        var flag = null;
         $.ajax({
             method: "POST",
             url: "/user-signup",

@@ -23,7 +23,18 @@ var usersSchema = new Schema({
     address: [{
         type: Schema.Types.ObjectId,
         ref: 'address'
+    }],
+    gender: String,
+    dob: String,
+    cart: [{
+        type: Schema.Types.ObjectId,
+        ref: 'product'
+    }],
+    order_history: [{
+        type: Schema.Types.ObjectId,
+        ref: 'product'
     }]
+
 }, { timestamps: true });
 
 //Unique Username And Email

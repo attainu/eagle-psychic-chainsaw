@@ -10,7 +10,12 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use('/public', express.static('public'));
 const hbs = exphbs.create({
-    extname: '.hbs'
+    extname: '.hbs',
+    helpers: {
+        inc: function (value, option) {
+            return parseInt(value) + 1;
+        },
+    }
 })
 const mongoose = require('mongoose');
 
@@ -18,7 +23,8 @@ mongoose.connect('mongodb://localhost:27017/ecommerce-app',
     {
         useNewUrlParser: true,
         useUnifiedTopology: true,
-        useCreateIndex: true
+        useCreateIndex: true,
+        useFindAndModify: false
 
     })
 
@@ -54,7 +60,7 @@ app.set('view engine', '.hbs');
 
 
 var pageController = require('./controllers/e-commerce.js');
-var user = require('./controllers/user-login.js');
+var user = require('./controllers/users.js');
 const productRouter = require('./controllers/products');
 
 // product registration controller
@@ -94,13 +100,14 @@ app.post('/cart', user.Product.cart)
 app.get('/user-login', pageController.user_login)
 app.post('/user-signin', user.Controller.user_signin)
 app.post('/user-signup', user.Controller.user_signup)
-app.delete('/user-delete', user.Controller.user_delete)
+app.post('/user-delete', user.Controller.user_delete)
 app.put('/user-update', user.Controller.user_update)
 app.get('/user-logout', user.Controller.logout)
+app.post('/user-add', user.Controller.add_get)
 app.post('/user-address', user.Controller.address_add)
-app.get('/user-address-get', user.Controller.address_get)
-app.put('/user-address-update', user.Controller.address_update)
-app.delete('/user-address-delete', user.Controller.address_delete)
+// app.get('/user-address-get', user.Controller.address_get)
+app.post('/user-address-update', user.Controller.address_update)
+app.post('/user-address-delete', user.Controller.address_delete)
 
 // Login/Registration (Seller)
 app.get('/seller-login', pageController.seller_login)

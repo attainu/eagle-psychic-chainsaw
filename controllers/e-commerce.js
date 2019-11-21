@@ -1,6 +1,6 @@
 const Controller = {};
 const model = require('./../models/E-Commerce.js');
-const user = require('./user-login');
+const user = require('./users');
 
 // Home route
 Controller.home = function (req, res) {
@@ -50,7 +50,9 @@ Controller.cart = function (req, res) {
     model.cart(random, function (error, info) {
         return res.render('cartpage', {
             title: 'E-Commerce Website',
-            css: 'style.css'
+            css: 'style.css',
+            href: '../../public/homepage.css',
+            user: req.session.user
         });
     })
 }
@@ -79,12 +81,13 @@ Controller.seller_login = function (req, res) {
 
 // User Profile
 Controller.user_profile = function (req, res) {
-    var random = null;
     user.Controller.address_get(req, function (error, info) {
         return res.render('profile-page', {
             title: 'E-Commerce Website',
             css: 'profile-page.css',
-            user: info
+            href: '../../public/homepage.css',
+            user: info,
+            flag: true
         });
     })
 }
