@@ -3,7 +3,8 @@ const express = require('express');
 const app = express();
 const exphbs = require('express-handlebars');
 const session = require('express-session');
-const LOCALPORT = 8080;
+const PORT = process.env.PORT || 8080;
+const HOST = '0.0.0.0';
 
 // Configuration
 app.use(express.json());
@@ -134,7 +135,7 @@ app.get('/product_registration', pageController.product_registration)
 
 
 //Port
-app.listen(process.env.PORT || LOCALPORT, function () {
+app.listen(PORT, HOST, function () {
     console.log("Started : ", PORT);
 }).on('error', function () {
     console.log("Unable To Start App >>>");
