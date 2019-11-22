@@ -3,7 +3,8 @@ const express = require('express');
 const app = express();
 const exphbs = require('express-handlebars');
 const session = require('express-session');
-const PORT = 8006;
+const PORT = process.env.PORT || 8080;
+const HOST = '0.0.0.0';
 
 // Configuration
 app.use(express.json());
@@ -19,7 +20,7 @@ const hbs = exphbs.create({
 })
 const mongoose = require('mongoose');
 
-mongoose.connect('mongodb://localhost:27017/ecommerce-app',
+mongoose.connect('mongodb+srv://eagle-ecommerce-app:eagle-ecommerce-app@ecommerce-app-ll9yl.mongodb.net/test?retryWrites=true&w=majority',
     {
         useNewUrlParser: true,
         useUnifiedTopology: true,
@@ -170,7 +171,7 @@ app.get('/product_registration', pageController.product_registration)
 
 
 //Port
-app.listen(PORT, function () {
+app.listen(PORT, HOST, function () {
     console.log("Started : ", PORT);
 }).on('error', function () {
     console.log("Unable To Start App >>>");

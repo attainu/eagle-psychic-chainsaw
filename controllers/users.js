@@ -131,7 +131,7 @@ Controller.validate = function (req, res, next) {
         if (error) {
             return next();
         }
-        return res.status(200).redirect('/');
+        return res.status(200).redirect('/user-login');
     });
 }
 
