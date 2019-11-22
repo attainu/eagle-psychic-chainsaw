@@ -352,7 +352,7 @@
                     <a class="dark-grey-text" href="#">Your Account</a>
                 </p>
                 <p>
-                    <a class="dark-grey-text" href="#">Sell on Website</a>
+                    {{#if seller}}<a class="dark-grey-text" href="/seller-profile">Sell Your Product with Us</a> {{else}}<a class="dark-grey-text" href="/seller-login">Sell Your Product with Us</a>{{/if}}
                 </p>
                 <p>
                     <a class="dark-grey-text" href="#">Seller Account</a>

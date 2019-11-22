@@ -21,17 +21,16 @@ SellerController.create = function(req, res) {
           error: error
         });
       }
-      return res.render("seller-signin-signup", {
-        title: "seller_profile",
-        href: "../../public/seller-signin-signup.css"
-      });
+       return  res.redirect('/seller-login')
     }
   );
 };
 SellerController.delete = function(req, res) {
+ 
   Seller.deleteOne(
     {
       emailId: req.session.data[0].emailId
+
     },
     function(error, response) {
       if (error) {
@@ -41,13 +40,14 @@ SellerController.delete = function(req, res) {
           error: error
         });
       }
-      JSAlert.alert("Account deleted succesfully!!");
+       
       res.redirect("/");
     }
   );
 };
 SellerController.update = function(req, res) {
-  var data = { emailId: req.session.data[0].emailId };
+  console.log(req.session.data);
+  var data = { emailId: req.session.data.emailId };
   if (req.body.sellerName) {
     data.sellerName = req.body.sellerName;
   }
@@ -60,10 +60,10 @@ SellerController.update = function(req, res) {
   if (req.body.password) {
     data.password = req.body.password;
   }
-
+ console.log(data);
   Seller.updateOne(
     {
-      emailId: req.session.data[0].emailId
+      emailId: req.session.data.emailId
     },
     {
       $set: data
@@ -84,7 +84,12 @@ SellerController.update = function(req, res) {
         });
       }
 
-      res.redirect("seller-login");
+       return req.session.save(function (err) {
+            req.session.reload(function (err) {
+                req.session.data = data;
+                res.status(200).redirect('/seller-sigin');
+            })
+        })
     }
   );
 };
@@ -108,11 +113,11 @@ SellerController.signin = function(req, res) {
       if (!user) {
         return res.render("seller-signin-signup", {
           title: "seller_profile",
-          href: "../../public/seller-signin-signup.css"
+          css: "seller-signin-signup.css"
         });
       }
       req.session.loggedin = true;
-      req.session.data = collection;
+      req.session.data = user;
       res.redirect("seller-profile");
     }
   );

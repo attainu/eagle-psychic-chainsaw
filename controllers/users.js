@@ -139,9 +139,7 @@ Controller.validate = function (req, res, next) {
 // Get User Data with Address
 Controller.address_get = function (req, res) {
     var user = req.session.user;
-    Users.register.findOne({
-        username: user.username
-    })
+    Users.register.findById(user._id)
         .populate('users')
         .exec(function (err, docs) {
             var iter = function (user, callback) {

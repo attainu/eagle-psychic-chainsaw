@@ -73,7 +73,10 @@ Model.product_registration = function (random, cb) {
     var newData = null;
     return cb(null, newData);
 }
-
+Model.seller_profile_modification = function(random, cb) {
+  var newData = null;
+  return cb(null, newData);
+};
 
  
 module.exports = Model;

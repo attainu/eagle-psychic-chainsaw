@@ -3,8 +3,9 @@ const express = require('express');
 const app = express();
 const exphbs = require('express-handlebars');
 const session = require('express-session');
-const PORT = process.env.PORT || 8080;
+const PORT = process.env.PORT || 8089;
 const HOST = '0.0.0.0';
+var cookieParser = require("cookie-parser");
 
 // Configuration
 app.use(express.json());
@@ -20,7 +21,7 @@ const hbs = exphbs.create({
 })
 const mongoose = require('mongoose');
 
-mongoose.connect('mongodb+srv://eagle-ecommerce-app:eagle-ecommerce-app@ecommerce-app-ll9yl.mongodb.net/test?retryWrites=true&w=majority',
+mongoose.connect('mongodb+srv://eagle-ecommerce-app:eagle-ecommerce-app@ecommerce-app-ll9yl.mongodb.net/ecommerce-app?retryWrites=true&w=majority',
     {
         useNewUrlParser: true,
         useUnifiedTopology: true,
@@ -64,10 +65,7 @@ app.use(
 
 var authRoute = require("./controllers/authentication.js");
 app.use("/public", express.static("public"));
-const hbs = exphbs.create({
-  extname: ".hbs"
-});
-app.engine(".hbs", hbs.engine);
+
 /*----------------Sller database route----------*/
 app.set("view engine", ".hbs");
 const controllers = require("./controllers/index.js");
@@ -114,7 +112,7 @@ app.use('/product_list', product_listRouter);
 
 const homeRouter = require('./controllers/homepage');
 // homepage
-app.use('/',homeRouter);
+//app.use('/',homeRouter);
 // electronics router
 const electronicsRouter = require('./controllers/electronics');
 // electronics
@@ -150,7 +148,7 @@ app.use('/laptops',laptopsRouter);
 app.use('/speakers',speakersRouter);
 app.use('/camera',cameraRouter);
 // Validation Middleware
-app.use(user.Controller.validate);
+//app.use(user.Controller.validate);
 
 // Home route
 app.get('/', pageController.home)
@@ -163,6 +161,8 @@ app.get('/', pageController.home)
 app.use('/products', productRouter)
 
 /*------seller routes----------------*/
+// Login/Registration (Seller)
+app.get('/seller-login', pageController.seller_login)
 app.get("/seller-profile", pageController.seller_profile);
 app.get("/seller-profile-update", pageController.seller_profile_modification);
 
@@ -184,14 +184,13 @@ app.post('/user-address', user.Controller.address_add)
 app.post('/user-address-update', user.Controller.address_update)
 app.post('/user-address-delete', user.Controller.address_delete)
 
-// Login/Registration (Seller)
-app.get('/seller-login', pageController.seller_login)
+
 
 // User Profile
 app.get('/user-profile', pageController.user_profile)
 
-// Seller Profile
-app.get('/seller-profile', pageController.seller_profile)
+ 
+ 
 
 // Order History
 app.get('/order-history', pageController.order_history)
@@ -200,8 +199,8 @@ app.get('/order-history', pageController.order_history)
 app.get('/address-form', pageController.add_form)
 
 // Product List Form Page
-app.get('/product-list-form', pageController.product_form)
-//
+//app.get('/product-list-form', pageController.product_form)
+  
 app.get('/product_registration', pageController.product_registration)
 
 
@@ -213,17 +212,5 @@ app.listen(PORT, HOST, function () {
 }).on('error', function () {
     console.log("Unable To Start App >>>");
 
-}) 
-db.connect()
-  .then(function() {
-    app
-      .listen(PORT, function() {
-        console.log("Started : ", PORT);
-      })
-      .on("error", function(error) {
-        console.log("Unable To Start App >>>", error);
-      });
-  })
-  .catch(function(error) {
-    console.log("Failed to connect with database");
-  });
+}); 
+ 

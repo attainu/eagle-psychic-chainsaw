@@ -6,11 +6,12 @@ const user = require('./users');
 Controller.home = function (req, res) {
     var random = null;
     model.home(random, function (error, info) {
-        if (req.session.user) {
+        if (req.session.user || req.session.data) {
             return res.render('homepage', {
                 title: 'E-Commerce Website',
                 css: 'homepage.css',
-                user: req.session.user
+                user: req.session.user,
+                seller: req.session.data
             });
         }
         else {
@@ -73,9 +74,9 @@ Controller.user_login = function (req, res) {
 Controller.seller_login = function (req, res) {
     var random = null;
     model.seller_login(random, function (error, info) {
-        return res.render('seller-signup-signin', {
+        return res.render('seller-signin-signup', {
             title: 'E-Commerce Website',
-            css: 'signup-signin.css'
+            css: 'seller-signin-signup.css'
         });
     })
 }
@@ -105,15 +106,36 @@ Controller.user_profile_edit = function (req, res) {
 }
 
 // Seller Profile
-Controller.seller_profile = function (req, res) {
+Controller.seller_profile = function(req, res) {
+    console.log(req.session.data);
+  if (req.session.loggedin) {
     var random = null;
-    model.seller_profile(random, function (error, info) {
-        return res.render('seller_profile', {
-            title: 'seller_profile',
-            href: '../../public/seller_profile.css'
-        });
-    })
-}
+    model.seller_profile(random, function(error, info) {
+      return res.render("seller_profile", {
+        title: "seller_profile",
+        css: "seller_profile.css",
+        collection: req.session.data
+      });
+    });
+  } else {
+    res.redirect("/seller-login");
+  }
+};
+
+
+Controller.seller_profile_modification = function(req, res) {
+  
+  var random = null;
+  if (req.session.loggedin) {
+    model.seller_profile_modification(random, function(error, info) {
+      return res.render("seller-modification", {
+        title: "seller profile",
+      href: "../../public/seller-modification.css",
+        collection: req.session.data
+      });
+    });
+  }
+};
 
 // Order History
 Controller.order_history = function (req, res) {
