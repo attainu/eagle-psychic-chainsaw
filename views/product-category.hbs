@@ -1,0 +1,40 @@
+<div class="top-nav-bar">
+
+    <div class="search-box">
+        <a href="/"> <img src="https://i-love-png.com/images/characters-angry-birds-141904.png" class="ml-3 logo"></a>
+        <input type="text" class="form-control srch">
+        <span class="input-group-text"><i class="fa fa-search" aria-hidden="true"></i></span>
+    </div>
+    <div class="menu-bar">
+        <ul>
+            {{#if user}}
+            <li><a href="/user-profile">Profile</a></li>
+            <li><a href="/user-logout">Log Out</a></li>
+            {{else}}
+            <li><a href="/user-login">Log In & Sign Up</a></li>
+            {{/if}}
+            <li><a href="/cart"><i class="fa fa-shopping-cart fa-2x" aria-hidden="true"></i></a></li>
+        </ul>
+
+    </div>
+</div>
+
+<div class="container mt-5">
+    <div class="row mb-2">
+        <div class="col-9">
+            <h5 class=""><b>{{category}}</b></h5>
+        </div>
+        <div class="row mr-5">
+            {{#each products}}
+            <div class="col p-2 ml-5">
+                <img class="rounded img-box mb-1" src="{{this.productImage}}" alt="" height="230px" width="173px">
+                <div class="">
+                    <p class="mb-0"><b>{{this.productName}}</b></p>
+                    <p class="disc mb-0">{{this.productDescription}}</p>
+                    <p class="disc mb-2">&#x20b9;{{this.productPrice}}</p>
+                </div>
+            </div>
+            {{/each}}
+        </div>
+    </div>
+</div>

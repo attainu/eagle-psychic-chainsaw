@@ -59,75 +59,32 @@ db.on('error', function (err) {
 app.engine('.hbs', hbs.engine);
 app.set('view engine', '.hbs');
 
-
+//Controller link here
 var pageController = require('./controllers/e-commerce.js');
 var user = require('./controllers/users.js');
 const productRouter = require('./controllers/products');
+const categoryRouter =require('./controllers/product-category');
+const product_registration = require('./controllers/product-registration'); // product registration controller
+const product_listRouter = require('./controllers/product-list');  // product list controller
 
-// product registration controller
-const product_registration = require('./controllers/product-registration');
 
 // product registration
 app.use('/product_registration', product_registration);
 
-
-// product list controller
-const product_listRouter = require('./controllers/product-list');
-
 // product list
 app.use('/product_list', product_listRouter);
 
-const homeRouter = require('./controllers/homepage');
-// homepage
-// app.use('/',homeRouter);
-// electronics router
-const electronicsRouter = require('./controllers/electronics');
-// electronics
-app.use('/electronics',electronicsRouter);
-// menswear router
-const menswearRouter=require('./controllers/menswear');
-// mens wear filter
-app.use('/menswear',menswearRouter);
-// womens router filter
-const womenswearRouter = require('./controllers/womens');
-// womens wear
-app.use('/womenswear',womenswearRouter);
+// product category
+app.use('/product-category',categoryRouter);
 
-// Home&decor router
-const furnitureRouter = require('./controllers/furniture');
-const cookwareRouter = require('./controllers/cookware');
-const decorRouter = require('./controllers/decor');
-
-// these route display home decor filters
-app.use('/furniture',furnitureRouter);
-app.use('/cookware',cookwareRouter);
-app.use('/homedecor',decorRouter);
-
-// Electronics controllers
-const mobilesRouter = require('./controllers/mobiles');
-const laptopsRouter = require('./controllers/laptops');
-const speakersRouter =require('./controllers/speakers');
-const cameraRouter =require('./controllers/camera');
-
-// these routes will display the electronics filters
-app.use('/mobiles',mobilesRouter);
-app.use('/laptops',laptopsRouter);
-app.use('/speakers',speakersRouter);
-app.use('/camera',cameraRouter);
-// Validation Middleware
-app.use(user.Controller.validate);
+// // Validation Middleware  Don't delete this file will activate in the end(later)
+// app.use(user.Controller.validate);
 
 // Home route
 app.get('/', pageController.home)
 
-
-// // Product List
-// app.get('/product-list', pageController.list)
-
 // Product Content
 app.use('/products', productRouter)
-
-
 
 // Order Page
 app.get('/cart', pageController.cart)
