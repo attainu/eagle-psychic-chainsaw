@@ -69,11 +69,17 @@ Users.verify = function (req, cb) {
         req.originalUrl === '/user-logout' ||
         req.originalUrl === '/seller-login' ||
         req.originalUrl === '/product-list-form' ||
-        req.originalUrl === '/product-display') {
+        req.originalUrl === '/product-display' ||
+        req.originalUrl === '/seller_signin' ||
+        req.originalUrl === '/seller_update' ||
+        req.originalUrl === '/seller-delete' ||
+        req.originalUrl === '/seller-logout' ||
+        req.originalUrl === '/seller'
+        ) {
         return cb(true);
     }
 
-    if (typeof req.session.user === "undefined") {
+    if (typeof req.session.user === "undefined" &&  typeof req.session.data === "undefined") {
         return cb(null, {
             status: false,
             message: "First Login (Unauthorized)"

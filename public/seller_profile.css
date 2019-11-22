@@ -1,20 +1,20 @@
-#property1{
-  margin-top: 17px;
+#property1 {
+    margin-top: 17px;
     text-align: center;
     padding-top: 0px;
     padding-bottom: 30px;
     margin-bottom: 30px;
     color: white;
-    background-color:#ff4b2b;
+    background-color: #ff4b2b;
     height: -2px;
     height: 77px;
     border: 1px;
-     
     width: 937px;
     margin-right: 96px;
 }
-#property2{
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+
+#property2 {
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
     max-width: 300px;
     margin: auto;
     text-align: center;
@@ -24,8 +24,9 @@
     float: left;
     margin-top: 41px;
 }
-#card1{
-   position: relative;
+
+#card1 {
+    position: relative;
     display: -ms-flexbox;
     display: flex;
     -ms-flex-direction: column;
@@ -34,14 +35,15 @@
     word-wrap: break-word;
     background-color: #ffe0e094;
     background-clip: border-box;
-    border: 1px solid rgba(0,0,0,.125);
+    border: 1px solid rgba(0, 0, 0, .125);
     border-radius: .25rem;
-    height: 461px;
+    height: 516px;
     margin-bottom: 15px;
     margin-top: 15px;
 }
-#container2{
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+
+#container2 {
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
     max-width: 300px;
     text-align: center;
     font-family: arial;
@@ -51,23 +53,26 @@
     margin-top: 36px;
     width: 244px;
 }
-table, th, td {
-  border: 1px solid black;
-  border-collapse: collapse;
-}
-th, td {
-  padding: 5px;
-  text-align: left;
+
+table,
+th,
+td {
+    border: 1px solid black;
+    border-collapse: collapse;
 }
 
- 
+th,
+td {
+    padding: 5px;
+    text-align: left;
+}
 
 .btn1 {
-         border: none;
+    border: none;
     outline: 0;
     display: inline-block;
     padding: 6px;
-    color: #ffffff;
+    color: black;
     background-color: #ff4b2b;
     text-align: center;
     cursor: pointer;
@@ -78,9 +83,9 @@ th, td {
     margin-top: 15px;
     border-radius: 13px
 }
- 
-  .btn3{
-   background-color: #ff4b2b;
+
+.btn3 {
+    background-color: #ff4b2b;
     text-align: center;
     cursor: pointer;
     width: 58%;
@@ -91,9 +96,9 @@ th, td {
     margin-left: 42px;
     margin-top: 10px;
     align-content: center
+}
 
-  }
-  .btn4{
+.btn4 {
     background-color: #ff4b2b;
     text-align: center;
     cursor: pointer;
@@ -105,60 +110,81 @@ th, td {
     color: #ffffff;
     margin-bottom: 9px;
     margin-left: 41px;
-
-  }
-.social{
-  text-decoration: none;
-  font-size: 22px;
-  color: black;
 }
 
-button:hover, a:hover {
-  opacity: 0.7;
-} 
-* {box-sizing: border-box;}
+.social {
+    text-decoration: none;
+    font-size: 22px;
+    color: black;
+}
+
+button:hover,
+a:hover {
+    opacity: 0.7;
+}
+
+* {
+    box-sizing: border-box;
+}
+
 
 /* Style the input container */
+
 .input-container {
-  display: flex;
-  width: 100%;
-  margin-bottom: 10px;
+    display: flex;
+    width: 100%;
+    margin-bottom: 10px;
 }
+
 
 /* Style the form icons */
+
 .icon {
-  padding: 10px;
-  background: #ff4b2b;
-  color: white;
-  min-width: 50px;
-  text-align: center;
+    padding: 10px;
+    background: #ff4b2b;
+    color: white;
+    min-width: 50px;
+    text-align: center;
 }
+
 
 /* Style the input fields */
+
 #userdetail {
-  width: 100%;
-  padding: 10px;
-  outline: none;
+    width: 100%;
+    padding: 10px;
+    outline: none;
 }
 
- 
-#productimage{
+#productimage {
     vertical-align: middle;
     width: 192px;
     height: 154px;
     margin-left: 8px;
 }
-.profileImage
-{
-  height: 215px;
+
+.profileImage {
+    height: 215px;
 }
+
 #card3 {
     margin-top: 14px;
     margin-bottom: 14px;
 }
+
+
 /* Set a style for the submit button */
-img{max-width:100%;}
-  *{transition: all .5s ease;-moz-transition: all .5s ease;-webkit-transition: all .5s ease}
+
+img {
+    max-width: 100%;
+}
+
+* {
+    transition: all .5s ease;
+    -moz-transition: all .5s ease;
+    -webkit-transition: all .5s ease
+}
+
 .my-list {
     width: 100%;
     padding: 10px;
@@ -167,11 +193,12 @@ img{max-width:100%;}
     margin: 15px 0;
     border-radius: 5px;
     box-shadow: 2px 3px 0px #e4d8d8;
-    position:relative;
-    overflow:hidden;
+    position: relative;
+    overflow: hidden;
     background-color: #ffeded;
 }
-.my-list h3{
+
+.my-list h3 {
     text-align: left;
     font-size: 14px;
     font-weight: 500;
@@ -181,9 +208,13 @@ img{max-width:100%;}
     border-bottom: 1px solid #ccc4c4;
     margin-bottom: 5px;
     padding-bottom: 5px;
-    }
-   
-  .my-list .offer{
+}
+
+#header {
+    color: #4CAF50;
+}
+
+.my-list .offer {
     width: 100%;
     float: left;
     margin: 5px 0;
@@ -191,27 +222,67 @@ img{max-width:100%;}
     margin-top: 5px;
     padding-top: 5px;
     color: #afadad;
-    }
-  .detail {
+}
+
+.detail {
     position: absolute;
     top: -100%;
     left: 0;
     text-align: center;
-    background: #fff;height: 100%;width:100%;
-  
+    background: #fff;
+    height: 100%;
+    width: 100%;
 }
-  
-.my-list:hover .detail{top:0;}
-   #productimage
-   {
+
+.my-list:hover .detail {
+    top: 0;
+}
+
+#productimage {
     vertical-align: middle;
     width: 186px;
     height: 145px;
-   }
-   
+}
+
 .col-md-8 {
     -ms-flex: 0 0 66.666667%;
     flex: 0 0 66.666667%;
     margin-left: 97px;
     max-width: 66.666667%;
+}
+
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #d610102e;
+    margin-left: -118px;
+    margin-right: -119px;
+}
+
+li {
+    float: left;
+}
+
+li a {
+    display: block;
+    color: black;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+
+li a:hover:not(.active) {
+    background-color: #111;
+}
+
+.active {
+    background-color: #4CAF50;
+}
+
+#logout {
+    color: black;
+    margin-top: 7px;
+    margin-right: 27px;
 }
