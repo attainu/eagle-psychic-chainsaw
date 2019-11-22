@@ -45,10 +45,12 @@
                     readonly="true" id="userdetail" value="{{user.dob}}"><br><br>
             </div>
         </div>
-        <div class="col-md-3 m-auto">
-            <a href="/user-update-form" class="btn color-gradient inline mb-2">Edit User Information</a>
-            <form action="/user-delete" method="POST" class="inline">
-                <button type="submit" class="btn color-gradient ml-2 inline">
+        <div class="col-md-3 m-auto text-white">
+            <a href="/user-update-form" class=" text-white btn user-btn color-gradient mt-3 mb-2">Edit Profie</a><br>
+            <a href="/cart" class="btn color-gradient text-white user-btn  mb-2">Your Cart</a><br>
+            <a href="#" class="btn color-gradient user-btn text-white mb-2">Order History</a>
+            <form action="/user-delete" method="POST" class="">
+                <button type="submit" class="btn user-btn text-white color-gradient ">
                     Delete Profile
                 </button>
             </form>
@@ -109,13 +111,13 @@
                 <div class="more-actions-address">
                     <form action="/user-add" class="inline" method="POST">
                         <input name="id" value="{{this._id}}" style="display: none">
-                        <button type="submit" class="btn color-gradient" id="btn6 ">
+                        <button type="submit" class="btn text-white color-gradient" id="btn6 ">
                             Edit Address
                         </button>
                     </form>
                     <form action="/user-address-delete" class="inline" method="POST">
                         <input name="value" value="{{this._id}}" style="display: none">
-                        <button type="submit" class="btn color-gradient">
+                        <button type="submit" class="btn text-white color-gradient">
                             Delete Address
                         </button>
                 </div><br>

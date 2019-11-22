@@ -117,4 +117,5 @@ body{background: -webkit-linear-gradient(left, #ff806dea , #fb8aa4ed);}
 .jumbotron{
     background-color: #ffffff;
 }
-
+.user-btn{
+    width: 200px;
