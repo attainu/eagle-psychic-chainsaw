@@ -20,12 +20,12 @@ var usersSchema = new Schema({
     email: { type: String, lowercase: true, unique: true, required: [true, "can't be blank"], match: [/\S+@\S+\.\S+/, 'is invalid'], index: true },
     mobile_number: { type: String, required: true },
     password: { type: String, required: true },
+    gender: String,
+    dob: String,
     address: [{
         type: Schema.Types.ObjectId,
         ref: 'address'
     }],
-    gender: String,
-    dob: String,
     cart: [{
         type: Schema.Types.ObjectId,
         ref: 'product'

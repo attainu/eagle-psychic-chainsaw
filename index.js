@@ -20,7 +20,7 @@ const hbs = exphbs.create({
 })
 const mongoose = require('mongoose');
 
-mongoose.connect('mongodb+srv://eagle-ecommerce-app:eagle-ecommerce-app@ecommerce-app-ll9yl.mongodb.net/test?retryWrites=true&w=majority',
+mongoose.connect('mongodb+srv://eagle-ecommerce-app:eagle-ecommerce-app@ecommerce-app-ll9yl.mongodb.net/ecommerce-app?retryWrites=true&w=majority',
     {
         useNewUrlParser: true,
         useUnifiedTopology: true,
@@ -37,7 +37,7 @@ app.use(session({
     saveUninitialized: false,
     cookie: {
         httpOnly: true,
-        maxAge: 600000, // 30 minute
+        maxAge: 3000000, // 30 minute
         path: '/',
         sameSite: true,
         secure: false

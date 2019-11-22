@@ -68,13 +68,14 @@ Controller.user_delete = function (req, res) {
             res.clearCookie("user-login");
             res.redirect('/');
         });
-        
+
     })
 }
 
 // Update User
 Controller.user_update = function (req, res) {
     var id = req.session.user._id;
+    console.log(req.session.user)
     var data = req.body
     Users.register.findByIdAndUpdate(id, { $set: data }, { multi: true, new: true }, function (err, user) {
         if (err) {
@@ -83,8 +84,13 @@ Controller.user_update = function (req, res) {
         if (!user) {
             return res.status(400).send("No user found");
         }
+        return req.session.save(function (err) {
+            req.session.reload(function (err) {
+                req.session.user = user;
+                res.status(200).redirect('/user-profile');
+            })
+        })
 
-        return res.status(200).redirect('/user-profile');
     })
 }
 
@@ -139,9 +145,7 @@ Controller.validate = function (req, res, next) {
 // Get User Data with Address
 Controller.address_get = function (req, res) {
     var user = req.session.user;
-    Users.register.findOne({
-        username: user.username
-    })
+    Users.register.findById(user._id)
         .populate('users')
         .exec(function (err, docs) {
             var iter = function (user, callback) {
@@ -168,7 +172,6 @@ Controller.add_get = function (req, res) {
         if (!address) {
             return res.status(400).send("Not Found");
         }
-        console.log(address)
         return res.render('address', {
             title: 'E-Commerce Website',
             css: 'address.css',
