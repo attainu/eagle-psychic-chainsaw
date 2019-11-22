@@ -3,7 +3,7 @@ const express = require("express");
 const app = express();
 const exphbs = require("express-handlebars");
 const session = require("express-session");
-const PORT = process.env.PORT || 8089;
+const PORT = process.env.PORT || 8087;
 const HOST = "0.0.0.0";
 var cookieParser = require("cookie-parser");
 
@@ -69,15 +69,6 @@ app.use(
 var authRoute = require("./controllers/authentication.js");
 app.use("/public", express.static("public"));
 
-/*----------------Sller database route----------*/
-app.set("view engine", ".hbs");
-const controllers = require("./controllers/index.js");
-app.post("/seller", controllers.SellerController.create);
-app.post("/seller-delete", controllers.SellerController.delete);
-app.post("/seller_signin", controllers.SellerController.signin);
-app.post("/seller_update", controllers.SellerController.update);
-app.post("/seller-logout", authRoute.logout);
-var pageController = require("./controllers/e-commerce.js");
 let db = mongoose.connection;
 
 // check DB connection
@@ -100,6 +91,16 @@ const productRouter = require("./controllers/products");
 const categoryRouter = require("./controllers/product-category");
 const product_registration = require("./controllers/product-registration"); // product registration controller
 const product_listRouter = require("./controllers/product-list"); // product list controller
+
+/*----------------Sller database route----------*/
+app.set("view engine", ".hbs");
+const controllers = require("./controllers/sellerdb");
+app.post("/seller", controllers.create);
+app.post("/seller-delete", controllers.delete);
+app.post("/seller_signin", controllers.signin);
+app.post("/seller_update", controllers.update);
+app.post("/seller-logout", authRoute.logout);
+var pageController = require("./controllers/e-commerce.js");
 
 // product registration
 app.use("/product_registration", product_registration);

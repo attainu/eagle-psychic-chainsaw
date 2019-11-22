@@ -1,4 +1,4 @@
-const Seller = require("./../models/Users.js");
+const Seller = require("../models/Sellerdb.js");
 const session = require("express-session");
 var cookieParser = require("cookie-parser");
 const SellerController = {};
@@ -21,18 +21,14 @@ SellerController.create = function(req, res) {
           error: error
         });
       }
-      return res.render("seller-signin-signup", {
-        title: "seller_profile",
-        href: "../../public/seller-signin-signup.css"
-      });
+      return res.redirect("/seller-login");
     }
   );
 };
 SellerController.delete = function(req, res) {
-  var data = req.body;
   Seller.deleteOne(
     {
-      sellerName: data.sellerName
+      emailId: req.session.data[0].emailId
     },
     function(error, response) {
       if (error) {
@@ -42,19 +38,30 @@ SellerController.delete = function(req, res) {
           error: error
         });
       }
-      return res.send({
-        status: true,
-        message: "Deleted Successfully!!!!",
-        data: data
-      });
+
+      res.redirect("/");
     }
   );
 };
 SellerController.update = function(req, res) {
-  var data = req.body;
+  console.log(req.session.data);
+  var data = { emailId: req.session.data.emailId };
+  if (req.body.sellerName) {
+    data.sellerName = req.body.sellerName;
+  }
+  if (req.body.contactNumber) {
+    data.contactNumber = req.body.contactNumber;
+  }
+  if (req.body.companyName) {
+    data.companyName = req.body.companyName;
+  }
+  if (req.body.password) {
+    data.password = req.body.password;
+  }
+  console.log(data);
   Seller.updateOne(
     {
-      sellerName: data.sellerName
+      emailId: req.session.data.emailId
     },
     {
       $set: data
@@ -75,17 +82,23 @@ SellerController.update = function(req, res) {
         });
       }
 
-      return res.send({
-        status: true,
-        message: "updated Successfully!!!!",
-        data: data
+      return req.session.save(function(err) {
+        req.session.reload(function(err) {
+          req.session.data = data;
+          res.status(200).redirect("/seller-login");
+        });
       });
     }
   );
 };
 SellerController.signin = function(req, res) {
   var data = req.body;
-  console.log(data);
+  var collection;
+  Seller.find({ emailId: data.email }, function(err, data) {
+    collection = data;
+
+    return data;
+  });
 
   Seller.findOne(
     {
@@ -98,13 +111,12 @@ SellerController.signin = function(req, res) {
       if (!user) {
         return res.render("seller-signin-signup", {
           title: "seller_profile",
-          href: "../../public/seller-signin-signup.css"
+          css: "seller-signin-signup.css"
         });
       }
-
       req.session.loggedin = true;
-      req.session.email = data.email;
-      res.redirect("seller_profile");
+      req.session.data = user;
+      res.redirect("seller-profile");
     }
   );
 };

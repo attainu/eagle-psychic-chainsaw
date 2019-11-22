@@ -21,16 +21,14 @@ SellerController.create = function(req, res) {
           error: error
         });
       }
-       return  res.redirect('/seller-login')
+      return res.redirect("/seller-login");
     }
   );
 };
 SellerController.delete = function(req, res) {
- 
   Seller.deleteOne(
     {
       emailId: req.session.data[0].emailId
-
     },
     function(error, response) {
       if (error) {
@@ -40,7 +38,7 @@ SellerController.delete = function(req, res) {
           error: error
         });
       }
-       
+
       res.redirect("/");
     }
   );
@@ -60,7 +58,7 @@ SellerController.update = function(req, res) {
   if (req.body.password) {
     data.password = req.body.password;
   }
- console.log(data);
+  console.log(data);
   Seller.updateOne(
     {
       emailId: req.session.data.emailId
@@ -69,7 +67,7 @@ SellerController.update = function(req, res) {
       $set: data
     },
     { multi: true, new: true },
-    function(error, response) {
+    function(error, seller) {
       if (error) {
         return res.send({
           status: false,
@@ -77,19 +75,19 @@ SellerController.update = function(req, res) {
           error: error
         });
       }
-      if (!response) {
+      if (!seller) {
         return res.send({
           status: false,
           message: "user not found"
         });
       }
-
-       return req.session.save(function (err) {
-            req.session.reload(function (err) {
-                req.session.data = data;
-                res.status(200).redirect('/seller-sigin');
-            })
-        })
+      console.log(seller);
+      return req.session.save(function(err) {
+        req.session.reload(function(err) {
+          req.session.data = seller;
+          res.status(200).redirect("/seller-profile");
+        });
+      });
     }
   );
 };

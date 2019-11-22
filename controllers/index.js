@@ -1,3 +1,3 @@
-module.exports = {
-  SellerController: require("./sellerdb.js")
-};
+// module.exports = {
+//   SellerController: require("./sellerdb.js")
+// };
