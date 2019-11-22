@@ -77,7 +77,43 @@ const product_listRouter = require('./controllers/product-list');
 // product list
 app.use('/product_list', product_listRouter);
 
+const homeRouter = require('./controllers/homepage');
+// homepage
+app.use('/',homeRouter);
+// electronics router
+const electronicsRouter = require('./controllers/electronics');
+// electronics
+app.use('/electronics',electronicsRouter);
+// menswear router
+const menswearRouter=require('./controllers/menswear');
+// mens wear filter
+app.use('/menswear',menswearRouter);
+// womens router filter
+const womenswearRouter = require('./controllers/womens');
+// womens wear
+app.use('/womenswear',womenswearRouter);
 
+// Home&decor router
+const furnitureRouter = require('./controllers/furniture');
+const cookwareRouter = require('./controllers/cookware');
+const decorRouter = require('./controllers/decor');
+
+// these route display home decor filters
+app.use('/furniture',furnitureRouter);
+app.use('/cookware',cookwareRouter);
+app.use('/homedecor',decorRouter);
+
+// Electronics controllers
+const mobilesRouter = require('./controllers/mobiles');
+const laptopsRouter = require('./controllers/laptops');
+const speakersRouter =require('./controllers/speakers');
+const cameraRouter =require('./controllers/camera');
+
+// these routes will display the electronics filters
+app.use('/mobiles',mobilesRouter);
+app.use('/laptops',laptopsRouter);
+app.use('/speakers',speakersRouter);
+app.use('/camera',cameraRouter);
 // Validation Middleware
 app.use(user.Controller.validate);
 
