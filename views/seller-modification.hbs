@@ -1,0 +1,72 @@
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="container register-form">
+
+                <div id="form-content">
+                    <div class="note">
+                        <p>Click on the field which you want to modify!</p>
+                    </div>
+                    <form action="/seller_update" method="POST">
+                        <div class="row" style="margin-top: 50px; margin-left:215px">
+                            <div class="col-md-8">
+                                <div class="form-group">
+                                    <input type="text" class="form-control" placeholder=" {{{collection.sellerName}}}*"
+                                        name="sellerName" id="1" value="{{{collection.sellerName}}}" disabled />
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <input type="checkbox" id="check1">
+                            </div>
+                        </div>
+                        <div class="row" style=" margin-top: 8px;margin-left:215px">
+                            <div class="col-md-8">
+                                <div class="form-group">
+                                    <input type="text" class="form-control" placeholder="{{{collection.emailId}}} *"
+                                        name="emailId" id="2" value="{{{collection.emailId}}}" disabled />
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <input type="checkbox" id="check2">
+                            </div>
+                        </div>
+                        <div class="row" style="  margin-top: 8px;margin-left:215px">
+                            <div class="col-md-8">
+                                <div class="form-group">
+                                    <input type="number" class="form-control" name="contactNumber"
+                                        placeholder="{{{collection.contactNumber}}}*" id="3"
+                                        value="{{{collection.contactNumber}}}" disabled />
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <input type="checkbox" id="check3">
+                            </div>
+                        </div>
+                        <div class="row" style="  margin-top: 8px; margin-left:215px">
+                            <div class="col-md-8">
+                                <div class="form-group">
+                                    <input type="text" class="form-control" placeholder="{{{collection.password}}} *"
+                                        name="password" id="4" id="3" value="{{{collection.password}}}" disabled />
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <input type="checkbox" id="check4">
+                            </div>
+                        </div>
+                        <div class="row" style="  margin-top: 8px;margin-left:215px">
+                            <div class="col-md-8">
+                                <div class="form-group">
+                                    <input type="text" class="form-control" placeholder="{{{collection.companyName}}}*"
+                                        name="companyName" id="5" value="{{{collection.companyName}}}" disabled />
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <input type="checkbox" id="check5">
+                            </div>
+                        </div>
+                        <button type="submit" class="btnSubmit">Submit</button>
+                </div>
+                </form>
+            </div>
+        </div>
+    </div>

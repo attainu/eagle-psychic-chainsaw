@@ -43,8 +43,43 @@ app.use(session({
         secure: false
     }
 }))
+/*------for seller-----------------*/
+app.use(cookieParser());
+app.use(express.json());
+app.use(express.urlencoded());
+app.use(
+  session({
+    resave: false,
+    saveUnintialized: true,
+    secret: "sitanshu123",
+    cookie: {
+      httpOnly: true,
+      maxAge: 1200000,
+      path: "/",
+      sameSite: true,
+      secure: false
+    }
+  })
+);
 
+var authRoute = require("./controllers/authentication.js");
+app.use("/public", express.static("public"));
+const hbs = exphbs.create({
+  extname: ".hbs"
+});
+app.engine(".hbs", hbs.engine);
+/*----------------Sller database route----------*/
+app.set("view engine", ".hbs");
+const controllers = require("./controllers/index.js");
+app.post("/seller", controllers.SellerController.create);
+app.post("/seller-delete", controllers.SellerController.delete);
+app.post("/seller_signin", controllers.SellerController.signin);
+app.post("/seller_update", controllers.SellerController.update);
+app.post("/seller-logout", authRoute.logout);
+var pageController = require("./controllers/e-commerce.js");
 let db = mongoose.connection;
+
+
 
 // check DB connection
 db.once('open', function () {
@@ -127,7 +162,9 @@ app.get('/', pageController.home)
 // Product Content
 app.use('/products', productRouter)
 
-
+/*------seller routes----------------*/
+app.get("/seller-profile", pageController.seller_profile);
+app.get("/seller-profile-update", pageController.seller_profile_modification);
 
 // Order Page
 app.get('/cart', pageController.cart)
@@ -177,3 +214,16 @@ app.listen(PORT, HOST, function () {
     console.log("Unable To Start App >>>");
 
 }) 
+db.connect()
+  .then(function() {
+    app
+      .listen(PORT, function() {
+        console.log("Started : ", PORT);
+      })
+      .on("error", function(error) {
+        console.log("Unable To Start App >>>", error);
+      });
+  })
+  .catch(function(error) {
+    console.log("Failed to connect with database");
+  });
