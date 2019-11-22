@@ -79,7 +79,7 @@ app.use('/product_list', product_listRouter);
 
 const homeRouter = require('./controllers/homepage');
 // homepage
-app.use('/',homeRouter);
+// app.use('/',homeRouter);
 // electronics router
 const electronicsRouter = require('./controllers/electronics');
 // electronics
