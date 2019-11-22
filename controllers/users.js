@@ -84,6 +84,7 @@ Controller.user_update = function (req, res) {
         if (!user) {
             return res.status(400).send("No user found");
         }
+        console.log(user)
         return req.session.save(function (err) {
             req.session.reload(function (err) {
                 req.session.user = user;

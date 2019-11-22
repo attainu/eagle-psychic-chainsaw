@@ -19,6 +19,9 @@ const hbs = exphbs.create({
     }
   }
 });
+app.engine(".hbs", hbs.engine);
+app.set("view engine", ".hbs");
+
 const mongoose = require("mongoose");
 
 mongoose.connect(
@@ -48,23 +51,23 @@ app.use(
   })
 );
 /*------for seller-----------------*/
-app.use(cookieParser());
-app.use(express.json());
-app.use(express.urlencoded());
-app.use(
-  session({
-    resave: false,
-    saveUnintialized: true,
-    secret: "sitanshu123",
-    cookie: {
-      httpOnly: true,
-      maxAge: 1200000,
-      path: "/",
-      sameSite: true,
-      secure: false
-    }
-  })
-);
+// app.use(cookieParser());
+// app.use(express.json());
+// app.use(express.urlencoded());
+// app.use(
+//   session({
+//     resave: false,
+//     saveUnintialized: true,
+//     secret: "sitanshu123",
+//     cookie: {
+//       httpOnly: true,
+//       maxAge: 1200000,
+//       path: "/",
+//       sameSite: true,
+//       secure: false
+//     }
+//   })
+// );
 
 var authRoute = require("./controllers/authentication.js");
 app.use("/public", express.static("public"));
@@ -81,8 +84,7 @@ db.on("error", function(err) {
   console.log(err);
 });
 
-app.engine(".hbs", hbs.engine);
-app.set("view engine", ".hbs");
+
 
 //Controller link here
 var pageController = require("./controllers/e-commerce.js");

@@ -44,25 +44,11 @@ SellerController.delete = function(req, res) {
   );
 };
 SellerController.update = function(req, res) {
-  console.log(req.session.data);
-  var data = { emailId: req.session.data.emailId };
-  if (req.body.sellerName) {
-    data.sellerName = req.body.sellerName;
-  }
-  if (req.body.contactNumber) {
-    data.contactNumber = req.body.contactNumber;
-  }
-  if (req.body.companyName) {
-    data.companyName = req.body.companyName;
-  }
-  if (req.body.password) {
-    data.password = req.body.password;
-  }
-  console.log(data);
-  Seller.updateOne(
-    {
-      emailId: req.session.data.emailId
-    },
+  
+  var data = req.body;
+
+  Seller.findByIdAndUpdate(
+      req.session.data._id,
     {
       $set: data
     },
