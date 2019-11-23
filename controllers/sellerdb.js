@@ -28,7 +28,7 @@ SellerController.create = function(req, res) {
 SellerController.delete = function(req, res) {
   Seller.deleteOne(
     {
-      emailId: req.session.data[0].emailId
+      emailId: req.session.data.emailId
     },
     function(error, response) {
       if (error) {
