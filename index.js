@@ -3,7 +3,7 @@ const express = require("express");
 const app = express();
 const exphbs = require("express-handlebars");
 const session = require("express-session");
-const PORT = process.env.PORT || 8087;
+const PORT = process.env.PORT || 8086;
 const HOST = "0.0.0.0";
 var cookieParser = require("cookie-parser");
 

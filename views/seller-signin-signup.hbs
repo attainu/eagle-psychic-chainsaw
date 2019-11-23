@@ -1,6 +1,8 @@
+<div id="r-alert-box" role="alert" style="position: absolute; top:0px"></div>
+
 <div class="container" id="container">
     <div class="form-container sign-up-container">
-        <form action="/seller" method="POST" id="myform">
+        <form onsubmit="return false;" class="form-group" id="myform">
             <h1>Create Account</h1>
             <div id="error_msg"></div>
             <input type="text" name="name" id="name" placeholder="Name" required>
@@ -14,12 +16,12 @@
         </form>
     </div>
     <div class="form-container sign-in-container">
-        <form action="/seller_signin" method="POST">
+        <form onsubmit="return false;" class="form-group" id="sellersignin">
             <h1>Sign In</h1>
             <input type="email" name="email" id="email2" placeholder="Email" required>
             <input type="password" name="password" id="seller-password" placeholder="Password" required>
             <a href="#">Forgot your Password?</a>
-            <button>Sign In</button>
+            <button type="submit" id="submit1" value="Submit">Sign In</button>
         </form>
     </div>
     <div class="overlay-container">

@@ -105,7 +105,6 @@ Controller.user_profile_edit = function(req, res) {
 
 // Seller Profile
 Controller.seller_profile = function(req, res) {
-  console.log(req.session.data);
   if (req.session.data) {
     var random = null;
     model.seller_profile(random, function(error, info) {
