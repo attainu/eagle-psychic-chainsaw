@@ -30,7 +30,7 @@ $(document).ready(function () {
             dataType: 'json',
             success: function (data) {
                 $('<p/>').text("Product added Successfully!").addClass("alert alert-success").appendTo("#r-alert-box");
-                setTimeout(function () { $(location).attr('href', '/product_registration') }, 1000);
+                setTimeout(function () { $(location).attr('href', '/seller-profile') }, 1000);
             }
         });
     });
