@@ -24,17 +24,18 @@
         <div class="col-9">
             <h5 class=""><b>{{category}}</b></h5>
         </div>
-        <div class="row mr-5">
-            {{#each products}}
-            <div class="col p-2 ml-5">
-                <img class="rounded img-box mb-1" src="{{this.productImage}}" alt="" height="230px" width="173px">
-                <div class="">
-                    <p class="mb-0"><b>{{this.productName}}</b></p>
-                    <p class="disc mb-0">{{this.productDescription}}</p>
-                    <p class="disc mb-2">&#x20b9;{{this.productPrice}}</p>
-                </div>
+    </div>
+
+    <div class="row mr-5">
+        {{#each products}}
+        <div class="col p-2 ml-5">
+            <img class="rounded img-box mb-1" src="{{this.productImage}}" alt="" height="230px" width="173px">
+            <div class="">
+                <p class="mb-0"><b>{{this.productName}}</b></p>
+                <p class="disc mb-0">{{this.productDescription}}</p>
+                <p class="disc mb-2">&#x20b9;{{this.productPrice}}</p>
             </div>
-            {{/each}}
         </div>
+        {{/each}}
     </div>
 </div>
