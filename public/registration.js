@@ -7,9 +7,12 @@ $(document).ready(function () {
         var productDescription = $('#product').val();
         var productionDate = $('#date').val();
         var productImage = $('#image').val();
+        var productHighlights1= $('#feature1').val();
+        var productHighlights2= $('#feature2').val();
+        var  productHighlights3=$('#feature3').val();
         $('#alert-box').empty();
         if (productName === '' || productSerialNumber === '' || productCategory === '' || productPrice === '' || productDescription === '' || productionDate === '' || productImage === '') {
-            
+
             $('<p/>').text("All Field Are Required").addClass("alert alert-danger").appendTo("#r-alert-box");
             return;
         }
@@ -25,7 +28,10 @@ $(document).ready(function () {
                 productDescription: productDescription,
                 productSerialNumber: productSerialNumber,
                 productCategory: productCategory,
-                productionDate: productionDate
+                productionDate: productionDate,
+                productHighlights1: productHighlights1,
+                productHighlights2: productHighlights2,
+                productHighlights3: productHighlights3
             },
             dataType: 'json',
             success: function (data) {

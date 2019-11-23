@@ -2,6 +2,8 @@ const Seller = require("../models/Sellerdb.js");
 const session = require("express-session");
 var cookieParser = require("cookie-parser");
 const SellerController = {};
+var msg;
+
 SellerController.create = function(req, res) {
   var data = req.body;
 
@@ -21,7 +23,9 @@ SellerController.create = function(req, res) {
           error: error
         });
       }
-      return res.redirect("/seller-login");
+      return res.json({
+        msg: true
+      });
     }
   );
 };
@@ -39,16 +43,18 @@ SellerController.delete = function(req, res) {
         });
       }
 
-      res.redirect("/");
+      req.session.destroy(function(err) {
+        res.clearCookie("user-login");
+        res.redirect("/");
+      });
     }
   );
 };
 SellerController.update = function(req, res) {
-  
   var data = req.body;
 
   Seller.findByIdAndUpdate(
-      req.session.data._id,
+    req.session.data._id,
     {
       $set: data
     },
@@ -77,6 +83,7 @@ SellerController.update = function(req, res) {
     }
   );
 };
+var flag = null;
 SellerController.signin = function(req, res) {
   var data = req.body;
   var collection;
@@ -95,14 +102,15 @@ SellerController.signin = function(req, res) {
         return res.status(500).send(err);
       }
       if (!user) {
-        return res.render("seller-signin-signup", {
-          title: "seller_profile",
-          css: "seller-signin-signup.css"
-        });
+        flag = false;
+      } else {
+        req.session.loggedin = true;
+        req.session.data = user;
+        flag = true;
       }
-      req.session.loggedin = true;
-      req.session.data = user;
-      res.redirect("seller-profile");
+      res.json({
+        flag: flag
+      });
     }
   );
 };
