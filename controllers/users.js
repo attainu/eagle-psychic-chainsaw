@@ -1,9 +1,9 @@
 const Controller = {};
 const async = require('async');
 var Users = require('../models/Users-db');
-const Product = require('../models/Products');
+var Product = require('../models/Products.js');
 
-// SignUp
+//---------------------------------------------------------SignUp---------------------------------------------------------//
 Controller.user_signup = function (req, res) {
     const users = new Users.register({
         username: req.body.name,
@@ -28,7 +28,7 @@ Controller.user_signup = function (req, res) {
         })
 }
 
-// SignIn
+//---------------------------------------------------------SignIn---------------------------------------------------------//
 var flag = null;
 Controller.user_signin = function (req, res) {
     var data = req.body;
@@ -52,7 +52,7 @@ Controller.user_signin = function (req, res) {
     })
 }
 
-// Delete User
+// ---------------------------------------------------------Delete User---------------------------------------------------------//
 Controller.user_delete = function (req, res) {
     var data = req.session.user;
     console.log(data);
@@ -72,7 +72,7 @@ Controller.user_delete = function (req, res) {
     })
 }
 
-// Update User
+//-----------------------------------------------------Update User------------------------------------------------------//
 Controller.user_update = function (req, res) {
     var id = req.session.user._id;
     console.log(req.session.user)
@@ -95,34 +95,50 @@ Controller.user_update = function (req, res) {
     })
 }
 
-// User Cart
-Product.cart = function (req, res) {
-    var id = req.body.productid;
-    Product.findOne({ productName: id })
-        .exec()
-        .then(doc => {
-            if (doc) {
-                console.log(doc)
-                return res.render('cartpage', {
-                    title: "product_display",
-                    href: '../public/style.css',
-                    product: doc
-                });
-            } else {
-                return res.status(500).json({
-                    message: 'No valid entry Found for provided Id'
-                })
-            }
+//---------------------------------------------------------User Cart---------------------------------------------------------//
+Controller.cart_get = function (req, res) {
+    var user = req.session.user;
+    Users.register.findById(user._id)
+        .populate('users')
+        .exec(function (err, docs) {
+            var iter = function (user, callback) {
+                Product.populate(user, {
+                    path: 'product'
+                },
+                    callback);
+            };
 
-        })
-        .catch(err => {
-            res.status(500).json({
-                status: false
-            })
-        })
+            async.each(docs, iter, function done(err) {
+                console.log("cart>>>",docs)
+                res(null, docs);
+            });
+        });
 }
 
-// Logout route
+//---------------------------------------------------Add Product in User DB------------------------------------------------------//
+Product.cart = function (req, res) {
+    var id = req.session.user._id;
+    var data = req.body.id
+    console.log(data)
+    Users.register.findByIdAndUpdate(id, { $push: { product: data } }, { multi: true, new: true }, function (err, user) {
+        if (err) {
+            return res.status(500).send(err);
+        }
+        if (!user) {
+            return res.status(400).send("No user found");
+        }
+        console.log(user)
+        req.session.save(function (err) {
+            req.session.reload(function (err) {
+                req.session.user = user;
+                return res.status(200).redirect('/cart');
+            })
+        })
+    })
+}
+
+
+//---------------------------------------------------------Logout route---------------------------------------------------------//
 Controller.logout = function (req, res) {
 
     req.session.destroy(function (err) {
@@ -131,7 +147,7 @@ Controller.logout = function (req, res) {
     });
 }
 
-// Authentication middleware
+//--------------------------------------------------Authentication middleware-------------------------------------------------//
 Controller.validate = function (req, res, next) {
 
     Users.verify(req, function (error, info) {
@@ -142,8 +158,7 @@ Controller.validate = function (req, res, next) {
     });
 }
 
-
-// Get User Data with Address
+//-------------------------------------------------Get User Data with Address------------------------------------------------//
 Controller.address_get = function (req, res) {
     var user = req.session.user;
     Users.register.findById(user._id)
@@ -157,13 +172,13 @@ Controller.address_get = function (req, res) {
             };
 
             async.each(docs, iter, function done(err) {
-
+                console.log(docs)
                 res(null, docs);
             });
         });
 }
 
-// Get Address
+//---------------------------------------------------------Get Address---------------------------------------------------------//
 Controller.add_get = function (req, res) {
     var id = req.body.id;
     Users.address.findById(id, function (err, address) {
@@ -182,8 +197,7 @@ Controller.add_get = function (req, res) {
     })
 }
 
-
-// Update Address
+//------------------------------------------------------Update Address------------------------------------------------------//
 Controller.address_update = function (req, res) {
     var id = req.body.id;
     Users.address.findByIdAndUpdate(id, { $set: req.body }, { multi: true, new: true }, function (err, user) {
@@ -198,7 +212,7 @@ Controller.address_update = function (req, res) {
     })
 }
 
-// Delete Address
+//---------------------------------------------------------Delete Address------------------------------------------------------//
 Controller.address_delete = function (req, res) {
     var id = req.body.value;
     Users.address.findByIdAndRemove(id, function (err, user) {
@@ -213,7 +227,7 @@ Controller.address_delete = function (req, res) {
     })
 }
 
-// Add Address
+//-------------------------------------------------------Add Address-------------------------------------------------------//
 Controller.address_add = function (req, res) {
     const address = new Users.address({
         name: req.body.name,
@@ -251,6 +265,8 @@ Controller.address_add = function (req, res) {
             })
         })
 }
+
+
 
 
 

@@ -14,7 +14,7 @@ const productSchema = new Schema({
     productHighlights1 :{type:String},
     productHighlights2 :{type:String},
     productHighlights3 :{type:String},
-    userReview : {type:String}
+    userReview : {type:String},
 }) 
 
 module.exports = mongoose.model('Product',productSchema,'product');

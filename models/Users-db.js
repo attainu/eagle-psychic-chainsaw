@@ -22,18 +22,18 @@ var usersSchema = new Schema({
     password: { type: String, required: true },
     gender: String,
     dob: String,
+    product: [{
+        type: Schema.Types.ObjectId,
+        ref: 'product'
+    }],
     address: [{
         type: Schema.Types.ObjectId,
         ref: 'address'
     }],
-    cart: [{
-        type: Schema.Types.ObjectId,
-        ref: 'product'
-    }],
-    order_history: [{
-        type: Schema.Types.ObjectId,
-        ref: 'product'
-    }]
+    // order_history: [{
+    //     type: Schema.Types.ObjectId,
+    //     ref: 'product'
+    // }]
 
 }, { timestamps: true });
 
@@ -75,11 +75,11 @@ Users.verify = function (req, cb) {
         req.originalUrl === '/seller-delete' ||
         req.originalUrl === '/seller-logout' ||
         req.originalUrl === '/seller'
-        ) {
+    ) {
         return cb(true);
     }
 
-    if (typeof req.session.user === "undefined" &&  typeof req.session.data === "undefined") {
+    if (typeof req.session.user === "undefined" && typeof req.session.data === "undefined") {
         return cb(null, {
             status: false,
             message: "First Login (Unauthorized)"

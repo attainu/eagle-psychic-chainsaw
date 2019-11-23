@@ -46,13 +46,13 @@ Controller.product_display = function(req, res) {
 
 // Order Page
 Controller.cart = function(req, res) {
-  var random = null;
-  model.cart(random, function(error, info) {
+  user.Controller.cart_get(req, function(error, info) {
+    console.log("info>>>>",info)
     return res.render("cartpage", {
       title: "E-Commerce Website",
       css: "style.css",
       href: "../../public/homepage.css",
-      user: req.session.user
+      product: info
     });
   });
 };
