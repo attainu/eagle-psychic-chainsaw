@@ -12,7 +12,10 @@ router.post('/', function (req, res, next) {
         productDescription: req.body.productDescription,
         productSerialNumber: req.body.productSerialNumber,
         productCategory: req.body.productCategory,
-        productionDate: req.body.productionDate
+        productionDate: req.body.productionDate,
+        productHighlights1: req.body.productHighlights1,
+        productHighlights2: req.body.productHighlights2,
+        productHighlights3: req.body.productHighlights3
     })
     product
         .save()
