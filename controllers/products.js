@@ -13,6 +13,7 @@ router.get('/', (req, res, next) => {
                 res.render('product_display', {
                     title: "product_display",
                     href: '../public/product_display.css',
+                    css: 'homepage.css',
                     product: doc
                 });
             } else {

@@ -95,7 +95,7 @@ Controller.user_update = function (req, res) {
     })
 }
 
-//---------------------------------------------------------User Cart---------------------------------------------------------//
+//---------------------------------------------------------Get User Data with Cart---------------------------------------------------------//
 Controller.cart_get = function (req, res) {
     var user = req.session.user;
     Users.register.findById(user._id)
@@ -103,13 +103,12 @@ Controller.cart_get = function (req, res) {
         .exec(function (err, docs) {
             var iter = function (user, callback) {
                 Product.populate(user, {
-                    path: 'product'
+                    path: 'cart'
                 },
                     callback);
             };
 
             async.each(docs, iter, function done(err) {
-                console.log("cart>>>",docs)
                 res(null, docs);
             });
         });
@@ -119,8 +118,16 @@ Controller.cart_get = function (req, res) {
 Product.cart = function (req, res) {
     var id = req.session.user._id;
     var data = req.body.id
-    console.log(data)
-    Users.register.findByIdAndUpdate(id, { $push: { product: data } }, { multi: true, new: true }, function (err, user) {
+    var flag = null;
+    req.session.user.cart.forEach(function (product) {
+        if (product == data) {
+            flag = true;
+        }
+    });
+    if (flag == true) {
+        return res.status(200).redirect('back')
+    }
+    Users.register.findByIdAndUpdate(id, { $push: { cart: data } }, { multi: true, new: true }, function (err, user) {
         if (err) {
             return res.status(500).send(err);
         }
@@ -131,12 +138,28 @@ Product.cart = function (req, res) {
         req.session.save(function (err) {
             req.session.reload(function (err) {
                 req.session.user = user;
-                return res.status(200).redirect('/cart');
+                if (req.body.cart) return res.status(200).redirect('/cart');
+                return res.status(200).redirect('back')
             })
         })
     })
 }
 
+//---------------------------------------------------------Delete Cart Product------------------------------------------------------//
+Controller.cart_delete = function (req, res) {
+    var cart_id = req.query.id;
+    var id = req.session.user._id
+    Users.register.findByIdAndUpdate(id, { $pull: { cart: { $in: [cart_id] } } }, function (err, user) {
+        if (err) {
+            return res.status(500).send(err);
+        }
+        if (!user) {
+            return res.status(400).send("Wrong ID");
+        }
+
+        return res.status(200).redirect('/cart');
+    })
+}
 
 //---------------------------------------------------------Logout route---------------------------------------------------------//
 Controller.logout = function (req, res) {

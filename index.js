@@ -145,6 +145,7 @@ app.post("/user-address", user.Controller.address_add);
 // app.get('/user-address-get', user.Controller.address_get)
 app.post("/user-address-update", user.Controller.address_update);
 app.post("/user-address-delete", user.Controller.address_delete);
+app.get("/cart-delete", user.Controller.cart_delete);
 
 // User Profile
 app.get("/user-profile", pageController.user_profile);
