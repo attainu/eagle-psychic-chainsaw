@@ -22,7 +22,7 @@ var usersSchema = new Schema({
     password: { type: String, required: true },
     gender: String,
     dob: String,
-    product: [{
+    cart: [{
         type: Schema.Types.ObjectId,
         ref: 'product'
     }],

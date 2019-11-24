@@ -3,7 +3,7 @@
       width: 100%;
       height: 100%;
   }
-  .image
+.image
   {
     float: left;
     width: 40;
@@ -24,7 +24,7 @@
     border-color: #af7379;
     border: none;
 }
-img {
+img .img-product {
     vertical-align: middle;
     border-style: none;
     width: 19px;
@@ -67,7 +67,7 @@ img {
   display: inline-block;
   border: solid;
 }
- input[type=text] {
+input[type=number] {
   width: 64%;
     padding: 6px 20px;
     margin: -6px 0;
@@ -166,5 +166,5 @@ span.glyphicon.glyphicon-user {
     margin-bottom: 13px;
 }
 .inline{
-    display: inline-block;
+    display: inline;
 }

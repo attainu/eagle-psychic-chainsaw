@@ -27,10 +27,10 @@
             <h5 class=""><b>My Shopping Bag</b></h5>
         </div>
         <div class="col-2">
-            <h5 class=""><b>Total : {{product.product.productPrice}}</b></h5>
+            <h5 class=""><b>Total : {{total}}</b></h5>
         </div>
     </div>
-    {{#each product.product}}
+    {{#each product.cart}}
     {{#if this.productName}}
     <div class="row">
         <div class="col-8  list-box p-2 jumbotron">
@@ -41,7 +41,7 @@
                 <p class="disc mb-0">{{this.productHighlights}}</p>
                 <p class="disc">{{this.productHighlights3}}</p>
                 <br><br><br>
-                <div class="dropdown">
+                {{!-- <div class="dropdown">
                     Size:
                     <select
                         class="btn btn-sm dropdown-toggle click text-white drp pl-4 text-white btn-hover color-11 m-0"
@@ -52,8 +52,8 @@
                         <option class="dropdown-item mx-auto drp" href="#">11</option>
                         <option class="dropdown-item mx-auto drp" href="#">12</option>
                     </select>
-                </div>
-                <div class="dropdown ml-3">
+                </div> --}}
+                {{!-- <div class="dropdown ml-3">
                     Quantity:
                     <select
                         class="btn btn-sm dropdown-toggle click text-white drp pl-4 text-white btn-hover color-11 m-0"
@@ -68,10 +68,10 @@
                         <option class="dropdown-item mx-auto drp" href="#">7</option>
                         <option class="dropdown-item mx-auto drp" href="#">8</option>
                     </select>
-                </div><br>
+                </div><br> --}}
 
             </div>
-            <div><button class=" btn text-white bottom-right click del btn-hover color-11"><b>Remove</b></button>
+            <div><a href="/cart-delete?id={{this._id}}"><i class="fa fa-trash bottom-right red fa-2x"></i></a>
             </div>
         </div>
     </div>

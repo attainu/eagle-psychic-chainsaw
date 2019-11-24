@@ -53,10 +53,10 @@ header{
 
 .place-order{
     width: 350px;
-    height: 600px;
+    height: 550px;
     margin-top: 130px;
     position: absolute;
-    top: 8px;
+    top: 0px;
     right: 56px;
     box-shadow: 2px 3px 7px 0px #b1b1b1;
     background-image: linear-gradient(to right, #ff4b2ba8 , #ff194f9e);
@@ -174,4 +174,7 @@ input[type='radio']:checked:after {
     right: 40px;
     box-shadow: 2px 3px 7px 0px #b1b1b1;
     background-image:linear-gradient(to right, #ff4b2b , #ff194f);
+}
+.fa-trash{
+    color: #f6030f;
 }
