@@ -51,7 +51,7 @@ $(document).ready(function() {
             .addClass("alert alert-primary mt-4")
             .appendTo("#r-alert-box");
           setTimeout(function() {
-            window.location = " /seller-login";
+            window.location = " /seller-profile";
           }, 1500);
         } else {
           console.log("hi");
