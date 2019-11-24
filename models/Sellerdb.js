@@ -1,5 +1,6 @@
 const mongoose = require("mongoose");
 var uniqueValidator = require("mongoose-unique-validator");
+const Schema = mongoose.Schema;
 const SellerSchema = new mongoose.Schema(
   {
     sellerName: {
@@ -22,7 +23,13 @@ const SellerSchema = new mongoose.Schema(
     companyName: {
       type: String,
       required: true
-    }
+    },
+    product: [
+      {
+        type: Schema.Types.ObjectId,
+        ref: "product"
+      }
+    ]
   },
   {
     collection: "seller"

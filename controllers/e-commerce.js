@@ -1,6 +1,7 @@
 const Controller = {};
 const model = require("./../models/E-Commerce.js");
 const user = require("./users");
+const seller = require("./sellerdb.js");
 
 // Home route
 Controller.home = function (req, res) {
@@ -115,11 +116,11 @@ Controller.user_profile_edit = function (req, res) {
 Controller.seller_profile = function (req, res) {
   if (req.session.data) {
     var random = null;
-    model.seller_profile(random, function (error, info) {
+    seller.getProduct(req, function(error, info) {
       return res.render("seller_profile", {
         title: "seller_profile",
         css: "seller_profile.css",
-        collection: req.session.data
+        collection: info
       });
     });
   } else {

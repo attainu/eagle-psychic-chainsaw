@@ -1,6 +1,9 @@
 const Seller = require("../models/Sellerdb.js");
+const products = require("../models/Products.js");
 const session = require("express-session");
 var cookieParser = require("cookie-parser");
+var Product = require("../models/Products.js");
+const async = require("async");
 const SellerController = {};
 var msg;
 
@@ -113,5 +116,66 @@ SellerController.signin = function(req, res) {
       });
     }
   );
+};
+/*------------------add product in seller db-------------------*/
+var flag;
+SellerController.addProduct = function(req, res) {
+  const product = new Product({
+    productName: req.body.productName,
+    productPrice: req.body.productPrice,
+    productImage: req.body.productImage,
+    productDescription: req.body.productDescription,
+    productSerialNumber: req.body.productSerialNumber,
+    productCategory: req.body.productCategory,
+    productionDate: req.body.productionDate,
+    productHighlights1: req.body.productHighlights1,
+    productHighlights2: req.body.productHighlights2,
+    productHighlights3: req.body.productHighlights3
+  });
+  product
+    .save()
+    .then(result => {
+      Seller.updateOne(
+        { emailId: req.session.data.emailId },
+        { $push: { product: result._id } },
+        { multi: true, new: true },
+        function(err, user) {
+          if (err) {
+            console.log(err);
+          }
+
+          console.log(user);
+        }
+      );
+      res.json({
+        flag: true
+      });
+    })
+    .catch(err => {
+      return res.status(500).json({
+        flag: false
+      });
+    });
+};
+
+/*----------Populate seller with product-------------------------*/
+SellerController.getProduct = function(req, res) {
+  Seller.findById(req.session.data._id)
+    .populate("seller")
+    .exec(function(err, docs) {
+      var iter = function(user, callback) {
+        Product.populate(
+          user,
+          {
+            path: "product"
+          },
+          callback
+        );
+      };
+      async.each(docs, iter, function done(err) {
+        console.log("cart>>>", docs);
+        res(null, docs);
+      });
+    });
 };
 module.exports = SellerController;

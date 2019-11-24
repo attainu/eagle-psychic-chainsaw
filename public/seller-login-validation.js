@@ -23,11 +23,10 @@ $(document).ready(function() {
         },
         dataType: "json",
         success: function(data) {
-           
-            $("<p/>")
-              .text("Account Successfully creted!!!!!!")
-              .addClass("alert alert-primary mt-4")
-              .appendTo("#r-alert-box");
+          $("<p/>")
+            .text("Account Successfully creted!!!!!!")
+            .addClass("alert alert-primary mt-4")
+            .appendTo("#r-alert-box");
           setTimeout(function() {
             window.location = "/seller-login";
           }, 1500);
