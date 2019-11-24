@@ -113,8 +113,8 @@ app.use("/product_list", product_listRouter);
 // product category
 app.use("/product-category", categoryRouter);
 
-// // Validation Middleware  Don't delete this file will activate in the end(later)
-// app.use(user.Controller.validate);
+// // Validation Middleware
+app.use(user.Controller.validate);
 
 // Home route
 app.get("/", pageController.home);

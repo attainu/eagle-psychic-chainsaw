@@ -60,26 +60,9 @@ Users.address = db('Address', userAddress, 'address');
 
 //middleware verification model
 Users.verify = function (req, cb) {
-    if (req.originalUrl === '/' ||
-        req.originalUrl === '/product-list' ||
-        req.originalUrl === '/products' ||
-        req.originalUrl === '/user-login' ||
-        req.originalUrl === '/user-signin' ||
-        req.originalUrl === '/user-signup' ||
-        req.originalUrl === '/user-logout' ||
-        req.originalUrl === '/seller-login' ||
-        req.originalUrl === '/product-list-form' ||
-        req.originalUrl === '/product-display' ||
-        req.originalUrl === '/seller_signin' ||
-        req.originalUrl === '/seller_update' ||
-        req.originalUrl === '/seller-delete' ||
-        req.originalUrl === '/seller-logout' ||
-        req.originalUrl === '/seller'
+    if (req.originalUrl === '/cart' &&
+        req.originalUrl === '/user-profile'
     ) {
-        return cb(true);
-    }
-
-    if (typeof req.session.user === "undefined" && typeof req.session.data === "undefined") {
         return cb(null, {
             status: false,
             message: "First Login (Unauthorized)"
