@@ -60,7 +60,7 @@ Users.address = db('Address', userAddress, 'address');
 
 //middleware verification model
 Users.verify = function (req, cb) {
-    if (req.originalUrl === '/cart' &&
+    if (req.originalUrl === '/cart' ||
         req.originalUrl === '/user-profile'
     ) {
         return cb(null, {
