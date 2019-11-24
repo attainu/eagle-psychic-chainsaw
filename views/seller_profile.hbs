@@ -57,74 +57,27 @@
       <div class="row" style="margin-top: 27px;">
         <div class="col-md-12">
           <div class="row">
+            {{#each collection.product}}
             <div class=" col-md-4">
               <div class="my-list">
-                <img src="http://hpservicecenterschennai.in/images/hp_laptop_service_centers_in_guindy.png" alt="dsadas"
+                <img src="{{this.productImage}}"
+                  alt="https://previews.123rf.com/images/asmati/asmati1610/asmati161000086/63402708-shopping-cart-sign-white-icon-on-red-circle-.jpg"
                   id="productimage" />
-                <h3>HP Core i3 6th Gen</h3>
-                <span><strong>Product ID:</strong></span> <span>SHDY6d</span> <br>
-                <span><strong>Price:</strong></span> <span>RS:45K</span> <br>
-                <div class="offer"> Features</div>
+                <h3><strong>{{this.productName}}</strong></h3>
+                <span><strong>Product ID:</strong></span> <span>{{this.productSerialNumber}}</span> <br>
+                <span><strong>Price:</strong></span> <span>{{this.productPrice}}</span> <br>
+                <div class="offer">
+                  {{this.productHighlights1}},{{this.productHighlights2}},{{this.productHighlights3}},</div>
                 <div class="detail">
-                  <img src="http://hpservicecenterschennai.in/images/hp_laptop_service_centers_in_guindy.png"
-                    alt="dsadas" id="productimage" />
+                  <img src="{{this.productImage}}" alt="dsadas" id="productimage" />
                   <p><strong>More Actions</strong></p>
                   <a href="#" class="btn btn-info">Edit Item</a>
                   <a href="#" class="btn btn-warning">Delete</a>
                 </div>
               </div>
             </div>
-            <div class=" col-md-4">
-              <div class="my-list">
-                <img src="https://jamonline.ph/wp-content/uploads/2018/04/iPhone-8-Red-Philippines.jpg" alt="dsadas"
-                  id="productimage" />
-                <h3>IPhone X (RED)</h3>
-                <span><strong>Product ID:</strong></span> <span>SHDY6d</span> <br>
-                <span><strong>Price:</strong></span> <span>RS:46,000</span> <br>
-                <div class="offer">4Gb Ram</div>
-                <div class="detail">
-                  <img src="https://jamonline.ph/wp-content/uploads/2018/04/iPhone-8-Red-Philippines.jpg" alt="dsadas"
-                    id="productimage" />
-                  <p><strong>More Actions</strong></p>
-                  <a href="#" class="btn btn-info">Edit Item</a>
-                  <a href="#" class="btn btn-warning">Delete</a>
-                </div>
-              </div>
-            </div>
-            <div class=" col-md-4">
-              <div class="my-list">
-                <img src="https://images-na.ssl-images-amazon.com/images/I/61fkFmN-trL._AC_UY675_.jpg" alt="dsadas"
-                  id="productimage" />
-                <h3>Puma Men's Shoe</h3>
-                <span><strong>Product ID:</strong></span> <span>SHDG6d</span> <br>
-                <span><strong>Price:</strong></span> <span>RS:3,550</span> <br>
-                <div class="offer"> Features</div>
-                <div class="detail">
-                  <img src="https://images-na.ssl-images-amazon.com/images/I/61fkFmN-trL._AC_UY675_.jpg" alt="dsadas"
-                    id="productimage" />
-                  <p><strong>More Actions</strong></p>
-                  <a href="#" class="btn btn-info">Edit Item</a>
-                  <a href="#" class="btn btn-warning">Delete</a>
-                </div>
-              </div>
-            </div>
-            <div class=" col-md-4">
-              <div class="my-list">
-                <img src="https://images-na.ssl-images-amazon.com/images/I/61fkFmN-trL._AC_UY675_.jpg" alt="dsadas"
-                  id="productimage" />
-                <h3>Puma Men's Shoe</h3>
-                <span><strong>Product ID:</strong></span> <span>SHDG6d</span> <br>
-                <span><strong>Price:</strong></span> <span>RS:3,550</span> <br>
-                <div class="offer"> Features</div>
-                <div class="detail">
-                  <img src="https://images-na.ssl-images-amazon.com/images/I/61fkFmN-trL._AC_UY675_.jpg" alt="dsadas"
-                    id="productimage" />
-                  <p><strong>More Actions</strong></p>
-                  <a href="#" class="btn btn-info">Edit Item</a>
-                  <a href="#" class="btn btn-warning">Delete</a>
-                </div>
-              </div>
-            </div>
+
+            {{/each}}
           </div>
         </div>
       </div>

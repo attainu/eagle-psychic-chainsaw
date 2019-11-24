@@ -3,7 +3,7 @@ const express = require("express");
 const app = express();
 const exphbs = require("express-handlebars");
 const session = require("express-session");
-const PORT = process.env.PORT || 8086;
+const PORT = process.env.PORT || 8087;
 const HOST = "0.0.0.0";
 var cookieParser = require("cookie-parser");
 
@@ -84,8 +84,6 @@ db.on("error", function(err) {
   console.log(err);
 });
 
-
-
 //Controller link here
 var pageController = require("./controllers/e-commerce.js");
 var user = require("./controllers/users.js");
@@ -101,6 +99,8 @@ app.post("/seller", controllers.create);
 app.post("/seller-delete", controllers.delete);
 app.post("/seller_signin", controllers.signin);
 app.post("/seller_update", controllers.update);
+app.post("/seller-product", controllers.addProduct);
+app.get("/seller-getProduct", controllers.getProduct);
 app.post("/seller-logout", authRoute.logout);
 var pageController = require("./controllers/e-commerce.js");
 
