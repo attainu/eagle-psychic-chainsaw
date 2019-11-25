@@ -55,7 +55,8 @@
 				<div class="btn5">
 					<form onsubmit="return false;" class="form-group inline" id="addtocart">
 						<input type="text" id="addToCart" name="id" value="{{product._id}}" style="display: none">
-						<button type="submit" class="btn btn-danger btn-lg btn-rounded waves-effect" id="btn6 ">
+						<button type="submit" class="btn btn-danger btn-lg btn-rounded waves-effect" id="btn6 "
+							data-toggle="modal" data-target=".bd-example-modal-sm">
 							ADD TO CART
 						</button>
 					</form>
@@ -169,6 +170,15 @@
 					</div>
 
 				</div>
+			</div>
+		</div>
+	</div>
+	<!-- Small modal -->
+	<div class="modal fade bd-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel"
+		aria-hidden="true">
+		<div class="modal-dialog modal-sm">
+			<div class="modal-content jumbotron">
+				Added To Cart
 			</div>
 		</div>
 	</div>
