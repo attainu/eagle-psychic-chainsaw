@@ -52,8 +52,8 @@
 				</div>
 
 				<div class="btn5">
-					<form action="/cart" method="POST" class="inline">
-						<input type="text" name="id" value="{{product._id}}" style="display: none">
+					<form onsubmit="return false;" class="form-group inline" id="addtocart">
+						<input type="text" id="addToCart" name="id" value="{{product._id}}" style="display: none">
 						<button type="submit" class="btn btn-danger btn-lg btn-rounded waves-effect" id="btn6 ">
 							ADD TO CART
 						</button>

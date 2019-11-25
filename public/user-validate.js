@@ -1,4 +1,36 @@
 $(document).ready(function() {
+
+  // //Add to cart
+  // $("#addtocart").on("submit", function() {
+  //   var id = $("#addToCart").val();
+
+  //   $.ajax({
+  //     method: "POST",
+  //     url: "/cart",
+  //     data: {
+  //       id: id
+  //     },
+  //     dataType: "json",
+  //     success: function(data) {
+  //       // if (data.flag == true) {
+  //       //   $("<p/>")
+  //       //     .text("Succefully Login")
+  //       //     .addClass("alert alert-primary mt-4")
+  //       //     .appendTo("#r-alert-box");
+  //       //   setTimeout(function() {
+  //       //     $(location).attr("href", "/");
+  //       //   }, 1000);
+  //       // } else {
+  //       //   $("<p/>")
+  //       //     .text("Wrong Username or Password")
+  //       //     .addClass("alert alert-danger mt-4")
+  //       //     .appendTo("#r-alert-box");
+  //       // }
+  //     },
+  //     error: function() {}
+  //   });
+  // });
+
   //User Validation
   $("#login-form").on("submit", function() {
     var email = $("#l-email").val();

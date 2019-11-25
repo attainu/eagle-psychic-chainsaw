@@ -38,7 +38,8 @@
             <div class="float-right mt-4 mr-5"><b>${{this.productPrice}}</b></div>
             <div class="desc ml-4">
                 <p class="mb-0"><b>{{this.productName}}</b></p>
-                <p class="disc mb-0">{{this.productHighlights}}</p>
+                <p class="disc mb-0">{{this.productHighlights1}}</p>
+                <p class="disc mb-0">{{this.productHighlights2}}</p>
                 <p class="disc">{{this.productHighlights3}}</p>
                 <br><br><br>
                 {{!-- <div class="dropdown">
@@ -71,7 +72,7 @@
                 </div><br> --}}
 
             </div>
-            <div><a href="/cart-delete?id={{this._id}}"><i class="fa fa-trash bottom-right red fa-2x"></i></a>
+            <div><a href="/cart-delete?id={{this._id}}" id="delete"><i class="fa fa-trash bottom-right red fa-2x"></i></a>
             </div>
         </div>
     </div>
