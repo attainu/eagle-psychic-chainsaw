@@ -3,7 +3,7 @@ const express = require("express");
 const app = express();
 const exphbs = require("express-handlebars");
 const session = require("express-session");
-const PORT = process.env.PORT || 8087;
+const PORT = process.env.PORT || 9090;
 const HOST = "0.0.0.0";
 var cookieParser = require("cookie-parser");
 
@@ -102,6 +102,9 @@ app.post("/seller_update", controllers.update);
 app.post("/seller-product", controllers.addProduct);
 app.get("/seller-getProduct", controllers.getProduct);
 app.post("/seller-logout", authRoute.logout);
+app.post("/product-modification", controllers.get_Product);
+app.post("/product-modify", controllers.update_product);
+app.post("/product-delete", controllers.deleteProduct);
 var pageController = require("./controllers/e-commerce.js");
 
 // product registration

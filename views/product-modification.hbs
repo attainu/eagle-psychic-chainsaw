@@ -1,0 +1,107 @@
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="container register-form">
+
+                <div id="form-content">
+                    <div class="note">
+                        <p>Product Modification Form</p>
+                    </div>
+                    <form action="/product-modify" method="POST">
+                        <div class="row" style="margin-top: 25px; margin-left:70px; margin-right: 55px">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <input type="text" class="form-control" placeholder="{{{product.productName}}}*"
+                                        name="productName" id="1" value="{{{product.productName}}}" />
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <input type="number" class="form-control" placeholder=" {{{product.productPrice}}}*"
+                                        name="productPrice" id="1" value="{{{product.productPrice}}}" />
+                                </div>
+                            </div>
+
+
+                        </div>
+                        <div class="row" style="margin-top: 25px; margin-left:70px; margin-right: 55px">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <input type="text" class="form-control"
+                                        placeholder="{{{product.productDescription}}}*" name="productDescription" id="1"
+                                        value="{{{product.productDescription}}}" />
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <input type="text" class="form-control"
+                                        placeholder="{{{product.productSerialNumber}}}*" name="productSerialNumber"
+                                        id="1" value="{{{product.productSerialNumber}}}" />
+                                </div>
+                            </div>
+
+
+                        </div>
+                        <div class="row" style="margin-top: 25px; margin-left:70px; margin-right: 55px">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <input type="text" class="form-control"
+                                        placeholder=" {{{product.productCategory}}}*" name="productCategory" id="1"
+                                        value="{{{product.productCategory}}}" />
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <input type="date" class="form-control" placeholder=" {{{product.productionDate}}}*"
+                                        name="product.productionDate" id="1" value="{{{product.productionDate}}}" />
+                                </div>
+                            </div>
+
+
+                        </div>
+                        <div class="row" style="margin-top: 25px; margin-left:70px; margin-right: 55px">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <input type="text" class="form-control"
+                                        placeholder=" {{{product.productHighlights1}}}*" name="productHighlights1"
+                                        id="1" value="{{{product.productHighlights1}}}" />
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <input type="text" class="form-control"
+                                        placeholder=" {{{product.productHighlights2}}}*" name="productHighlights2"
+                                        id="1" value="{{{product.productHighlights2}}}" />
+                                </div>
+                            </div>
+
+
+                        </div>
+
+
+                        <div class="row" style="margin-top: 25px; margin-left:70px; margin-right: 55px">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <input type="text" class="form-control"
+                                        placeholder=" {{{product.productHighlights3}}}*" name="productHighlights3"
+                                        id="1" value="{{{product.productHighlights3}}}" />
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <input type="text" class="form-control" placeholder=" {{{product.productImage}}}*"
+                                        name="productImage" id="1" value="{{{product.productImage}}}" />
+                                </div>
+                            </div>
+
+
+                        </div>
+                        <input name="productId" value="{{product._id}}" style="display: none">
+
+                        <button type="submit" class="btnSubmit">Submit</button>
+                </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

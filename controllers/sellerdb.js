@@ -173,9 +173,63 @@ SellerController.getProduct = function(req, res) {
         );
       };
       async.each(docs, iter, function done(err) {
-        console.log("cart>>>", docs);
         res(null, docs);
       });
     });
+};
+/*------------------to get product details-------------------------------*/
+var result;
+SellerController.get_Product = function(req, res) {
+  var id = req.body.id;
+
+  Product.findById(id, function(err, product) {
+    if (err) {
+      return res.status(500).send(err);
+    }
+    console.log(product);
+    return res.render("product-modification", {
+      title: "E-Commerce Website",
+      css: "product-modification.css",
+      product: product
+    });
+  });
+};
+/*---------------------to update product details-------------------------*/
+SellerController.update_product = function(req, res) {
+  var id = req.body.productId;
+  var data = req.body;
+  Product.findByIdAndUpdate(
+    id,
+    {
+      $set: data
+    },
+    { multi: true, new: true },
+    function(error, product) {
+      if (error) {
+        return res.send({
+          status: false,
+          message: "failed to update",
+          error: error
+        });
+      }
+      return res.status(200).redirect("/seller-profile");
+    }
+  );
+};
+/*------------------to delete product----------------------------*/
+SellerController.deleteProduct = function(req, res) {
+  var id = req.body.idDelete;
+  var idSellerProduct = "req.session.data.product" + id;
+  Seller.findByIdAndRemove(idSellerProduct, function(err, response) {});
+  Product.findByIdAndRemove(id, function(err, user) {
+    if (err) {
+      return res.status(500).send(err);
+    }
+    if (!user) {
+      return res.status(400).send("Wrong ID");
+    }
+
+    return res.status(200).redirect("/seller-profile");
+  });
 };
 module.exports = SellerController;
