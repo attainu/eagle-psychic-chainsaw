@@ -55,7 +55,7 @@ Controller.cart = function (req, res) {
       sum = sum + parseFloat(doc.productPrice)
       return sum
     });
-    
+
     return res.render("cartpage", {
       title: "E-Commerce Website",
       css: "style.css",
@@ -117,7 +117,7 @@ Controller.user_profile_edit = function (req, res) {
 Controller.seller_profile = function (req, res) {
   if (req.session.data) {
     var random = null;
-    seller.getProduct(req, function(error, info) {
+    seller.getProduct(req, function (error, info) {
       return res.render("seller_profile", {
         title: "seller_profile",
         css: "seller_profile.css",
@@ -145,11 +145,23 @@ Controller.seller_profile_modification = function (req, res) {
 
 // Order History
 Controller.order_history = function (req, res) {
-  var random = null;
-  model.order_history(random, function (error, info) {
-    return res.render("product-order-history", {
+  user.Controller.order_get(req, function (error, info) {
+    var sum = 0;
+    var cursor = info.order_history;
+
+    cursor.forEach(function (doc) {
+      sum = sum + parseFloat(doc.productPrice)
+      return sum
+    });
+
+    return res.render("order-history", {
       title: "E-Commerce Website",
-      css: "product-order-history.css"
+      css: "style.css",
+      css1: "profile-page.css",
+      href: "../../public/homepage.css",
+      user: req.session.user,
+      product: info,
+      total: sum
     });
   });
 };
@@ -184,9 +196,9 @@ Controller.product_registration = function (req, res) {
     });
   });
 };
-Controller.product_modification = function(req, res) {
+Controller.product_modification = function (req, res) {
   var random = null;
-  model.product_modification(random, function(error, info) {
+  model.product_modification(random, function (error, info) {
     return res.render("product-modification", {
       title: "Product modification",
       href: "../../public/product-modification.css"

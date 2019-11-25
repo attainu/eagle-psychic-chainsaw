@@ -32,7 +32,8 @@ var usersSchema = new Schema({
     }],
     order_history: [{
         type: Schema.Types.ObjectId,
-        ref: 'product'
+        ref: 'product',
+        orderedAt: new Date()
     }]
 
 }, { timestamps: true });
