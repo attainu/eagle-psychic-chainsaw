@@ -182,5 +182,14 @@ Controller.product_registration = function (req, res) {
     });
   });
 };
+Controller.product_modification = function(req, res) {
+  var random = null;
+  model.product_modification(random, function(error, info) {
+    return res.render("product-modification", {
+      title: "Product modification",
+      href: "../../public/product-modification.css"
+    });
+  });
+};
 
 module.exports = Controller;

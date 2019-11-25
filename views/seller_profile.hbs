@@ -71,8 +71,18 @@
                 <div class="detail">
                   <img src="{{this.productImage}}" alt="dsadas" id="productimage" />
                   <p><strong>More Actions</strong></p>
-                  <a href="#" class="btn btn-info">Edit Item</a>
-                  <a href="#" class="btn btn-warning">Delete</a>
+                  <form action="/product-modification" class="inline" method="POST">
+                    <input name="id" value="{{this._id}}" style="display: none">
+                    <button type="submit" class="btn btn-info">
+                      Edit item
+                    </button>
+                  </form>
+                  <form action="/product-delete" class="inline" method="POST">
+                    <input name="idDelete" value="{{this._id}}" style="display: none">
+                    <button type="submit" class="btn btn-warning" style="margin-top: 10px;">
+                      Delete item
+                    </button>
+                  </form>
                 </div>
               </div>
             </div>
