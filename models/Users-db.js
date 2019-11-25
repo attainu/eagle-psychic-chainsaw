@@ -30,10 +30,10 @@ var usersSchema = new Schema({
         type: Schema.Types.ObjectId,
         ref: 'address'
     }],
-    // order_history: [{
-    //     type: Schema.Types.ObjectId,
-    //     ref: 'product'
-    // }]
+    order_history: [{
+        type: Schema.Types.ObjectId,
+        ref: 'product'
+    }]
 
 }, { timestamps: true });
 

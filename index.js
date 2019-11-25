@@ -133,7 +133,7 @@ app.get("/seller-profile-update", pageController.seller_profile_modification);
 
 // Order Page
 app.get("/cart", pageController.cart);
-app.post("/cart", user.Product.cart);
+app.post("/cart", user.Controller.cart);
 
 // Login/Registration (User)
 app.get("/user-login", pageController.user_login);
@@ -149,6 +149,8 @@ app.post("/user-address", user.Controller.address_add);
 app.post("/user-address-update", user.Controller.address_update);
 app.post("/user-address-delete", user.Controller.address_delete);
 app.get("/cart-delete", user.Controller.cart_delete);
+app.get("/order-history", user.Controller.order_get);
+app.get("/order", user.Controller.order);
 
 // User Profile
 app.get("/user-profile", pageController.user_profile);

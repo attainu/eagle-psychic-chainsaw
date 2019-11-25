@@ -114,8 +114,28 @@ Controller.cart_get = function (req, res) {
         });
 }
 
-//---------------------------------------------------Add Product in User DB------------------------------------------------------//
-Product.cart = function (req, res) {
+//------------------------------------------------Get User Data with Order History---------------------------------------------------//
+Controller.order_get = function (req, res) {
+    var user = req.session.user;
+    Users.register.findById(user._id)
+        .populate('users')
+        .exec(function (err, docs) {
+            var iter = function (user, callback) {
+                Product.populate(user, {
+                    path: 'order_history'
+                },
+                    callback);
+            };
+
+            async.each(docs, iter, function done(err) {
+
+                res(null, docs);
+            });
+        });
+}
+
+//---------------------------------------------------Add Product in User Cart DB------------------------------------------------------//
+Controller.cart = function (req, res) {
     var id = req.session.user._id;
     var data = req.body.id
     var flag = null;
@@ -144,6 +164,40 @@ Product.cart = function (req, res) {
         })
     })
 }
+
+//---------------------------------------------------Add Product in User Order_History DB------------------------------------------------------//
+Controller.order = function (req, res) {
+    var id = req.session.user._id;
+    req.session.user.cart.forEach(function (product) {
+        console.log(product)
+        Users.register.findByIdAndUpdate(id, { $push: { order_history: product } }, { multi: true, new: true }, function (err, user) {
+            if (err) {
+                return res.status(500).send(err);
+            }
+            if (!user) {
+                return res.status(400).send("No user found");
+            }
+            Users.register.findByIdAndUpdate(id, { $pull: { cart: { $in: [product] } } }, function (err, user) {
+                if (err) {
+                    return res.status(500).send(err);
+                }
+                if (!user) {
+                    return res.status(400).send("Wrong ID");
+                }
+            })
+            req.session.save(function (err) {
+                req.session.reload(function (err) {
+                    req.session.user = user;
+                })
+            })
+        })
+    })
+    setTimeout(function(){ return res.status(200).redirect('/cart')}, 1500);
+    
+
+
+}
+
 
 //---------------------------------------------------------Delete Cart Product------------------------------------------------------//
 Controller.cart_delete = function (req, res) {
