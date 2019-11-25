@@ -23,8 +23,22 @@
 					<div class="row">
 						<div class="col-lg-6">
 							<label>Product Sub Category</label>
-							<input type="text" name="productCategory" id="category" class="form-control"
-								placeholder="i.e Mobile,laptop,Men's Wear etc.">
+                            <div class="input-group">
+								<select name="productCategory" id="category" class="custom-select">
+									<option>Choose...</option>
+									<option value="Mobiles">Mobile</option>
+									<option value="Laptops">Laptop</option>
+									<option value="Speakers">Speakers</option>
+									<option value="Camera">Camera</option>
+									<option value="Men's">Men's</option>
+									<option value="Women's">Women's</option>
+									<option value="Decor">Decoration</option>
+									<option value="Cookware">Cookware</option>
+									<option value="Furniture">Furniture</option>
+								</select>
+							</div>
+							{{!-- <input type="text" name="productCategory" id="category" class="form-control"
+								placeholder="i.e Mobile,laptop,Men's Wear etc."> --}}
 						</div>
 						<div class="col-lg-6">
 							<label>MRP</label>
@@ -35,8 +49,16 @@
 					<div class="row">
 						<div class="col-lg-6">
 							<label>Product Category</label>
-							<input type="text" name="productDescription" id="product" class="form-control"
-								placeholder="Electronics,Fasion,kitchen">
+							  <div class="input-group">
+								<select name="productDescription" id="product" class="custom-select">
+									<option>Choose...</option>
+									<option value="Electronics">Electronics</option>
+									<option value="Fashion">Fashion</option>
+									<option value="Home&kitchen">Home&kitchen</option>
+								</select>
+							</div>
+							{{!-- <input type="text" name="productDescription" id="product" class="form-control"
+								placeholder="Electronics,Fasion,kitchen"> --}}
 						</div>
 						<div class="col-lg-6">
 							<label>Choose Manufacturing Date</label>
