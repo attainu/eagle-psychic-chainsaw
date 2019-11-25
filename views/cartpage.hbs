@@ -78,9 +78,13 @@
     {{/if}}
     {{/each}}
     <div class="jumbotron place-order pt-3">
-        <button type="button" class="btn mx-auto text-white order-btn btn-lg btn-block btn-hover color-11">
-            <h4 class="mb-0"><b>PLACE ORDER</b></h4>
-        </button>
+
+        <form action="/order" method="GET" class="inline">
+            <button type="submit" class="btn mx-auto text-white order-btn btn-lg btn-block btn-hover color-11"
+                data-toggle="modal" data-target=".bd-example-modal-sm">
+                <h4 class="mb-0"><b>PLACE ORDER</b></h4>
+            </button>
+        </form>
         <div>
             <fieldset class="jumbotron random-box p-0 mt-4">
                 <legend class="ml-3 text-white" style="width: auto;">
@@ -120,5 +124,14 @@
             </fieldset>
         </div>
 
+    </div>
+    <!-- Small modal -->
+    <div class="modal fade bd-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog modal-sm">
+            <div class="modal-content jumbotron">
+                Your Order Placed Succefully
+            </div>
+        </div>
     </div>
 </div>
