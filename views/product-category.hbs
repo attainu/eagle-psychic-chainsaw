@@ -26,14 +26,14 @@
         </div>
     </div>
 
-    <div class="row mr-5">
+    <div class="row ml-3">
         {{#each products}}
         <a href="/products?id={{this._id}}"><div class="col-2 p-2 ml-4">
             <img class="rounded img-box mb-1" src="{{this.productImage}}" alt="" height="230px" width="173px">
             <div style="width: 170px;">
                 <p class="mb-0"><b>{{this.productName}}</b></p>
-                <p class="disc mb-0">{{this.productDescription}}</p>
-                <p class="disc mb-2">&#x20b9;{{this.productPrice}}</p>
+                <p class="disc mb-0">{{this.productHighlights1}}</p>
+                <p class="disc mb-2"><b>&#x20b9;{{this.productPrice}}</b></p>
             </div>
         </div></a>
         {{/each}}

@@ -60,17 +60,20 @@ Users.address = db('Address', userAddress, 'address');
 
 //middleware verification model
 Users.verify = function (req, cb) {
-    if (req.originalUrl === '/cart' ||
-        req.originalUrl === '/user-profile'
+    if (req.originalUrl === '/user-profile' ||
+        req.originalUrl === '/cart' 
     ) {
-        return cb(null, {
-            status: false,
-            message: "First Login (Unauthorized)"
-        })
-    }
-    else {
+        if (typeof req.session.user === "undefined" && typeof req.session.data === "undefined") {
+            return cb(null, true)
+        }else {
+            return cb(true);
+        }
+        
+    }else {
         return cb(true);
     }
+
+
 
 }
 

@@ -14,6 +14,7 @@ router.get('/', (req, res, next) => {
                     title: "product_display",
                     href: '../public/product_display.css',
                     css: 'homepage.css',
+                    user: req.session.user,
                     product: doc
                 });
             } else {
