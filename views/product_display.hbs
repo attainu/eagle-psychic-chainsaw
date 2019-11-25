@@ -33,7 +33,7 @@
 					<!-- The slideshow -->
 					<div class="carousel-inner">
 						<div class="carousel-item active">
-							<img src="{{product.productImage}}" alt="Los Angeles" width="100px" height="50px">
+							<img class="img-product" src="{{product.productImage}}" alt="Los Angeles" width="100px" height="50px">
 						</div>
 						{{!-- <div class="carousel-item">
 							<img src="{{productImage1}}" alt="Chicago" width="100px" height="50px">
@@ -58,8 +58,12 @@
 							ADD TO CART
 						</button>
 					</form>
-					<button type="button" class="btn btn-warning btn-lg btn-rounded waves-effect" id="btn7 ">BUY
-						NOW</button><br><br><br><br>
+					<form action="/cart" method="POST" class="inline">
+						<input type="text" name="id" value="{{product._id}}" style="display: none">
+						<input type="text" name="cart" value="true" style="display: none">
+						<button type="submit" class="btn btn-warning btn-lg btn-rounded waves-effect" id="btn7 ">BUY
+							NOW</button><br><br><br><br>
+					</form>
 					<div>
 						<h5>Seller
 							<hr>
@@ -110,7 +114,7 @@
 				</div><br><br>
 				<form>
 					<label for="lname"><Strong>Delivery</Strong></label>
-					<input type="text" id="lname" name="lname" placeholder="Enter Pincode to Check">
+					<input type="number" id="lname" name="lname" placeholder="Enter Pincode to Check">
 					<button type="button" class="btn btn-outline-info btn-sm">Check</button>
 				</form><br><br><br>
 				<div class="features">
