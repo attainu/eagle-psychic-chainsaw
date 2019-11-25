@@ -116,8 +116,8 @@ app.use("/product_list", product_listRouter);
 // product category
 app.use("/product-category", categoryRouter);
 
-// // // Validation Middleware
-// app.use(user.Controller.validate);
+// Validation Middleware
+app.use(user.Controller.validate);
 
 // Home route
 app.get("/", pageController.home);

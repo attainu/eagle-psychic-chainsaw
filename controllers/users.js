@@ -95,7 +95,7 @@ Controller.user_update = function (req, res) {
     })
 }
 
-//---------------------------------------------------------Get User Data with Cart---------------------------------------------------------//
+//------------------------------------------------Get User Data with Cart---------------------------------------------------//
 Controller.cart_get = function (req, res) {
     var user = req.session.user;
     Users.register.findById(user._id)
@@ -127,7 +127,7 @@ Product.cart = function (req, res) {
     if (flag == true) {
         return res.status(200).redirect('back')
     }
-    Users.register.findByIdAndUpdate(id, { $push: { cart: data } }, { multi: true, new: true }, function (err, user) {
+    Users.register.findByIdAndUpdate(id, { $addToSet: { cart: data } }, { multi: true, new: true }, function (err, user) {
         if (err) {
             return res.status(500).send(err);
         }
@@ -156,8 +156,13 @@ Controller.cart_delete = function (req, res) {
         if (!user) {
             return res.status(400).send("Wrong ID");
         }
-
-        return res.status(200).redirect('/cart');
+        req.session.save(function (err) {
+            req.session.reload(function (err) {
+                req.session.user = user;
+                return res.status(200).redirect('/cart');
+            })
+        })
+        return
     })
 }
 

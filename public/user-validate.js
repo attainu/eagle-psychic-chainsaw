@@ -1,38 +1,38 @@
-$(document).ready(function() {
+$(document).ready(function () {
 
-  // //Add to cart
-  // $("#addtocart").on("submit", function() {
-  //   var id = $("#addToCart").val();
+  //Add to cart
+  $("#addtocart").on("submit", function () {
+    var id = $("#addToCart").val();
 
-  //   $.ajax({
-  //     method: "POST",
-  //     url: "/cart",
-  //     data: {
-  //       id: id
-  //     },
-  //     dataType: "json",
-  //     success: function(data) {
-  //       // if (data.flag == true) {
-  //       //   $("<p/>")
-  //       //     .text("Succefully Login")
-  //       //     .addClass("alert alert-primary mt-4")
-  //       //     .appendTo("#r-alert-box");
-  //       //   setTimeout(function() {
-  //       //     $(location).attr("href", "/");
-  //       //   }, 1000);
-  //       // } else {
-  //       //   $("<p/>")
-  //       //     .text("Wrong Username or Password")
-  //       //     .addClass("alert alert-danger mt-4")
-  //       //     .appendTo("#r-alert-box");
-  //       // }
-  //     },
-  //     error: function() {}
-  //   });
-  // });
+    $.ajax({
+      method: "POST",
+      url: "/cart",
+      data: {
+        id: id
+      },
+      dataType: "json",
+      success: function (data) {
+        // if (data.flag == true) {
+        //   $("<p/>")
+        //     .text("Succefully Login")
+        //     .addClass("alert alert-primary mt-4")
+        //     .appendTo("#r-alert-box");
+        //   setTimeout(function() {
+        //     $(location).attr("href", "/");
+        //   }, 1000);
+        // } else {
+        //   $("<p/>")
+        //     .text("Wrong Username or Password")
+        //     .addClass("alert alert-danger mt-4")
+        //     .appendTo("#r-alert-box");
+        // }
+      },
+      error: function () { }
+    });
+  });
 
   //User Validation
-  $("#login-form").on("submit", function() {
+  $("#login-form").on("submit", function () {
     var email = $("#l-email").val();
     var password = $("#l-password").val();
     $("#r-alert-box").empty();
@@ -52,13 +52,13 @@ $(document).ready(function() {
         password: password
       },
       dataType: "json",
-      success: function(data) {
+      success: function (data) {
         if (data.flag == true) {
           $("<p/>")
             .text("Succefully Login")
             .addClass("alert alert-primary mt-4")
             .appendTo("#r-alert-box");
-          setTimeout(function() {
+          setTimeout(function () {
             $(location).attr("href", "/");
           }, 1000);
         } else {
@@ -68,12 +68,12 @@ $(document).ready(function() {
             .appendTo("#r-alert-box");
         }
       },
-      error: function() {}
+      error: function () { }
     });
   });
 
   // Registration Validation
-  $("#register-form").on("submit", function() {
+  $("#register-form").on("submit", function () {
     var name = $("#r-name").val();
     var password = $("#r-password").val();
     var number = $("#r-number").val();
@@ -105,16 +105,16 @@ $(document).ready(function() {
         password: password
       },
       dataType: "json",
-      success: function(data) {
+      success: function (data) {
         $("<p/>")
           .text("Succefully Register")
           .addClass("alert alert-success mt-4")
           .appendTo("#r-alert-box");
-        setTimeout(function() {
+        setTimeout(function () {
           $(location).attr("href", "/user-login");
         }, 1000);
       },
-      error: function() {
+      error: function () {
         $("<p/>")
           .text("Email Already In Use")
           .addClass("alert alert-success mt-4")
@@ -122,7 +122,7 @@ $(document).ready(function() {
       }
     });
   });
-  $("#container").click(function() {
+  $("#container").click(function () {
     $("#r-alert-box").empty();
   });
 });

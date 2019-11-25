@@ -60,6 +60,7 @@ Controller.cart = function (req, res) {
       title: "E-Commerce Website",
       css: "style.css",
       href: "../../public/homepage.css",
+      user: req.session.user,
       product: info,
       total: sum
     });
@@ -120,6 +121,7 @@ Controller.seller_profile = function (req, res) {
       return res.render("seller_profile", {
         title: "seller_profile",
         css: "seller_profile.css",
+        href: "../../public/homepage.css",
         collection: info
       });
     });

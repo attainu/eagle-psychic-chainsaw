@@ -65,10 +65,12 @@ Users.verify = function (req, cb) {
     ) {
         if (typeof req.session.user === "undefined" && typeof req.session.data === "undefined") {
             return cb(null, true)
-        }
-        else {
+        }else {
             return cb(true);
         }
+        
+    }else {
+        return cb(true);
     }
 
 
