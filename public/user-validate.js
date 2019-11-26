@@ -33,23 +33,6 @@ $(document).ready(function() {
     });
   });
 
-  //Delete from cart
-  $("#delete").on("click", function () {
-    var id = $("#productId").val();
-
-    $.ajax({
-      method: "POST",
-      url: "/cart-delete",
-      data: {
-        id: id
-      },
-      dataType: "json",
-      success: function (data) {
-      },
-      error: function() {}
-    });
-  });
-
   //User Validation
   $("#login-form").on("submit", function() {
     var email = $("#l-email").val();
