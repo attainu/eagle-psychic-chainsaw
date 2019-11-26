@@ -4,19 +4,29 @@ const session = require("express-session");
 var cookieParser = require("cookie-parser");
 var Product = require("../models/Products.js");
 const async = require("async");
+const cloudinary = require("cloudinary");
 const SellerController = {};
 var msg;
-
-SellerController.create = function(req, res) {
-  var data = req.body;
+cloudinary.config({
+  cloud_name: "drr1rnoxf",
+  api_key: "433145995998357",
+  api_secret: "biV0xzLr1Gg6HzFgAz6aaQB3Tkk"
+});
+var imageResult;
+SellerController.create = async function(req, res) {
+  await cloudinary.v2.uploader.upload(req.file.path, function(error, res1) {
+    console.log("error", error);
+    imageResult = res1;
+  });
 
   Seller.create(
     {
-      sellerName: data.name,
-      contactNumber: data.number,
-      emailId: data.email,
-      password: data.password,
-      companyName: data.company
+      sellerName: req.body.name,
+      contactNumber: req.body.number,
+      emailId: req.body.email,
+      password: req.body.password,
+      companyName: req.body.company,
+      image: imageResult.secure_url
     },
     function(error, response) {
       if (error) {
@@ -26,9 +36,7 @@ SellerController.create = function(req, res) {
           error: error
         });
       }
-      return res.json({
-        msg: true
-      });
+      res.redirect("/seller-login");
     }
   );
 };

@@ -20,8 +20,10 @@
   "homepage": "https://github.com/attainu/eagle-psychic-chainsaw#readme",
   "dependencies": {
     "async": "^3.1.0",
+    "cloudinary": "^1.17.0",
     "cookie-parser": "^1.4.4",
     "csvtojson": "^2.0.10",
+    "dotenv": "^8.2.0",
     "express": "^4.17.1",
     "express-handlebars": "^3.1.0",
     "express-session": "^1.17.0",

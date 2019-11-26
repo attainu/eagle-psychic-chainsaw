@@ -24,6 +24,9 @@ const SellerSchema = new mongoose.Schema(
       type: String,
       required: true
     },
+    image: {
+      type: String
+    },
     product: [
       {
         type: Schema.Types.ObjectId,

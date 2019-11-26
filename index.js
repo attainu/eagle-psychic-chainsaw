@@ -5,7 +5,10 @@ const exphbs = require("express-handlebars");
 const session = require("express-session");
 const PORT = process.env.PORT || 9090;
 const HOST = "0.0.0.0";
+
 var cookieParser = require("cookie-parser");
+var upload = require("./controllers/multer.js");
+require("dotenv").config();
 
 // Configuration
 app.use(express.json());
@@ -14,7 +17,7 @@ app.use("/public", express.static("public"));
 const hbs = exphbs.create({
   extname: ".hbs",
   helpers: {
-    inc: function (value, option) {
+    inc: function(value, option) {
       return parseInt(value) + 1;
     }
   }
@@ -75,12 +78,12 @@ app.use("/public", express.static("public"));
 let db = mongoose.connection;
 
 // check DB connection
-db.once("open", function () {
+db.once("open", function() {
   console.log("connected to mongodb");
 });
 
 //check for DB errors
-db.on("error", function (err) {
+db.on("error", function(err) {
   console.log(err);
 });
 
@@ -92,10 +95,10 @@ const categoryRouter = require("./controllers/product-category");
 const product_registration = require("./controllers/product-registration"); // product registration controller
 const product_listRouter = require("./controllers/product-list"); // product list controller
 
-/*----------------Sller database route----------*/
+/*----------------Seller database route----------*/
 app.set("view engine", ".hbs");
 const controllers = require("./controllers/sellerdb");
-app.post("/seller", controllers.create);
+app.post("/seller", upload.single("image"), controllers.create);
 app.post("/seller-delete", controllers.delete);
 app.post("/seller_signin", controllers.signin);
 app.post("/seller_update", controllers.update);
@@ -168,9 +171,9 @@ app.get("/product_registration", pageController.product_registration);
 
 //Port
 app
-  .listen(PORT, HOST, function () {
+  .listen(PORT, HOST, function() {
     console.log("Started : ", PORT);
   })
-  .on("error", function () {
+  .on("error", function() {
     console.log("Unable To Start App >>>");
   });

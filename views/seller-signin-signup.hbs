@@ -1,9 +1,10 @@
-<a href="/" class="" style="margin-right:700px ;"> <img src="https://i-love-png.com/images/characters-angry-birds-141904.png" class="ml-3" height="45px"></a>
+<a href="/" class="" style="margin-right:700px ;"> <img
+        src="https://i-love-png.com/images/characters-angry-birds-141904.png" class="ml-3" height="45px"></a>
 <div id="r-alert-box" role="alert" style="position: absolute; top:0px"></div>
 
 <div class="container" id="container">
     <div class="form-container sign-up-container">
-        <form onsubmit="return false;" class="form-group" id="myform">
+        <form action="/seller" method="POST" class="form-group" id="myform" enctype="multipart/form-data">
             <h1>Create Account</h1>
             <div id="error_msg"></div>
             <input type="text" name="name" id="name" placeholder="Name" required>
@@ -12,7 +13,7 @@
             <input type="number" name="number" id="number" placeholder="Mobile number" required>
             <input type="password" name="password" id="password" placeholder="Password" required>
             <input type="password" name="password1" id="password1" placeholder="Confirm-password" required>
-
+            <input type="file" name="image" id="image">
             <button id="submit" onClick="validatePassword();">Sign Up</button>
         </form>
     </div>

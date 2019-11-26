@@ -1,11 +1,10 @@
 @import url("https://fonts.googleapis.com/css?family=Montserrat:400,800");
-
-*{
- box-sizing: border-box;
+* {
+    box-sizing: border-box;
 }
 
 body {
-    font-family: 'monteserrat',sans-serif;
+    font-family: "monteserrat", sans-serif;
     background: #f6f5f7;
     display: flex;
     flex-direction: column;
@@ -15,12 +14,12 @@ body {
     width: -20px 0 50px;
 }
 
-h1{
+h1 {
     font-weight: normal;
     margin: 0;
 }
 
-p{
+p {
     font-weight: 100;
     font-size: 14px;
     line-clamp: 20px;
@@ -28,28 +27,33 @@ p{
     margin: 20px 0 30px;
 }
 
-span{
+span {
     font-size: 12px;
 }
 
-a{
+a {
     color: #333333;
     font-size: 14px;
     text-decoration: none;
     margin: 15px 0;
 }
-a:hover{
+
+a:hover {
     text-decoration: none;
     outline: none;
     color: #333333;
 }
- input:focus{
-     outline: none;
- }
- /* ::placeholder{
+
+input:focus {
+    outline: none;
+}
+
+
+/* ::placeholder{
      font-size: 10px;
  } */
-.container{
+
+.container {
     background: #fff;
     border-radius: 10px;
     box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
@@ -57,9 +61,10 @@ a:hover{
     overflow: hidden;
     width: 768px;
     max-width: 100%;
-    height: 480px;
+    height: 530px;
 }
-.form-container form{
+
+.form-container form {
     background: #fff;
     display: flex;
     flex-direction: column;
@@ -70,16 +75,17 @@ a:hover{
     text-align: center;
 }
 
-.form-container input{
- background: #eeeeee;
- border: none;
- border-radius: 7px;
- width: 100%;
- margin: 8px 0;
- padding: 12px 15px;
- font-size: 13px;
+.form-container input {
+    background: #eeeeee;
+    border: none;
+    border-radius: 7px;
+    width: 100%;
+    margin: 8px 0;
+    padding: 12px 15px;
+    font-size: 13px;
 }
-button{
+
+button {
     border: 1px solid #ff4b2b;
     border-radius: 20px;
     background-color: #ff4b2b;
@@ -90,39 +96,41 @@ button{
     text-transform: uppercase;
     transition: transform 80ms ease-in;
 }
-button:active{
+
+button:active {
     transform: scale(0.95);
 }
 
-button:focus{
-   outline: none;
-} 
+button:focus {
+    outline: none;
+}
 
-button.transport{
+button.transport {
     background: transparent;
     border-color: #fff;
 }
-.form-container{
+
+.form-container {
     position: absolute;
     top: 0;
     height: 100%;
     transition: all 0.6 ease-in-out;
 }
 
-.sign-in-container{
+.sign-in-container {
     left: 0;
     width: 50%;
     z-index: 2;
 }
 
-.sign-up-container{
+.sign-up-container {
     left: 0;
     width: 50%;
     opacity: 0;
     z-index: 1;
 }
 
-.overlay-container{
+.overlay-container {
     position: absolute;
     top: 0;
     left: 50%;
@@ -133,9 +141,9 @@ button.transport{
     z-index: 100;
 }
 
-.overlay{
+.overlay {
     background: #ff416c;
-    background: linear-gradient(to right,#ff4b2b,#ff416c)no-repeat 0 0 / cover;
+    background: linear-gradient(to right, #ff4b2b, #ff416c) no-repeat 0 0 / cover;
     color: #fff;
     position: relative;
     left: -100%;
@@ -145,7 +153,7 @@ button.transport{
     transition: transform 0.6s ease-in-out;
 }
 
-.overlay-panel{
+.overlay-panel {
     position: absolute;
     top: 0;
     display: flex;
@@ -160,39 +168,44 @@ button.transport{
     transition: transform 0.6s ease-in-out;
 }
 
-.overlay-right{
+.overlay-right {
     right: 0;
     transform: translateX(0);
 }
 
-.overlay-left{
+.overlay-left {
     transform: translateX(0);
 }
 
+
 /* Animation */
+
 
 /* Move signIn to the right */
 
-.container.right-panel-active .sign-in-container{
+.container.right-panel-active .sign-in-container {
     transform: translateX(100%);
 }
 
+
 /* Move ovelay to left */
 
-.container.right-panel-active .overlay-container{
+.container.right-panel-active .overlay-container {
     transform: translateX(-100%);
 }
 
+
 /* Bring sign Up over sign In */
 
-.container.right-panel-active .sign-up-container{
+.container.right-panel-active .sign-up-container {
     transform: translateX(100%);
     opacity: 1;
     z-index: 5;
 }
 
+
 /* Move ovelay back to right */
 
-.container.right-panel-active .overlay{
+.container.right-panel-active .overlay {
     transform: translateX(50%);
 }
