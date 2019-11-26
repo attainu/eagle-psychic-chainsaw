@@ -1,23 +1,27 @@
 {{!-- section-1 --}}
 <div class="top-nav-bar">
+    <form action="/product-category/search" method="GET" class="inline">
+        <div class="search-box">
+            <a href="/"> <img src="https://i-love-png.com/images/characters-angry-birds-141904.png"
+                    class="ml-3 logo"></a>
+            <input type="text" class="form-control srch inline" name="searchText" required>
+            <button type="submit" class="input-group-text inline" id="search"><i class="fa fa-search"
+                    aria-hidden="true"></i></button>
+        </div>
 
-    <div class="search-box">
-        <a href="/"> <img src="https://i-love-png.com/images/characters-angry-birds-141904.png" class="ml-3 logo"></a>
-        <input type="text" class="form-control srch">
-        <span class="input-group-text"><i class="fa fa-search" aria-hidden="true"></i></span>
-    </div>
-    <div class="menu-bar">
-        <ul>
-            {{#if user}}
-            <li><a href="/user-profile">Profile</a></li>
-            <li><a href="/user-logout">Log Out</a></li>
-            {{else}}
-            <li><a href="/user-login">Log In & Sign Up</a></li>
-            {{/if}}
-            <li><a href="/cart"><i class="fa fa-shopping-cart fa-2x" aria-hidden="true"></i></a></li>
-        </ul>
+        <div class="menu-bar inline">
+            <ul class="inline">
+                {{#if user}}
+                <li><a href="/user-profile">Profile</a></li>
+                <li><a href="/user-logout">Log Out</a></li>
+                {{else}}
+                <li><a href="/user-login">Log In & Sign Up</a></li>
+                {{/if}}
+                <li><a href="/cart"><i class="fa fa-shopping-cart fa-2x" aria-hidden="true"></i></a></li>
+            </ul>
 
-    </div>
+        </div>
+    </form>
 </div>
 <section class="header">
     <div class="side-menu">
@@ -129,15 +133,17 @@
             </div>
         </a>
         <a href="/products?id=5ddae153eff8780d0b3ad364">
-            <div class="col-2 p-2 ml-4 mr-4">
-                <img class="rounded mb-1"
-                    src="https://assets.myntassets.com/h_1440,q_100,w_1080/v1/assets/images/productimage/2019/8/3/fdc9df32-731a-443a-bd1b-26bae4b91f4d1564771905977-1.jpg"
-                    alt="" height="320px" width="240px">
-                <div style="width: 230px;">
-                    <p class="mb-0"><b>ROMEE</b></p>
-                    <p class="disc mb-0">Red Solid Anti-Skid Bath Rugs</p>
-                    <p class="disc mb-2"><b>₹399</b></p>
-                </div>
+            <div class="col-2 p-2 ml-4 mr-5">
+                <a href="/products?id=5ddd08e074e21b0017780e77">
+                    <img class="rounded mb-1"
+                        src="https://assets.myntassets.com/h_1440,q_100,w_1080/v1/assets/images/2396685/2018/1/16/11516083186971-Romee-Red-Cotton-Bath-Mat-20-x-32-Set-of-1-5441516083186871-1.jpg"
+                        alt="" height="320px" width="240px">
+                    <div style="width: 170px;">
+                        <p class="mb-0"><b>Romee</b></p>
+                        <p class="disc mb-0">Textured Rectangular Rug</p>
+                        <p class="disc mb-2"><b>₹329</b></p>
+                    </div>
+                </a>
             </div>
         </a>
     </div>
