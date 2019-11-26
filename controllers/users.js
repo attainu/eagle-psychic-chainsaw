@@ -82,12 +82,11 @@ Controller.user_update = function (req, res) {
         if (!user) {
             return res.status(400).send("No user found");
         }
-        return req.session.save(function (err) {
-            req.session.reload(function (err) {
-                req.session.user = user;
-                res.status(200).redirect('/user-profile');
-            })
+        req.session.save(function (err) {
+            req.session.user = user;
+
         })
+        setTimeout(function () { return res.status(200).redirect('/user-profile'); }, 500);
 
     })
 }
@@ -151,12 +150,12 @@ Controller.cart = function (req, res) {
             return res.status(400).send("No user found");
         }
         req.session.save(function (err) {
-            req.session.reload(function (err) {
-                req.session.user = user;
-                if (req.body.cart) return res.status(200).redirect('/cart');
-                return res.status(200).redirect('back')
-            })
+            req.session.user = user;
+
         })
+
+        if (req.body.cart) return res.status(200).redirect('/cart');
+        return res.status(200).redirect('back')
     })
 }
 
@@ -180,9 +179,7 @@ Controller.order = function (req, res) {
                 }
             })
             req.session.save(function (err) {
-                req.session.reload(function (err) {
-                    req.session.user = user;
-                })
+                req.session.user = user;
             })
         })
     })
@@ -198,19 +195,13 @@ Controller.cart_delete = function (req, res) {
     var cart_id = req.query.id;
     var id = req.session.user._id
     Users.register.findByIdAndUpdate(id, { $pull: { cart: { $in: [cart_id] } } }, function (err, user) {
-        if (err) {
-            return res.status(500).send(err);
-        }
-        if (!user) {
-            return res.status(400).send("Wrong ID");
-        }
         req.session.save(function (err) {
-            req.session.reload(function (err) {
-                req.session.user = user;
-                return res.status(200).redirect('/cart');
-            })
-        })
-        return
+            req.session.user = user;
+
+
+        }
+        )
+        setTimeout(function () { return res.status(200).redirect('/cart') }, 500);
     })
 }
 
