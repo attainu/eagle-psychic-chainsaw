@@ -22,6 +22,9 @@ var usersSchema = new Schema({
     password: { type: String, required: true },
     gender: String,
     dob: String,
+    image: {
+        type: String
+    },
     cart: [{
         type: Schema.Types.ObjectId,
         ref: 'product'
@@ -61,15 +64,15 @@ Users.address = db('Address', userAddress, 'address');
 //middleware verification model
 Users.verify = function (req, cb) {
     if (req.originalUrl === '/user-profile' ||
-        req.originalUrl === '/cart' 
+        req.originalUrl === '/cart'
     ) {
         if (typeof req.session.user === "undefined" && typeof req.session.data === "undefined") {
             return cb(null, true)
-        }else {
+        } else {
             return cb(true);
         }
-        
-    }else {
+
+    } else {
         return cb(true);
     }
 

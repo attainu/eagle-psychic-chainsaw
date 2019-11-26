@@ -1,22 +1,26 @@
 <div class="top-nav-bar">
+    <form action="/product-category/search" method="GET" class="inline">
+        <div class="search-box">
+            <a href="/"> <img src="https://i-love-png.com/images/characters-angry-birds-141904.png"
+                    class="ml-3 logo"></a>
+            <input type="text" class="form-control srch inline" name="searchText" required>
+            <button type="submit" class="input-group-text inline" id="search"><i class="fa fa-search"
+                    aria-hidden="true"></i></button>
+        </div>
 
-    <div class="search-box">
-        <a href="/"> <img src="https://i-love-png.com/images/characters-angry-birds-141904.png" class="ml-3 logo"></a>
-        <input type="text" class="form-control srch">
-        <span class="input-group-text"><i class="fa fa-search" aria-hidden="true"></i></span>
-    </div>
-    <div class="menu-bar">
-        <ul>
-            {{#if user}}
-            <li><a href="/user-profile">Profile</a></li>
-            <li><a href="/user-logout">Log Out</a></li>
-            {{else}}
-            <li><a href="/user-login">Log In & Sign Up</a></li>
-            {{/if}}
-            <li><a href="/cart"><i class="fa fa-shopping-cart fa-2x" aria-hidden="true"></i></a></li>
-        </ul>
+        <div class="menu-bar inline">
+            <ul class="inline">
+                {{#if user}}
+                <li><a href="/user-profile">Profile</a></li>
+                <li><a href="/user-logout">Log Out</a></li>
+                {{else}}
+                <li><a href="/user-login">Log In & Sign Up</a></li>
+                {{/if}}
+                <li><a href="/cart"><i class="fa fa-shopping-cart fa-2x" aria-hidden="true"></i></a></li>
+            </ul>
 
-    </div>
+        </div>
+    </form>
 </div>
 
 <div class="container">
@@ -25,9 +29,8 @@
 
         <div class="col-md-4">
             <div>
-                <img class="rounded-circle img"
-                    src="https://www.pngfind.com/pngs/m/110-1102775_download-empty-profile-hd-png-download.png"
-                    alt="Avatar">
+                <img class="rounded-circle img" src="{{user.image}}" alt="Put Image Here">
+                <button type="submit" class="btn btn1" data-toggle="modal" data-target=".bd-example-modal-lg">+</button>
             </div>
         </div>
         <div class="col-md-5">
@@ -87,4 +90,27 @@
     </div>
     {{/if}}
     {{/each}}
+    <!-- Large modal -->
+
+
+    <div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="jumbotron w-50 mx-auto">
+                    <h4 class="text-center">Upload Profile Picture</h4>
+                    <form action="/user-image" method="POST" enctype="multipart/form-data">
+                        <div class="input-group">
+                            <div class="custom-file">
+                                <input type="file" class="custom-file-input" id="inputGroupFile01"
+                                    aria-describedby="inputGroupFileAddon01" name="user-image">
+                                <label class="custom-file-label" for="inputGroupFile01">Choose file</label>
+                            </div>
+                        </div><br>
+                        <input type="submit" class="btn btn-primary" value="Submit" style="margin-left: 130px ;">
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
