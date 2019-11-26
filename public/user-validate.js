@@ -27,21 +27,24 @@ $(document).ready(function() {
         id: id
       },
       dataType: "json",
-      success: function(data) {
-        // if (data.flag == true) {
-        //   $("<p/>")
-        //     .text("Succefully Login")
-        //     .addClass("alert alert-primary mt-4")
-        //     .appendTo("#r-alert-box");
-        //   setTimeout(function() {
-        //     $(location).attr("href", "/");
-        //   }, 1000);
-        // } else {
-        //   $("<p/>")
-        //     .text("Wrong Username or Password")
-        //     .addClass("alert alert-danger mt-4")
-        //     .appendTo("#r-alert-box");
-        // }
+      success: function (data) {
+      },
+      error: function () { }
+    });
+  });
+
+  //Delete from cart
+  $("#delete").on("click", function () {
+    var id = $("#productId").val();
+
+    $.ajax({
+      method: "POST",
+      url: "/cart-delete",
+      data: {
+        id: id
+      },
+      dataType: "json",
+      success: function (data) {
       },
       error: function() {}
     });
