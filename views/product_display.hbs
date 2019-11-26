@@ -116,8 +116,10 @@
 				</div><br><br>
 				<form>
 					<label for="lname"><Strong>Delivery</Strong></label>
-					<input type="number" id="lname" name="lname" placeholder="Enter Pincode to Check">
-					<button type="button" class="btn btn-outline-info btn-sm">Check</button>
+					<input type="number" id="pincode" placeholder="Enter Pincode to Check">
+					<button type="button" class="btn btn-outline-info btn-sm" id="checkPincode"
+						onclick="check();">Check</button>
+					<p id="pincodeResult"></p>
 				</form><br><br><br>
 				<div class="features">
 					<h4 align="center">Highlights

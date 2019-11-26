@@ -92,4 +92,11 @@ $(document).ready(function() {
   });
 
   /*----------------------if email is registerd or not---------------------------*/
+
+  $("#CheckPincode").click(function() {
+    alert("hi");
+    var pass = $("#pincode").val();
+    console.log(pass);
+    console("gi");
+  });
 });
