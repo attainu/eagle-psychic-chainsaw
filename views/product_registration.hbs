@@ -12,19 +12,19 @@
 						<div class="col-lg-6">
 							<label>Product Name</label>
 							<input type="text" name="productName" id="name" class="form-control"
-								placeholder="Enter Product Name">
+								placeholder="Enter Product Name" required>
 						</div>
 						<div class="col-lg-6">
 							<label>Product Serial Number</label>
 							<input type="Number" name="productSerialNumber" id="number" class="form-control"
-								placeholder="Enter Serial Number">
+								placeholder="Enter Serial Number" required>
 						</div>
 					</div><br>
 					<div class="row">
 						<div class="col-lg-6">
 							<label>Product Sub Category</label>
                             <div class="input-group">
-								<select name="productCategory" id="category" class="custom-select">
+								<select name="productCategory" id="category" class="custom-select" required>
 									<option>Choose...</option>
 									<option value="Mobiles">Mobile</option>
 									<option value="Laptops">Laptop</option>
@@ -32,6 +32,7 @@
 									<option value="Camera">Camera</option>
 									<option value="Men's">Men's</option>
 									<option value="Women's">Women's</option>
+									<option value="Bags">Bags</option>
 									<option value="Decor">Decoration</option>
 									<option value="Cookware">Cookware</option>
 									<option value="Furniture">Furniture</option>
@@ -43,14 +44,14 @@
 						<div class="col-lg-6">
 							<label>MRP</label>
 							<input type="Number" name="productPrice" id="price" class="form-control"
-								placeholder="Enter MRP of the Product">
+								placeholder="Enter MRP of the Product" required>
 						</div>
 					</div><br>
 					<div class="row">
 						<div class="col-lg-6">
 							<label>Product Category</label>
 							  <div class="input-group">
-								<select name="productDescription" id="product" class="custom-select">
+								<select name="productDescription" id="product" class="custom-select" required>
 									<option>Choose...</option>
 									<option value="Electronics">Electronics</option>
 									<option value="Fashion">Fashion</option>
@@ -62,19 +63,19 @@
 						</div>
 						<div class="col-lg-6">
 							<label>Choose Manufacturing Date</label>
-							<input type="Date" name="productionDate" id="date" class="form-control">
+							<input type="Date" name="productionDate" id="date" class="form-control" required>
 						</div>
 					</div><br>
 					<div class="row">
 						<div class="col-lg-6">
 							<label>Paste Your Image Url</label>
 							<input type="url" name="productImage" id="image" class="form-control"
-								placeholder="Image url">
+								placeholder="Image url" required>
 						</div>
 						<div class="col-lg-6">
 							<label> Product Feature1</label>
 							<input type="text" name="productHighlights1" id="feature1" class="form-control"
-								placeholder="write something about product">
+								placeholder="write something about product" required>
 						</div>
 					</div><br>
 					<div class="row">

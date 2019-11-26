@@ -25,4 +25,26 @@ router.get('/', (req, res, next) => {
         })
 })
 
+router.get('/all', (req, res, next) => {
+    Product.find()
+        .exec()
+        .then(docs => {
+            return res.render('product-category', {
+                title: 'E-Commerce Website',
+                css: 'style.css',
+                href: '../../public/homepage.css',
+                products: docs,
+                category: "All Products",
+                user: req.session.user
+            });
+
+        })
+        .catch(err => {
+            console.log(err);
+            res.status(500).json({
+                Error: err
+            })
+        })
+})
+
 module.exports = router;

@@ -23,7 +23,7 @@
         <div class="col mt-3 mx-auto">
             <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"
                 placeholder="Address(Area and Street)" name="user_address"
-                class="form">{{#if flag}}{{address.user_address}} {{/if}}</textarea>
+                class="form" required>{{#if flag}}{{address.user_address}} {{/if}}</textarea>
         </div>
     </div>
 
@@ -44,7 +44,7 @@
         </div>
         <div class="col mt-3 mx-auto">
             <div class="input-group mb-3 ">
-                <select class="custom-select form" name="state" id="inputGroupSelect">
+                <select class="custom-select form" name="state" id="inputGroupSelect" required>
                     <option selected>{{#if flag}}{{address.state}} {{else}} Select State {{/if}}</option>
                     <option value="Andhra Pradesh">Andhra Pradesh</option>
                     <option value="Assam">Assam</option>
@@ -93,8 +93,8 @@
 
     <h3 class="mt-2">Address Type</h3>
     <div class="form-row">
-        <label class="form-radio">Home
-            <input type="radio" name="add_type" value="Home">
+        <label class="form-radio" >Home
+            <input type="radio" name="add_type" value="Home" required>
             <span class="checkmark"></span>
         </label>
         <label class="form-radio">Work

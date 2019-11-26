@@ -1,0 +1,90 @@
+<div class="top-nav-bar">
+
+    <div class="search-box">
+        <a href="/"> <img src="https://i-love-png.com/images/characters-angry-birds-141904.png" class="ml-3 logo"></a>
+        <input type="text" class="form-control srch">
+        <span class="input-group-text"><i class="fa fa-search" aria-hidden="true"></i></span>
+    </div>
+    <div class="menu-bar">
+        <ul>
+            {{#if user}}
+            <li><a href="/user-profile">Profile</a></li>
+            <li><a href="/user-logout">Log Out</a></li>
+            {{else}}
+            <li><a href="/user-login">Log In & Sign Up</a></li>
+            {{/if}}
+            <li><a href="/cart"><i class="fa fa-shopping-cart fa-2x" aria-hidden="true"></i></a></li>
+        </ul>
+
+    </div>
+</div>
+
+<div class="container">
+
+    <div class="row mt-5 mb-5 my-list jumbotron">
+
+        <div class="col-md-4">
+            <div>
+                <img class="rounded-circle img"
+                    src="https://www.pngfind.com/pngs/m/110-1102775_download-empty-profile-hd-png-download.png"
+                    alt="Avatar">
+            </div>
+        </div>
+        <div class="col-md-5">
+            <div>
+                <h1>User Information</h1>
+                <input class="input-field input-box" type="text" placeholder="User Name" name="usrnm" readonly="true"
+                    id="userdetail" value="{{user.username}}"><br>
+                <input class="input-field input-box" type="text" placeholder="User Email" name="email" readonly="true"
+                    id="userdetail" value="{{user.email}}"><br>
+                <input class="input-field input-box" type="text" placeholder="User Phone Number" name="phonenumber"
+                    readonly="true" id="userdetail" value="{{user.mobile_number}}"><br>
+                <input class="input-field input-box" type="text" placeholder="User Gender" name="gender" readonly="true"
+                    id="userdetail" value="{{user.gender}}"><br>
+                <input class="input-field input-box" type="text" placeholder="User Date of Birth" name="dob"
+                    readonly="true" id="userdetail" value="{{user.dob}}"><br><br>
+            </div>
+        </div>
+        <div class="col-md-3 m-auto text-white">
+            <a href="/user-update-form" class=" text-white btn user-btn color-gradient mt-3 mb-2">Edit Profie</a><br>
+            <a href="/cart" class="btn color-gradient text-white user-btn  mb-2">Your Cart</a><br>
+            <a href="#" class="btn color-gradient user-btn text-white mb-2">Order History</a>
+            <form action="/user-delete" method="POST" class="">
+                <button type="submit" class="btn user-btn text-white color-gradient ">
+                    Delete Profile
+                </button>
+            </form>
+        </div>
+    </div>
+</div>
+
+
+<div class="container mt-5">
+    <div class="row mb-2">
+        <div class="col-9">
+            <h4 class=""><b>Orders History</b></h4>
+        </div>
+        <div class="col-3">
+            <h5 class=""><b>Total Expenditure : {{total}}</b></h5>
+        </div>
+    </div>
+    {{#each product.order_history}}
+    {{#if this.productName}}
+    <div class="row" style="margin-left: 250px;">
+        <div class="col-8  list-box p-2 jumbotron">
+            <img class="rounded img-box" src="{{this.productImage}}" alt="" height="230px" width="173px">
+            {{!-- <div class="float-right mt-4 mr-5"><b>₹{{this.productPrice}}</b></div> --}}
+            <div class="desc ml-4">
+                <p class="mb-0"><b>{{this.productName}}</b></p>
+                <p class="disc mb-0">{{this.productHighlights1}}</p>
+                <p class="disc mb-0">{{this.productHighlights2}}</p>
+                <p class="disc">{{this.productHighlights3}}</p>
+                <br><br><br>
+            </div>
+            <div class="bottom-right"><b>₹{{this.productPrice}}</b></a>
+            </div>
+        </div>
+    </div>
+    {{/if}}
+    {{/each}}
+</div>
