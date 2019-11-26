@@ -14,7 +14,7 @@ app.use("/public", express.static("public"));
 const hbs = exphbs.create({
   extname: ".hbs",
   helpers: {
-    inc: function(value, option) {
+    inc: function (value, option) {
       return parseInt(value) + 1;
     }
   }
@@ -75,12 +75,12 @@ app.use("/public", express.static("public"));
 let db = mongoose.connection;
 
 // check DB connection
-db.once("open", function() {
+db.once("open", function () {
   console.log("connected to mongodb");
 });
 
 //check for DB errors
-db.on("error", function(err) {
+db.on("error", function (err) {
   console.log(err);
 });
 
@@ -149,14 +149,14 @@ app.post("/user-address", user.Controller.address_add);
 app.post("/user-address-update", user.Controller.address_update);
 app.post("/user-address-delete", user.Controller.address_delete);
 app.get("/cart-delete", user.Controller.cart_delete);
-app.get("/order-history", user.Controller.order_get);
+app.get("/order-history", pageController.order_history);
 app.get("/order", user.Controller.order);
 
 // User Profile
 app.get("/user-profile", pageController.user_profile);
 
 // Order History
-app.get("/order-history", pageController.order_history);
+// app.get("/order-history", pageController.order_history);
 
 // Address From Page
 app.get("/address-form", pageController.add_form);
@@ -168,9 +168,9 @@ app.get("/product_registration", pageController.product_registration);
 
 //Port
 app
-  .listen(PORT, HOST, function() {
+  .listen(PORT, HOST, function () {
     console.log("Started : ", PORT);
   })
-  .on("error", function() {
+  .on("error", function () {
     console.log("Unable To Start App >>>");
   });

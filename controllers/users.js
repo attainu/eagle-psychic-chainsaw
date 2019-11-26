@@ -55,7 +55,6 @@ Controller.user_signin = function (req, res) {
 // ---------------------------------------------------------Delete User---------------------------------------------------------//
 Controller.user_delete = function (req, res) {
     var data = req.session.user;
-    console.log(data);
     Users.register.findByIdAndRemove(data._id, function (err, user) {
         if (err) {
             return res.status(500).send(err);
@@ -75,7 +74,6 @@ Controller.user_delete = function (req, res) {
 //-----------------------------------------------------Update User------------------------------------------------------//
 Controller.user_update = function (req, res) {
     var id = req.session.user._id;
-    console.log(req.session.user)
     var data = req.body
     Users.register.findByIdAndUpdate(id, { $set: data }, { multi: true, new: true }, function (err, user) {
         if (err) {
@@ -84,7 +82,6 @@ Controller.user_update = function (req, res) {
         if (!user) {
             return res.status(400).send("No user found");
         }
-        console.log(user)
         return req.session.save(function (err) {
             req.session.reload(function (err) {
                 req.session.user = user;
@@ -128,7 +125,6 @@ Controller.order_get = function (req, res) {
             };
 
             async.each(docs, iter, function done(err) {
-
                 res(null, docs);
             });
         });
@@ -154,7 +150,6 @@ Controller.cart = function (req, res) {
         if (!user) {
             return res.status(400).send("No user found");
         }
-        console.log(user)
         req.session.save(function (err) {
             req.session.reload(function (err) {
                 req.session.user = user;
@@ -169,7 +164,6 @@ Controller.cart = function (req, res) {
 Controller.order = function (req, res) {
     var id = req.session.user._id;
     req.session.user.cart.forEach(function (product) {
-        console.log(product)
         Users.register.findByIdAndUpdate(id, { $push: { order_history: product } }, { multi: true, new: true }, function (err, user) {
             if (err) {
                 return res.status(500).send(err);
@@ -192,8 +186,8 @@ Controller.order = function (req, res) {
             })
         })
     })
-    setTimeout(function(){ return res.status(200).redirect('/cart')}, 1500);
-    
+    setTimeout(function () { return res.status(200).redirect('/cart') }, 1500);
+
 
 
 }
@@ -254,7 +248,6 @@ Controller.address_get = function (req, res) {
             };
 
             async.each(docs, iter, function done(err) {
-                console.log(docs)
                 res(null, docs);
             });
         });
@@ -304,6 +297,14 @@ Controller.address_delete = function (req, res) {
         if (!user) {
             return res.status(400).send("Wrong ID");
         }
+        Users.register.findByIdAndUpdate(id, { $pull: { address: { $in: [id] } } }, function (err, user) {
+            if (err) {
+                return res.status(500).send(err);
+            }
+            if (!user) {
+                return res.status(400).send("Wrong ID");
+            }
+        })
 
         return res.status(200).redirect('/user-profile');
     })
@@ -336,8 +337,6 @@ Controller.address_add = function (req, res) {
                     if (!user) {
                         console.log("No user found");
                     }
-
-                    console.log(user);
                 })
             return res.status(200).redirect('/user-profile');
         })
