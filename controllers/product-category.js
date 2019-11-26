@@ -47,4 +47,61 @@ router.get('/all', (req, res, next) => {
         })
 })
 
+router.get('/search', (req, res) => {
+    // console.log(req)
+    // var search = req.query.searchText.charAt(0).toUpperCase() + req.query.searchText.slice(1);
+    // var SEARCH = req.query.searchText.toUpperCase()
+    // Product.find({
+    //     $or: [
+    //         { productCategory: search},
+    //         { productDescription: search },
+    //         { productName: search},
+    //         { productCategory: SEARCH},
+    //         { productDescription: SEARCH },
+    //         { productName: SEARCH} ]
+    // })
+    //     .exec()
+    //     .then(docs => {
+    //         return res.render('product-category', {
+    //             title: 'E-Commerce Website',
+    //             css: 'style.css',
+    //             href: '../../public/homepage.css',
+    //             products: docs,
+    //             category: search,
+    //             user: req.session.user
+    //         });
+
+    //     })
+    //     .catch(err => {
+    //         console.log(err);
+    //         res.status(500).json({
+    //             Error: err
+    //         })
+    //     })
+    var search = req.query.searchText;
+    Product.find({
+        $or: [{ productCategory: new RegExp('^' + search + '$', "i") },
+        { productName: new RegExp('^' + search + '$', "i") },
+        { productDescription: new RegExp('^' + search + '$', "i") }]
+    })
+        .exec()
+        .then(docs => {
+            return res.render('product-category', {
+                title: 'E-Commerce Website',
+                css: 'style.css',
+                href: '../../public/homepage.css',
+                products: docs,
+                category: search,
+                user: req.session.user
+            });
+
+        })
+        .catch(err => {
+            console.log(err);
+            res.status(500).json({
+                Error: err
+            })
+        })
+})
+
 module.exports = router;
