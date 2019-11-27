@@ -25,7 +25,9 @@ const SellerSchema = new mongoose.Schema(
       required: true
     },
     image: {
-      type: String
+      type: String,
+      default:
+        "https://images.all-free-download.com/images/graphiclarge/harry_potter_icon_6825007.jpg"
     },
     product: [
       {
