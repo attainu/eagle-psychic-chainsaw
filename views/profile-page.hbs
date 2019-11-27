@@ -53,7 +53,7 @@
             <a href="/cart" class="btn color-gradient text-white user-btn  mb-2">Your Cart</a><br>
             <a href="/order-history" class="btn color-gradient user-btn text-white mb-2">Order History</a>
             <form action="/user-delete" method="POST" class="">
-                <button type="submit" class="btn user-btn text-white color-gradient ">
+                <button type="submit" class="btn user-btn text-white color-gradient" data-toggle="modal" data-target=".delete">
                     Delete Profile
                 </button>
             </form>
@@ -169,6 +169,15 @@
                         <input type="submit" class="btn btn-primary" value="Submit" style="margin-left: 130px ;">
                     </form>
                 </div>
+            </div>
+        </div>
+    </div>
+    <!-- Small modal -->
+    <div class="modal fade delete bd-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog modal-sm text-center">
+            <div class="modal-content jumbotron">
+                Profile Deleted Successfully
             </div>
         </div>
     </div>

@@ -59,7 +59,7 @@
 				<div class="btn5">
 					<form onsubmit="return false;" class="form-group inline" id="addtocart">
 						<input type="text" id="addToCart" name="id" value="{{product._id}}" style="display: none">
-						<button type="submit" class="btn btn-danger btn-lg btn-rounded waves-effect" id="btn6 "
+						<button type="submit" class="btn btn-danger btn-lg btn-rounded waves-effect text-white" id="btn6 "
 							data-toggle="modal" data-target=".bd-example-modal-sm">
 							ADD TO CART
 						</button>
@@ -67,7 +67,7 @@
 					<form action="/cart" method="POST" class="inline">
 						<input type="text" name="id" value="{{product._id}}" style="display: none">
 						<input type="text" name="cart" value="true" style="display: none">
-						<button type="submit" class="btn btn-warning btn-lg btn-rounded waves-effect" id="btn7 ">BUY
+						<button type="submit" class="btn btn-warning btn-lg btn-rounded waves-effect text-white" id="btn7 ">BUY
 							NOW</button><br><br><br><br>
 					</form>
 					<div>
@@ -141,6 +141,100 @@
 		</div>
 	</div>
 </div>
+<!-- Footer -->
+<footer class="jumbotron mb-0 page-footer font-small blue-grey lighten-5">
+	<!-- Footer Links -->
+	<div class="container text-center text-md-left mt-5">
+
+		<!-- Grid row -->
+		<div class="row mt-3 dark-grey-text">
+
+			<!-- Grid column -->
+			<div class="col-md-3 col-lg-4 col-xl-3 mb-4">
+
+				<!-- Content -->
+				<h6 class="text-uppercase font-weight-bold">Company name</h6>
+				<hr class="teal accent-3 mb-4 mt-0 d-inline-block mx-auto" style="width: 60px;">
+				<p class="text-sm-left">Hope you liked our shopping web site do shopping on our website we will
+					provide
+					great offers and cashbacks and we also have events you can participate and win.
+					Hope you enjoy shoping with us.If any concerns please feel free to contact Us.</p>
+
+			</div>
+			<!-- Grid column -->
+
+			<!-- Grid column -->
+			<div class="col-md-2 col-lg-2 col-xl-2 mx-auto mb-4">
+
+				<!-- Links -->
+				<h6 class="text-uppercase font-weight-bold">Products</h6>
+				<hr class="teal accent-3 mb-4 mt-0 d-inline-block mx-auto" style="width: 60px;">
+				<p>
+					<a href="/product-category?id=Men's" class="dark-grey-text">Men's Wear </a>
+				</p>
+				<p>
+					<a href="/product-category?id=Women's" class="dark-grey-text">Women's Wear</a>
+				</p>
+				<p>
+					<a href="/product-category?id=Mobiles" class="dark-grey-text">Mobile</a>
+				</p>
+				<p>
+					<a href="/product-category?id=Laptops" class="dark-grey-text">Laptops</a>
+				</p>
+
+			</div>
+			<!-- Grid column -->
+
+			<!-- Grid column -->
+			<div class="col-md-3 col-lg-2 col-xl-2 mx-auto mb-4">
+
+				<!-- Links -->
+				<h6 class="text-uppercase font-weight-bold">Useful links</h6>
+				<hr class="teal accent-3 mb-4 mt-0 d-inline-block mx-auto" style="width: 60px;">
+				<p>
+
+					<a class="dark-grey-text" href={{#if user}}"/user-profile"{{else}}"/user-login"{{/if}}>User
+						Account</a> </p> <p>
+						{{#if seller}}<a class="dark-grey-text" href="/seller-profile">Sell Your Product with Us</a>
+						{{else}}<a class="dark-grey-text" href="/seller-login">Sell Your Product with Us</a>{{/if}}
+				</p>
+				<p>
+					<a class="dark-grey-text" href={{#if seller}}"/seller-profile"{{else}}"/seller-login"{{/if}}>Seller
+						Account</a> </p> <p>
+						<a class="dark-grey-text">Become an Affiliate</a>
+				</p>
+				<p>
+					<a class="dark-grey-text">Help</a>
+				</p>
+
+			</div>
+			<!-- Grid column -->
+
+			<!-- Grid column -->
+			<div class="col-md-4 col-lg-3 col-xl-3 mx-auto mb-md-0 mb-4">
+
+				<!-- Links -->
+				<h6 class="text-uppercase font-weight-bold">Contact Us</h6>
+				<hr class="teal accent-3 mb-4 mt-0 d-inline-block mx-auto" style="width: 60px;">
+				<p>
+					<i class="fa fa-home fa-2x mr-3"></i> New delhi, ND 10012, IND</p>
+				<p>
+					<i class="fa fa-envelope fa-2x mr-3"></i> info@example.com</p>
+				<p>
+					<i class="fa fa-phone fa-2x mr-3"></i> + 01 234 567 88</p>
+				<p>
+					<i class="fa fa-print fa-2x mr-3"></i> + 01 234 567 89</p>
+
+			</div>
+			<!-- Grid column -->
+
+		</div>
+		<!-- Grid row -->
+
+	</div>
+	<!-- Footer Links -->
+</footer>
+<!-- Footer -->
 {{!-- <div class="container">
 	<div class="row">
 		<div class="col">
@@ -180,13 +274,13 @@
 <!-- Small modal -->
 <div class="modal fade bd-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel"
 	aria-hidden="true">
-	<div class="modal-dialog modal-sm">
+	<div class="modal-dialog modal-sm text-center">
 		<div class="modal-content jumbotron">
 			{{#if user}}Added To Cart{{else}}First Login{{/if}}
 		</div>
 	</div>
 </div>
-<script src="https://code.jquery.com/jquery-3.4.1.min.js"
+{{!-- <script src="https://code.jquery.com/jquery-3.4.1.min.js"
 	integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
 	integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
@@ -196,4 +290,4 @@
 	crossorigin="anonymous"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
 	integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
-	crossorigin="anonymous"></script>
+	crossorigin="anonymous"></script> --}}

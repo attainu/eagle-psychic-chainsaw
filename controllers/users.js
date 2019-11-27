@@ -98,7 +98,7 @@ Controller.user_delete = function (req, res) {
         }
         req.session.destroy(function (err) {
             res.clearCookie("user-login");
-            res.redirect('/');
+            setTimeout(function () { res.redirect('/'); }, 1500)
         });
 
     })
@@ -212,7 +212,8 @@ Controller.order = function (req, res) {
                 }
             })
             req.session.save(function (err) {
-                req.session.user = user;
+                req.session.reload(function (err) { req.session.user = user; })
+
             })
         })
     })
