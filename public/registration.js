@@ -67,4 +67,27 @@ $(document).ready(function() {
   $("#container").click(function() {
     $("#r-alert-box").empty();
   });
+  /*-------------ajax for pincode-----------------------*/
+  $("#checkPincode").click(function() {
+    var zipcode = $("#pincode").val();
+    $.ajax({
+      method: "GET",
+      url: "https://form-api.com/api/geo/country/zip",
+      data: {
+        key: "BrtZ8haMXbhDbcZQtKH5",
+        country: "IN",
+        zipcode: zipcode
+      },
+      dataType: "json",
+      success: function(data) {
+        $("#placeResult")
+          .text(data.result.city)
+          .addClass("fa fa-map-marker")
+          .css("color", "blue");
+      },
+      error: function(error) {
+        console.log(error);
+      }
+    });
+  });
 });
