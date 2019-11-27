@@ -208,7 +208,7 @@ Controller.cart = function (req, res) {
             });
 
             if (req.body.cart) return res.status(200).redirect("/cart");
-            return res.status(200).redirect("back");
+            setTimeout(function () { return res.status(200).redirect("back"); }, 1500);
         }
     );
 };
@@ -216,49 +216,45 @@ Controller.cart = function (req, res) {
 //---------------------------------------------------Add Product in User Order_History DB------------------------------------------------------//
 Controller.order = function (req, res) {
     var id = req.session.user._id;
-    req.session.user.cart.forEach(function (product) {
-        Users.register.findByIdAndUpdate(
-            id,
-            { $push: { order_history: product } },
-            { multi: true, new: true },
-            function (err, user) {
-                if (err) {
-                    return res.status(500).send(err);
-                }
-                if (!user) {
-                    return res.status(400).send("No user found");
-                }
-                Users.register.findByIdAndUpdate(
-                    id,
-                    { $pull: { cart: { $in: [product] } } },
-                    function (err, user) {
-                        if (err) {
-                            return res.status(500).send(err);
-                        }
-                        if (!user) {
-                            return res.status(400).send("Wrong ID");
-                        }
-                        Users.register.findByIdAndUpdate(id, { $pull: { cart: { $in: [product] } } }, function (err, user) {
-                            if (err) {
-                                return res.status(500).send(err);
-                            }
-                            if (!user) {
-                                return res.status(400).send("Wrong ID");
-                            }
-                        })
-                        req.session.save(function (err) {
-                            req.session.reload(function (err) { req.session.user = user; })
+    var product = req.session.user.cart;
+    console.log(product)
+    Users.register.findByIdAndUpdate(
+        id,
+        { $push: { order_history: { $each: product } } },
+        { multi: true, new: true },
+        function (err, user) {
+            if (err) {
+                console.log(err);
+            }
+            if (!user) {
+                console.log("No user found");
+            }
+        })
+    Users.register.findByIdAndUpdate(
+        id,
+        { $set: { cart: [] } },
+        function (err, user) {
+            if (err) {
+                console.log(err);
+            }
+            if (!user) {
+                console.log("Wrong ID");
+            }
+            req.session.save(function (err) {
+                req.session.reload(function (err) { req.session.user = user; })
 
-                        })
-                    })
             })
-        setTimeout(function () { return res.status(200).redirect('/cart') }, 1500);
-
-
-
-    })
+        })
+    setTimeout(function () { return res.status(200).redirect('/cart') }, 1500)
 }
 
+
+
+/*
+const myCart = await findById --> user. populate (cart)
+ await findByIdAndUpdate --> order-hisory (push)
+            await findByIdU --> pull items from carts
+*/
 
 //---------------------------------------------------------Delete Cart Product------------------------------------------------------//
 Controller.cart_delete = function (req, res) {
