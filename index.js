@@ -176,6 +176,6 @@ app
   .listen(PORT, HOST, function() {
     console.log("Started : ", PORT);
   })
-  .on("error", function() {
-    console.log("Unable To Start App >>>");
+  .on("error", function(err) {
+    console.log("Unable To Start App >>>", err);
   });
