@@ -23,8 +23,8 @@ var usersSchema = new Schema({
     gender: String,
     dob: String,
     image: {
-        type: String, 
-        default:"https://www.pngfind.com/pngs/m/110-1102775_download-empty-profile-hd-png-download.png"
+        type: String,
+        default: "https://www.pngfind.com/pngs/m/110-1102775_download-empty-profile-hd-png-download.png"
     },
     cart: [{
         type: Schema.Types.ObjectId,
@@ -65,7 +65,13 @@ Users.address = db('Address', userAddress, 'address');
 //middleware verification model
 Users.verify = function (req, cb) {
     if (req.originalUrl === '/user-profile' ||
-        req.originalUrl === '/cart'
+        req.originalUrl === '/cart' ||
+        req.originalUrl === '/user-update-form' ||
+        req.originalUrl === '/user-logout' ||
+        req.originalUrl === '/cart-delete' ||
+        req.originalUrl === '/order-history' ||
+        req.originalUrl === '/order' ||
+        req.originalUrl === '/address-form'
     ) {
         if (typeof req.session.user === "undefined" && typeof req.session.data === "undefined") {
             return cb(null, true)
