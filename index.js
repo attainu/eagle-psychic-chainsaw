@@ -155,6 +155,7 @@ app.post("/user-address-delete", user.Controller.address_delete);
 app.get("/cart-delete", user.Controller.cart_delete);
 app.get("/order-history", pageController.order_history);
 app.get("/order", user.Controller.order);
+app.post("/user-image", upload.single("user-image"), user.Controller.user_image);
 
 // User Profile
 app.get("/user-profile", pageController.user_profile);

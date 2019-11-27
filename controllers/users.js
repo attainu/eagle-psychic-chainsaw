@@ -1,7 +1,43 @@
 const Controller = {};
 const async = require("async");
+const cloudinary = require("cloudinary");
 var Users = require("../models/Users-db");
 var Product = require("../models/Products.js");
+
+//------------------------------------------------------User Image------------------------------------------------------//
+cloudinary.config({
+  cloud_name: "salmanahmed",
+  api_key: "128317469375351",
+  api_secret: "mRpKkK9ljiCjEdbKp9TAcc3d93o"
+});
+var imageResult;
+Controller.user_image = async function(req, res) {
+  await cloudinary.v2.uploader.upload(req.file.path, function(error, res1) {
+    console.log("error", error);
+    imageResult = res1;
+  });
+  var id = req.session.user._id;
+  var data = imageResult.secure_url;
+  Users.register.findByIdAndUpdate(
+    id,
+    { $set: { image: data } },
+    { multi: true, new: true },
+    function(err, user) {
+      if (err) {
+        return res.status(500).send(err);
+      }
+      if (!user) {
+        return res.status(400).send("No user found");
+      }
+      req.session.save(function(err) {
+        req.session.user = user;
+      });
+      setTimeout(function() {
+        return res.status(200).redirect("/user-profile");
+      }, 500);
+    }
+  );
+};
 
 //---------------------------------------------------------SignUp---------------------------------------------------------//
 Controller.user_signup = function(req, res) {

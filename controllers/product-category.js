@@ -79,10 +79,12 @@ router.get('/search', (req, res) => {
     //         })
     //     })
     var search = req.query.searchText;
+    var SEARCH = req.query.searchText.toUpperCase()
     Product.find({
-        $or: [{ productCategory: new RegExp('^' + search + '$', "i") },
-        { productName: new RegExp('^' + search + '$', "i") },
-        { productDescription: new RegExp('^' + search + '$', "i") }]
+        $or: [{ productCategory: new RegExp('^' + search + '.*', "i") },
+        { productName: new RegExp('^' + search + '.*', "i") },
+        { productDescription: new RegExp('^' + search + '.*', "i") },
+        { productHighlights1: new RegExp('^' + search + '.*', "i") }]
     })
         .exec()
         .then(docs => {
@@ -91,7 +93,7 @@ router.get('/search', (req, res) => {
                 css: 'style.css',
                 href: '../../public/homepage.css',
                 products: docs,
-                category: search,
+                category: "Result : " + SEARCH,
                 user: req.session.user
             });
 
