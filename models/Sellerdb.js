@@ -26,7 +26,12 @@ const SellerSchema = new mongoose.Schema(
     },
     image: {
       type: String,
+<<<<<<< HEAD
       default:"https://www.pngfind.com/pngs/m/110-1102775_download-empty-profile-hd-png-download.png"
+=======
+      default:
+        "https://images.all-free-download.com/images/graphiclarge/harry_potter_icon_6825007.jpg"
+>>>>>>> develop
     },
     product: [
       {

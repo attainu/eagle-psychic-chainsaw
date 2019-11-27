@@ -1,28 +1,31 @@
-<div class="container">
-  <div class="row" id="header">
-    <div class="col-lg-12 ">
-
-      <ul>
-        <li><a href="/"><strong>Home</strong></a></li>
-        <li><a href="/product_registration"><strong>Add Item</strong></a></li>
-        <li style="float: right;">
-          <form action="/seller-delete" method="POST"
-            onsubmit="return confirm('Do you really want to delete the account?');">
-            <button type="submit" class="btn btn-link" id="logout" style="color:black;"><strong>Delete Account</strong>
-            </button>
-          </form>
-        </li>
-        <li style="float:right">
-          <form action="/seller-logout" method="POST" onsubmit="return confirm('Are you sure to logout?');">
-            <button type="submit" class="btn btn-link" id="logout"
-              style="color:black;"><strong>Logout</strong>&nbsp;<span class="glyphicon glyphicon-log-out"></span>
-            </button>
-          </form>
-        </li>
-      </ul>
-    </div>
-
+<div class="top-nav-bar">
+  <div class="search-box">
+    <a href="/"> <img src="https://i-love-png.com/images/characters-angry-birds-141904.png" class="ml-3 logo"></a>
   </div>
+
+  <div class="menu-bar inline">
+    <ul class="mainlist">
+      <li class="listheader" style="margin-top:7px; color:black"><a href="/product_registration"><strong>Add
+            Item</strong></a></li>
+      <li class="listheader">
+        <form action="/seller-delete" method="POST"
+          onsubmit="return confirm('Do you really want to delete the account?');">
+          <button type="submit" class="btn btn-link" id="logout" style="color:black"><strong>Delete Account</strong>
+          </button>
+        </form>
+      </li>
+
+      <li class="listheader">
+        <form action="/seller-logout" method="POST" onsubmit="return confirm('Are you sure to logout?');">
+          <button type="submit" class="btn btn-link" id="logout" style="color:black"><strong>Logout</strong>&nbsp;<span
+              class="glyphicon glyphicon-log-out"></span>
+          </button>
+        </form>
+      </li>
+    </ul>
+  </div>
+</div>
+<div class="container">
   <div class="row">
     <div class="col-md-4" id="property2">
       <div class="card" id="card1">
@@ -92,7 +95,86 @@
       </div>
     </div>
   </div>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+</div>
+<!-- Footer -->
+<footer class="jumbotron mb-0 page-footer font-small blue-grey lighten-5" id="footer">
+  <!-- Footer Links -->
+  <div class="container text-center text-md-left mt-5">
+
+    <!-- Grid row -->
+    <div class="row mt-3 dark-grey-text" style="margin-right: -393px;
+    margin-left: -111px;">
+
+      <!-- Grid column -->
+      <div class="col-md-3 col-lg-4 col-xl-3 mb-4">
+
+        <!-- Content -->
+        <h6 class="text-uppercase font-weight-bold">Company name</h6>
+        <hr class="teal accent-3 mb-4 mt-0 d-inline-block mx-auto" style="width: 60px; color:black">
+        <p class="text-sm-left" style="font-size: 16px;">Hope you liked our shopping web site do shopping on our website
+          we will
+          provide
+          great offers and cashbacks and we also have events you can participate and win.
+          Hope you enjoy shoping with us.If any concerns please feel free to contact Us.</p>
+
+      </div>
+      <!-- Grid column -->
+
+      <!-- Grid column -->
+      <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mb-4" style="margin-left:5px">
+
+        <!-- Links -->
+        <h6 class="text-uppercase font-weight-bold">Products</h6>
+        <hr class="teal accent-3 mb-4 mt-0 d-inline-block mx-auto" style="width: 60px;">
+        <p style="font-size: 16px;">
+          <a href="/product-category?id=Men's" class="dark-grey-text">Men's Wear </a>
+        </p>
+        <p style="font-size: 16px;">
+          <a href="/product-category?id=Women's" class="dark-grey-text">Women's Wear</a>
+        </p>
+        <p style="font-size: 16px;">
+          <a href="/product-category?id=Mobiles" class="dark-grey-text">Mobile</a>
+        </p>
+        <p style="font-size: 16px;">
+          <a href="/product-category?id=Laptops" class="dark-grey-text">Laptops</a>
+        </p>
+
+      </div>
+      <!-- Grid column -->
+
+      <!-- Grid column -->
+
+      <!-- Grid column -->
+
+      <!-- Grid column -->
+      <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mb-md-0 mb-4">
+
+        <!-- Links -->
+        <h6 class="text-uppercase font-weight-bold">Contact Us</h6>
+        <hr class="teal accent-3 mb-4 mt-0 d-inline-block mx-auto" style="width: 60px;">
+        <p style="font-size: 16px;">
+          <i class="fa fa-home fa-2x mr-3" style="font-size: 2em;"></i> New delhi, ND 10012, IND</p>
+        <p style="font-size: 16px;">
+          <i class="fa fa-envelope fa-2x mr-3"></i> info@example.com</p>
+        <p style="font-size: 16px;">
+          <i class="fa fa-phone fa-2x mr-3"></i> + 01 234 567 88</p>
+        <p style="font-size: 16px;">
+          <i class="fa fa-print fa-2x mr-3"></i> + 01 234 567 89</p>
+
+      </div>
+      <!-- Grid column -->
+
+    </div>
+    <!-- Grid row -->
+
+  </div>
+  <!-- Footer Links -->
+</footer>
+
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>

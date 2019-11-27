@@ -1,5 +1,34 @@
 $(document).ready(function() {
-  /*-------------- to disable input box of seller modification form------------------------*/
+  $("#submit").click(function() {
+    console.log("hi");
+    var password = $("#password").val();
+    var Cpassword = $("#password1").val();
+
+    if (password != Cpassword) {
+      swal("You password didn't match!!");
+      return false;
+    }
+  });
+  $("#company").click(function() {
+    var email = $("#email1").val();
+    console.log(email);
+    $.ajax({
+      method: "POST",
+      url: "/seller_find",
+      data: {
+        email: email
+      },
+      dataType: "json",
+      success: function(data) {
+        console.log(data);
+      },
+      error: function() {
+        swal("email exist");
+        $("#email1").val("");
+      }
+    });
+  });
+  /*--------------to disable input box of seller modification form------------------------*/
   $("#check1").click(function() {
     $("#1").prop("disabled", false);
   });

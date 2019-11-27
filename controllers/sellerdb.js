@@ -125,6 +125,22 @@ SellerController.signin = function(req, res) {
     }
   );
 };
+SellerController.find = function(req, res) {
+  var email = req.body.email;
+
+  Seller.find({ emailId: email }, function(err, data) {
+    if (err || !data.length) {
+      res.status(200).json({
+        error: "Error"
+      });
+      return;
+    }
+
+    return res.status(500).json({
+      success: "Success"
+    });
+  });
+};
 /*------------------add product in seller db-------------------*/
 var flag;
 SellerController.addProduct = function(req, res) {
