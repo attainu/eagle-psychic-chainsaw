@@ -163,7 +163,7 @@ body {
 
 .side-menu ul li:hover ul {
     display: block;
-    margin-top: 2%;
+    margin-top: 1%;
     margin-right: 10%;
     position: fixed;
     background: white;
@@ -227,4 +227,7 @@ a {
 a:hover {
     color: #333333;
     text-decoration: none;
+}
+.page-footer{
+    background-color: #e9ecef;
 }
