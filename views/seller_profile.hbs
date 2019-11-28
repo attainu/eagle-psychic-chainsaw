@@ -3,23 +3,25 @@
     <a href="/"> <img src="https://i-love-png.com/images/characters-angry-birds-141904.png" class="ml-3 logo"></a>
   </div>
 
+
   <div class="menu-bar inline">
     <ul class="mainlist">
-      <li class="listheader" style="margin-top:7px; color:black"><a href="/product_registration"><strong>Add
-            Item</strong></a></li>
+      <li class="listheader" style="margin-top:7px; color:black"><a href="/product_registration"
+          style="font-size:15px; fone-weight:none;">Add
+          Item </a></li>
       <li class="listheader">
         <form action="/seller-delete" method="POST"
           onsubmit="return confirm('Do you really want to delete the account?');">
-          <button type="submit" class="btn btn-link" id="logout" style="color:black"><strong>Delete Account</strong>
+          <button type="submit" class="btn btn-link" id="logout" style="color:black"><span
+              class="glyphicon glyphicon-user"></span> Delete Account
           </button>
         </form>
       </li>
 
       <li class="listheader">
         <form action="/seller-logout" method="POST" onsubmit="return confirm('Are you sure to logout?');">
-          <button type="submit" class="btn btn-link" id="logout"
-            style="color:black;margin-bottom:1px"><strong>Logout</strong>&nbsp;<span
-              class="glyphicon glyphicon-log-out"></span>
+          <button type="submit" class="btn btn-link" id="logout" style="color:black;margin-top:-3px; border:none">
+            Logout &nbsp;<span class="glyphicon glyphicon-log-out"></span>
           </button>
         </form>
       </li>
@@ -34,26 +36,26 @@
           style=" border-radius: 60%; height:160px; margin-top:10px;" ;>
         <h1>{{collection.sellerName}}</h1>
         <div class="input-container">
-          <i class="fa fa-industry icon"></i>
+          <i class="fa fa-industry icon fa-2x"></i>
           <input class="input-field" type="text" name="usrnm" readonly="true" id="userdetail"
             value="{{collection.companyName}}">
         </div>
         <div class="input-container">
-          <i class="fa fa-envelope icon"></i>
+          <i class="fa fa-envelope icon fa-2x"></i>
           <input class="input-field" type="text" placeholder="Seller@msn.com" name="email" readonly="true"
             id="userdetail" value="{{collection.emailId}}">
         </div>
         <div class="input-container">
-          <i class="fa fa-mobile icon"></i>
+          <i class="fa fa-mobile icon fa-2x"></i>
           <input class="input-field" type="text" placeholder="Seller@msn.com" name="email" readonly="true"
             id="userdetail" value="{{collection.contactNumber}}">
         </div>
         <div class="input-container">
-          <i class="fa fa-home icon"></i>
+          <i class="fa fa-home icon fa-2x"></i>
           <input class="input-field" type="password" placeholder="A-13 , Lord Angles" name="psw" id="userdetail"
             readonly="true" value="">
         </div>
-        <p><button class="btn1 text-white"><a href="/seller-profile-update">Edit
+        <p><button class="btn1 text-white"><a href="/seller-profile-update" style="color: white;">Edit
               Profile</a> </button> </p>
       </div>
     </div>
