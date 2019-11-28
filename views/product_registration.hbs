@@ -7,7 +7,7 @@
 				<h1 class="text-center">Product Registration Form
 					<hr style="background-color: white ">
 				</h1>
-				<form class="form-group text-center" id="sellerform" onsubmit="return false;">
+				<form class="form-group text-center" id="sellerform" action="/seller-product" method="POST" enctype="multipart/form-data">
 					<div class="row ">
 						<div class="col-lg-6">
 							<label>Product Name</label>
@@ -68,9 +68,14 @@
 					</div><br>
 					<div class="row">
 						<div class="col-lg-6">
-							<label>Paste Your Image Url</label>
-							<input type="url" name="productImage" id="image" class="form-control"
-								placeholder="Image url" required>
+							<label>Upload Product Image</label><br>
+							{{!-- <input type="url" name="productImage" id="image" class="form-control"
+								placeholder="Image url" required> --}}
+							<input type="file" class="custom-file-input" id="inputGroupFile01"
+								aria-describedby="inputGroupFileAddon01" name="image"><br>
+							<label class="custom-file-label" for="inputGroupFile01" style="margin-top: 32.4px;width: 236px;
+    margin-left: 14px;">Choose file</label>
+
 						</div>
 						<div class="col-lg-6">
 							<label> Product Feature1</label>

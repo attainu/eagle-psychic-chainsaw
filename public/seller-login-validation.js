@@ -9,7 +9,7 @@ $(document).ready(function() {
       return false;
     }
   });
-  $("#company").click(function() {
+  $("#email1").on('focusout',function() {
     var email = $("#email1").val();
     console.log(email);
     $.ajax({

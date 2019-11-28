@@ -78,6 +78,7 @@ router.get('/search', (req, res) => {
     //             Error: err
     //         })
     //     })
+    console.log("hello")
     var search = req.query.searchText;
     var SEARCH = req.query.searchText.toUpperCase()
     Product.find({
