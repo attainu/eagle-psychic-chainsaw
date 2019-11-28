@@ -4,7 +4,7 @@
 
 body {
     font-family: 'monteserrat', sans-serif;
-    background: #f6f5f7;
+    background: -webkit-linear-gradient(right, #ff4b2ba8 , #ff194f9e);
     display: flex;
     flex-direction: column;
     justify-content: center;

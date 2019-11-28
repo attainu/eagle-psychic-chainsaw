@@ -17,7 +17,7 @@ app.use("/public", express.static("public"));
 const hbs = exphbs.create({
   extname: ".hbs",
   helpers: {
-    inc: function(value, option) {
+    inc: function (value, option) {
       return parseInt(value) + 1;
     }
   }
@@ -53,6 +53,14 @@ app.use(
     }
   })
 );
+// It'll prevent to use home route by back button when user logout
+app.use((req, res, next) => {
+  res.set(
+    "Cache-Control",
+    "no-cache, private, no-store, must-revalidate, max-stale=0, post-check=0, pre-check=0"
+  );
+  next();
+});
 /*------for seller-----------------*/
 // app.use(cookieParser());
 // app.use(express.json());
@@ -78,12 +86,12 @@ app.use("/public", express.static("public"));
 let db = mongoose.connection;
 
 // check DB connection
-db.once("open", function() {
+db.once("open", function () {
   console.log("connected to mongodb");
 });
 
 //check for DB errors
-db.on("error", function(err) {
+db.on("error", function (err) {
   console.log(err);
 });
 
@@ -173,9 +181,9 @@ app.get("/product_registration", pageController.product_registration);
 
 //Port
 app
-  .listen(PORT, HOST, function() {
+  .listen(PORT, HOST, function () {
     console.log("Started : ", PORT);
   })
-  .on("error", function(err) {
+  .on("error", function (err) {
     console.log("Unable To Start App >>>", err);
   });
