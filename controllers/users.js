@@ -151,6 +151,7 @@ Controller.cart_get = function (req, res) {
             };
 
             async.each(docs, iter, function done(err) {
+                console.log(docs)
                 res(null, docs);
             });
         });
@@ -198,13 +199,15 @@ Controller.cart = function (req, res) {
         { multi: true, new: true },
         function (err, user) {
             if (err) {
-                return res.status(500).send(err);
+                return res.status(200).redirect("/cart")
             }
             if (!user) {
-                return res.status(400).send("No user found");
+                return res.status(200).redirect("/cart")
             }
             req.session.save(function (err) {
-                req.session.user = user;
+                req.session.reload(function (err) {
+                    req.session.user = user;
+                })
             });
 
             if (req.body.cart) return res.status(200).redirect("/cart");
@@ -214,38 +217,57 @@ Controller.cart = function (req, res) {
 };
 
 //---------------------------------------------------Add Product in User Order_History DB------------------------------------------------------//
-Controller.order = function (req, res) {
+Controller.order = async function (req, res) {
     var id = req.session.user._id;
-    var product = req.session.user.cart;
-    console.log(product)
-    Users.register.findByIdAndUpdate(
-        id,
-        { $push: { order_history: { $each: product } } },
-        { multi: true, new: true },
-        function (err, user) {
-            if (err) {
-                console.log(err);
-            }
-            if (!user) {
-                console.log("No user found");
-            }
-        })
-    Users.register.findByIdAndUpdate(
-        id,
-        { $set: { cart: [] } },
-        function (err, user) {
-            if (err) {
-                console.log(err);
-            }
-            if (!user) {
-                console.log("Wrong ID");
-            }
-            req.session.save(function (err) {
-                req.session.reload(function (err) { req.session.user = user; })
+    Users.register
+        .findById(id)
+        .populate("users")
+        .exec(function (err, docs) {
+            var iter = function (user, callback) {
+                Product.populate(
+                    user,
+                    {
+                        path: "cart"
+                    },
+                    callback
+                );
+            };
 
+            async.each(docs, iter, function done(err) {
+                Users.register.findByIdAndUpdate(
+                    id,
+                    { $push: { order_history: { $each: docs.cart } } },
+                    { multi: true, new: true },
+                    function (err, user) {
+                        if (err) {
+                            console.log(err);
+                        }
+                        if (!user) {
+                            console.log("No user found");
+                        }
+                        Users.register.findByIdAndUpdate(
+                            id,
+                            { $set: { cart: [] } },
+                            function (err, user) {
+                                if (err) {
+                                    console.log(err);
+                                }
+                                if (!user) {
+                                    console.log("Wrong ID");
+                                }
+                                req.session.save(function (err) {
+                                    req.session.reload(function (err) {
+                                        req.session.user = user;
+                                        setTimeout(function () { return res.status(200).redirect('/cart') }, 1500)
+
+                                    })
+                                })
+                            })
+
+
+                    })
             })
         })
-    setTimeout(function () { return res.status(200).redirect('/cart') }, 1500)
 }
 
 
