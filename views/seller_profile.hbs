@@ -6,13 +6,12 @@
 
   <div class="menu-bar inline">
     <ul class="mainlist">
-      <li class="listheader" style="margin-top:7px; color:black"><a href="/product_registration"
-          style="font-size:15px; fone-weight:none;">Add
-          Item </a></li>
+      <li class="listheader"><a href="/product_registration"><button class="btn btn-outline-danger" style="border: 1px solid ;"> Add
+            Item </button></a></li>
       <li class="listheader">
         <form action="/seller-delete" method="POST"
           onsubmit="return confirm('Do you really want to delete the account?');">
-          <button type="submit" class="btn btn-link" id="logout" style="color:black"><span
+          <button type="submit" class="btn btn-outline-danger" style="border: 1px solid ;" id="logout"><span
               class="glyphicon glyphicon-user"></span> Delete Account
           </button>
         </form>
@@ -20,7 +19,7 @@
 
       <li class="listheader">
         <form action="/seller-logout" method="POST" onsubmit="return confirm('Are you sure to logout?');">
-          <button type="submit" class="btn btn-link" id="logout" style="color:black;margin-top:-3px; border:none">
+          <button type="submit" class="btn btn-outline-danger" id="logout" style="border: 1px solid ;">
             Logout &nbsp;<span class="glyphicon glyphicon-log-out"></span>
           </button>
         </form>

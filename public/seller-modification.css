@@ -25,11 +25,22 @@
     cursor: pointer;
     background: #ff4747e3;
     color: #fff;
-    margin-left: 366px;
+    margin-left: 280px;
+    margin-top: 27px;
+    margin-bottom: 50px;
+}
+
+.btnSubmit1 {
+    border: none;
+    border-radius: 1.5rem;
+    padding: 1%;
+    width: 20%;
+    cursor: pointer;
+    background: #ff4747e3;
+    color: #fff;
     margin-top: 27px;
     margin-bottom: 4px;
 }
-
 input[type=checkbox],
 input[type=radio] {
     box-sizing: border-box;
