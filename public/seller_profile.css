@@ -1,74 +1,23 @@
-.top-nav-bar {
-    height: 57px;
-    top: 0;
-    position: sticky;
-    background: #fff;
-    margin-bottom: 20px;
-    border-bottom: 3px solid rgb(255, 45, 80);
-    z-index: 2;
+#navimage {
+    width: 66px;
+    margin-top: 6px;
+    margin-left: -19px;
 }
 
-.mainlist {
-    background: white;
-    height: 50px;
-    margin-right: 1px;
+#topbtn1 {
+    font-family: inherit;
+    /* font-size: inherit; */
+    line-height: inherit;
+    border: none;
+    margin-top: 15px;
+    background-color: white;
 }
 
-.logo {
-    height: 40px;
-    margin: 5px 10px;
-}
-
-.menu-bar {
-    width: 40%;
-    height: 57px;
-    float: right;
-}
-
-.menu-bar ul {
-    display: inline-flex;
-    float: right;
-}
-
-.menu-bar ul li {
-    border-left: 1px solid #fff;
-    list-style-type: none;
-    padding: 12px 17px;
-    ;
-    text-align: center;
-    cursor: pointer;
-    border: rgb(255, 45, 80);
-    border-width: 39px;
-}
-
-.menu-bar ul li a {
-    font-size: 16px;
-    font-weight: bold;
-    color: black;
-    text-decoration: none;
-}
-
-.fa-shopping-basket {
-    margin-right: 6px;
-    width: 50px;
-}
-
-@media only screen and (max-width: 980px) {
-    .top-nav-bar {
-        height: 118px;
-        border-bottom: 0;
-    }
-    .search-box {
-        width: 100%;
-    }
-    .menu-bar {
-        width: 100%;
-    }
-}
-
-.header {
-    margin-top: -20px;
-    display: block;
+#navbar {
+    background-color: #f8f8f8;
+    /* border-color: #d2242b; */
+    border-bottom-color: #d42f36;
+    background-color: white;
 }
 
 #property1 {
@@ -110,7 +59,7 @@
     background-clip: border-box;
     border: 1px solid rgba(0, 0, 0, 0.125);
     border-radius: 0.25rem;
-    height: 563px;
+    height: 590px;
     margin-bottom: 15px;
     margin-top: 15px;
 }
@@ -191,15 +140,6 @@ td {
     color: black;
 }
 
-button:hover,
-a:hover {
-    opacity: 0.7;
-}
-
-* {
-    box-sizing: border-box;
-}
-
 
 /* Style the input container */
 
@@ -227,6 +167,14 @@ a:hover {
     width: 100%;
     padding: 10px;
     outline: none;
+}
+
+.img-circle {
+    border-radius: 60%;
+    height: 158px;
+    margin-top: 10px;
+    margin: auto;
+    width: 158px;
 }
 
 #productimage {
@@ -345,4 +293,11 @@ img {
 
 .fa-2x {
     font-size: 2em;
+}
+
+.menu-bar ul li a {
+    font-size: 15px;
+    /* font-weight: bold; */
+    color: black;
+    text-decoration: none;
 }
