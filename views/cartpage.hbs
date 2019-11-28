@@ -1,26 +1,31 @@
+{{!-- section-1 --}}
 <div class="top-nav-bar">
-    <form action="/product-category/search" method="GET" class="inline">
-        <div class="search-box">
-            <a href="/"> <img src="https://i-love-png.com/images/characters-angry-birds-141904.png"
-                    class="ml-3 logo"></a>
-            <input type="text" class="form-control srch inline" name="searchText" required>
-            <button type="submit" class="input-group-text inline" id="search"><i class="fa fa-search"
-                    aria-hidden="true"></i></button>
-        </div>
 
-        <div class="menu-bar inline">
-            <ul class="inline">
-                {{#if user}}
-                <li><a href="/user-profile">Profile</a></li>
-                <li><a href="/user-logout">Log Out</a></li>
-                {{else}}
-                <li><a href="/user-login">Log In & Sign Up</a></li>
-                {{/if}}
-                <li><a href="/cart"><i class="fa fa-shopping-cart fa-2x" aria-hidden="true"></i></a></li>
-            </ul>
+    <div class="search-box">
+        <a href="/"> <img src="https://i-love-png.com/images/characters-angry-birds-141904.png" class="ml-3 logo"></a>
+        <form action="/product-category/search" method="GET" class="inline"></form>
+        <input type="text" class="form-control srch inline" name="searchText">
+        <button type="submit" class="input-group-text inline" id="search"><i class="fa fa-search"
+                aria-hidden="true"></i></button>
+        </form>
+    </div>
 
-        </div>
-    </form>
+    <div class="menu-bar inline">
+        <ul class="inline">
+            {{#if user}}
+            <li class="pt-2"><a href="/user-profile"><button class="btn btn-outline-danger">Profile </button></a>
+            </li>
+            <li class="pt-2"><a href="/user-logout"><button class="btn btn-outline-danger">Log Out </button></a>
+            </li>
+            {{else}}
+            <li class="pt-2"><a href="/user-login"><button class="btn btn-outline-danger">Log In & Sign
+                        Up</button></a></li>
+            {{/if}}
+            <li class="pt-2 mt-1 mr-3"><a href="/cart"><i class="fa fa-shopping-cart fa-2x" aria-hidden="true"></i></a></li>
+        </ul>
+
+    </div>
+
 </div>
 
 <div class="container mt-5">
