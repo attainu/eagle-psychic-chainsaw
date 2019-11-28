@@ -53,14 +53,8 @@ app.use(
     }
   })
 );
-// It'll prevent to use home route by back button when user logout
-app.use((req, res, next) => {
-  res.set(
-    "Cache-Control",
-    "no-cache, private, no-store, must-revalidate, max-stale=0, post-check=0, pre-check=0"
-  );
-  next();
-});
+
+
 /*------for seller-----------------*/
 // app.use(cookieParser());
 // app.use(express.json());
@@ -103,6 +97,18 @@ const categoryRouter = require("./controllers/product-category");
 const product_registration = require("./controllers/product-registration"); // product registration controller
 const product_listRouter = require("./controllers/product-list"); // product list controller
 
+// Validation Middleware
+app.use(user.Controller.validate);
+
+// It'll prevent to use home route by back button when user logout
+app.use((req, res, next) => {
+  res.set(
+    "Cache-Control",
+    "no-cache, private, no-store, must-revalidate, max-stale=0, post-check=0, pre-check=0"
+  );
+  next();
+});
+
 /*----------------Seller database route----------*/
 app.set("view engine", ".hbs");
 const controllers = require("./controllers/sellerdb");
@@ -128,9 +134,6 @@ app.use("/product_list", product_listRouter);
 
 // product category
 app.use("/product-category", categoryRouter);
-
-// Validation Middleware
-app.use(user.Controller.validate);
 
 // Home route
 app.get("/", pageController.home);
