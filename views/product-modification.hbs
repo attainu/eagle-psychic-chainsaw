@@ -96,12 +96,23 @@
 
 
                         </div>
-                        <input name="productId" value="{{product._id}}" style="display: none">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <input name="productId" value="{{product._id}}" style="display: none">
+                                <button type="submit" class="btnSubmit">Submit</button>
+                            </div>
+                    </form>
+                    <div class="col-mod-6">
+                        <form method="get" action="/seller-profile">
+                            <input type="submit" name="submit" value="Cancel" class="btnSubmit1"
+                                style="margin-right: 2px;">
 
-                        <button type="submit" class="btnSubmit">Submit</button>
+                    </div>
                 </div>
-                </form>
             </div>
+
+
         </div>
+
     </div>
 </div>

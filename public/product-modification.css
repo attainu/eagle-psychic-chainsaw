@@ -25,9 +25,23 @@
     cursor: pointer;
     background: #ff4747e3;
     color: #fff;
-    margin-left: 366px;
-    margin-top: 27px;
-    margin-bottom: 4px;
+    margin-left: 16pc;
+    margin-top: 25px;
+    margin-bottom: 8px;
+}
+
+.btnSubmit1 {
+    border: none;
+    border-radius: 1.5rem;
+    padding: 1%;
+    width: 39%;
+    margin-left: 12pc;
+    margin-top: 25px;
+    cursor: pointer;
+    background: #ff4747e3;
+    color: #fff;
+    height: 2pc;
+    margin-bottom: 14px;
 }
 
 input[type=checkbox],
