@@ -9,6 +9,7 @@ router.get('/', (req, res, next) => {
     Product.findById(id)
         .exec()
         .then(doc => {
+            var orignal_prize =Math.round(((parseFloat(doc.productPrice) * 20) / 100) + parseFloat(doc.productPrice));
             if (doc) {
                 res.render('product_display', {
                     title: "product_display",
@@ -16,7 +17,8 @@ router.get('/', (req, res, next) => {
                     css: 'homepage.css',
                     user: req.session.user,
                     seller: req.session.data,
-                    product: doc
+                    product: doc,
+                    mrp : orignal_prize
                 });
             } else {
                 res.status(500).json({
