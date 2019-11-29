@@ -1,6 +1,10 @@
 <div class="row">
     <div class="col-md-6 mx-auto">
+        {{#if flag}}
+        <form action="/reset-seller/{{token}}" method="POST">
+        {{else}}
         <form action="/reset/{{token}}" method="POST">
+            {{/if}}
             <legend>Reset Password</legend>
             <div class="form-group">
                 <label for="password">New Password</label>

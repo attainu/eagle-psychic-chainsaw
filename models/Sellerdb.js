@@ -29,6 +29,8 @@ const SellerSchema = new mongoose.Schema(
       default:
         "https://images.all-free-download.com/images/graphiclarge/harry_potter_icon_6825007.jpg"
     },
+    resetPasswordToken: String,
+    resetPasswordExpires: Date,
     product: [
       {
         type: Schema.Types.ObjectId,
