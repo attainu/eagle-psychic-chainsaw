@@ -81,16 +81,16 @@ Controller.token = function (req, res) {
                 }
                 if (req.body.password === req.body.confirm) {
                     user.password = req.body.password
-                    user.setPassword(req.body.password, function (err) {
-                        user.resetPasswordToken = undefined;
-                        user.resetPasswordExpires = undefined;
 
-                        user.save(function (err) {
-                            req.logIn(user, function (err) {
-                                done(err, user);
-                            });
+                    user.resetPasswordToken = undefined;
+                    user.resetPasswordExpires = undefined;
+
+                    user.save(function (err) {
+                        req.logIn(user, function (err) {
+                            done(err, user);
                         });
-                    })
+                    });
+
                 } else {
 
                     return res.redirect('back');
@@ -122,7 +122,7 @@ Controller.token = function (req, res) {
     });
 };
 
-//-------------------------------------For User Forgot Password--------------------------------//
+//-------------------------------------For Seller Forgot Password--------------------------------//
 Controller.forgot_seller = function (req, res, next) {
     async.waterfall([
         function (done) {

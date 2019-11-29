@@ -145,10 +145,15 @@ Controller.cart_get = function (req, res) {
                     user,
                     {
                         path: "cart"
-                    },
-                    callback
-                );
+                    })
+                Users.address.populate(
+                    user,
+                    {
+                        path: "address"
+                    }, callback);
+
             };
+
 
             async.each(docs, iter, function done(err) {
                 console.log(docs)
