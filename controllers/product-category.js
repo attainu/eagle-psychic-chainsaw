@@ -13,7 +13,8 @@ router.get('/', (req, res, next) => {
                 href: '../../public/homepage.css',
                 products: docs,
                 category: req.query.id,
-                user: req.session.user
+                user: req.session.user,
+                seller: req.session.data
             });
 
         })
@@ -35,7 +36,8 @@ router.get('/all', (req, res, next) => {
                 href: '../../public/homepage.css',
                 products: docs,
                 category: "All Products",
-                user: req.session.user
+                user: req.session.user,
+                seller: req.session.data
             });
 
         })
@@ -95,7 +97,8 @@ router.get('/search', (req, res) => {
                 href: '../../public/homepage.css',
                 products: docs,
                 category: "Result : " + SEARCH,
-                user: req.session.user
+                user: req.session.user,
+                seller: req.session.data
             });
 
         })

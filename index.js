@@ -3,8 +3,9 @@ const express = require("express");
 const app = express();
 const exphbs = require("express-handlebars");
 const session = require("express-session");
-const PORT = process.env.PORT || 9090;
+const PORT = process.env.PORT || 8000;
 const HOST = "0.0.0.0";
+var passport = require("passport");
 
 var cookieParser = require("cookie-parser");
 var upload = require("./controllers/multer.js");
@@ -54,6 +55,8 @@ app.use(
   })
 );
 
+app.use(passport.initialize());
+app.use(passport.session());
 
 /*------for seller-----------------*/
 // app.use(cookieParser());
@@ -182,6 +185,22 @@ app.get("/address-form", pageController.add_form);
 //app.get('/product-list-form', pageController.product_form)
 
 app.get("/product_registration", pageController.product_registration);
+
+// forgot password
+
+
+var forgot = require("./controllers/forgot");
+
+app.get('/forgot', function (req, res) {
+  res.render('forgot',{});
+});
+
+app.post('/forgot', forgot.forgot);
+
+app.get('/reset/:token', forgot.verify)
+
+app.post('/reset/:token', forgot.token)
+
 
 //Port
 app

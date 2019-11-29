@@ -1,3 +1,4 @@
+var passportLocalMongoose = require("passport-local-mongoose");
 var mongoose = require('mongoose');
 var uniqueValidator = require('mongoose-unique-validator');
 var db = mongoose.model;
@@ -22,6 +23,8 @@ var usersSchema = new Schema({
     password: { type: String, required: true },
     gender: String,
     dob: String,
+    resetPasswordToken: String,
+    resetPasswordExpires: Date,
     image: {
         type: String,
         default: "https://www.pngfind.com/pngs/m/110-1102775_download-empty-profile-hd-png-download.png"
@@ -40,6 +43,7 @@ var usersSchema = new Schema({
     }]
 
 }, { timestamps: true });
+usersSchema.plugin(passportLocalMongoose);
 
 //Unique Username And Email
 usersSchema.plugin(uniqueValidator, { message: 'is already taken.' });
