@@ -201,6 +201,12 @@ app.get('/reset/:token', forgot.verify)
 
 app.post('/reset/:token', forgot.token)
 
+app.post('/forgot-seller', forgot.forgot_seller);
+
+app.get('/reset-seller/:token', forgot.verify_seller)
+
+app.post('/reset-seller/:token', forgot.token_seller)
+
 
 //Port
 app

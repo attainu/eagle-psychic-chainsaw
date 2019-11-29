@@ -22,7 +22,7 @@
             <h1>Sign In</h1>
             <input type="email" name="email" id="email2" placeholder="Email" required>
             <input type="password" name="password" id="seller-password" placeholder="Password" required>
-            <a href="#">Forgot your Password?</a>
+            <a href="#" data-toggle="modal" data-target=".bd-example-modal-lg">Forgot your Password?</a>
             <button type="submit" id="submit1" value="Submit">Sign In</button>
         </form>
     </div>
@@ -41,6 +41,21 @@
                     Enter your Personal details and start your Business with Us.
                 </p>
                 <button class="transport" id="signUp">Sign Up</button>
+            </div>
+        </div>
+    </div>
+    <div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="w-50 mx-auto">
+                    <form action="/forgot-seller" class="form-group text-center" method="POST">
+                        <legend>Forgot Password</legend>
+                        <label for="email">Email</label>
+                        <input type="email" name="email" autofocus>
+                        <input type="submit" class="btn btn-danger transport" value="Reset Password">
+                    </form>
+                </div>
             </div>
         </div>
     </div>

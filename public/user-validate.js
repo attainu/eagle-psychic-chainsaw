@@ -5,7 +5,7 @@ function check() {
     $("#pincodeResult")
       .text("Less than 6 Digit!!!")
       .css("color", "red");
-  } else if (pin == 301001 || pin == 841301) {
+  } else if (pin == 301001 || pin == 841301 || pin == 400008) {
     $("#pincodeResult")
       .text("Delivery Within 3 days!")
       .css("color", "Green");
@@ -16,6 +16,15 @@ function check() {
   }
 }
 $(document).ready(function() {
+  // Show image name in file field
+  if ($('input[type="file"]')) {
+    $('input[type="file"]').on("change", function(e) {
+      let filename = e.target.files[0].name;
+      $(this)
+        .next(".custom-file-label")
+        .html(filename);
+    });
+  }
   //Add to cart
   $("#addtocart").on("submit", function() {
     var id = $("#addToCart").val();
