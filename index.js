@@ -18,7 +18,7 @@ app.use("/public", express.static("public"));
 const hbs = exphbs.create({
   extname: ".hbs",
   helpers: {
-    inc: function (value, option) {
+    inc: function(value, option) {
       return parseInt(value) + 1;
     }
   }
@@ -83,12 +83,12 @@ app.use("/public", express.static("public"));
 let db = mongoose.connection;
 
 // check DB connection
-db.once("open", function () {
+db.once("open", function() {
   console.log("connected to mongodb");
 });
 
 //check for DB errors
-db.on("error", function (err) {
+db.on("error", function(err) {
   console.log(err);
 });
 
@@ -124,6 +124,7 @@ app.post("/seller-product", upload.single("image"), controllers.addProduct);
 app.get("/seller-getProduct", controllers.getProduct);
 app.post("/seller-logout", authRoute.logout);
 app.post("/seller_find", controllers.find);
+app.post("/seller_mail", controllers.sendMail);
 app.post("/product-modification", controllers.get_Product);
 app.post("/product-modify", controllers.update_product);
 app.post("/product-delete", controllers.deleteProduct);
@@ -170,7 +171,11 @@ app.post("/user-address-delete", user.Controller.address_delete);
 app.get("/cart-delete", user.Controller.cart_delete);
 app.get("/order-history", pageController.order_history);
 app.get("/order", user.Controller.order);
-app.post("/user-image", upload.single("user-image"), user.Controller.user_image);
+app.post(
+  "/user-image",
+  upload.single("user-image"),
+  user.Controller.user_image
+);
 
 // User Profile
 app.get("/user-profile", pageController.user_profile);
@@ -188,31 +193,55 @@ app.get("/product_registration", pageController.product_registration);
 
 // forgot password
 
-
 var forgot = require("./controllers/forgot");
 
-app.get('/forgot', function (req, res) {
-  res.render('forgot',{});
+app.get("/forgot", function(req, res) {
+  res.render("forgot", {});
 });
 
-app.post('/forgot', forgot.forgot);
+app.post("/forgot", forgot.forgot);
 
-app.get('/reset/:token', forgot.verify)
+app.get("/reset/:token", forgot.verify);
 
-app.post('/reset/:token', forgot.token)
+app.post("/reset/:token", forgot.token);
 
-app.post('/forgot-seller', forgot.forgot_seller);
+app.post("/forgot-seller", forgot.forgot_seller);
 
-app.get('/reset-seller/:token', forgot.verify_seller)
+app.get("/reset-seller/:token", forgot.verify_seller);
 
-app.post('/reset-seller/:token', forgot.token_seller)
+app.post("/reset-seller/:token", forgot.token_seller);
 
+app.post("/subscribe", async (req, res) => {
+  if (!req.body.captcha)
+    return res.json({ success: false, msg: "Please select captcha" });
+
+  // Secret key
+  const secretKey = "6LcpXcUUAAAAABi6OcRsG4mpS3ylTlxk3sQl1ibr";
+
+  // Verify URL
+  const query = stringify({
+    secret: secretKey,
+    response: req.body.captcha,
+    remoteip: req.connection.remoteAddress
+  });
+  const verifyURL = `https://google.com/recaptcha/api/siteverify?${query}`;
+
+  // Make a request to verifyURL
+  const body = await fetch(verifyURL).then(res => res.json());
+
+  // If not successful
+  if (body.success !== undefined && !body.success)
+    return res.json({ success: false, msg: "Failed captcha verification" });
+
+  // If successful
+  return res.json({ success: true, msg: "Captcha passed" });
+});
 
 //Port
 app
-  .listen(PORT, HOST, function () {
+  .listen(PORT, HOST, function() {
     console.log("Started : ", PORT);
   })
-  .on("error", function (err) {
+  .on("error", function(err) {
     console.log("Unable To Start App >>>", err);
   });

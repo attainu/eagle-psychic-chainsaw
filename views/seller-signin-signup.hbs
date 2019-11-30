@@ -22,6 +22,12 @@
             <h1>Sign In</h1>
             <input type="email" name="email" id="email2" placeholder="Email" required>
             <input type="password" name="password" id="seller-password" placeholder="Password" required>
+            <div class="form-group">
+                <div class="g-recaptcha" data-sitekey="6LcpXcUUAAAAABCQWg_H0dtHYJHjHkRraNME8aqJ"
+                    id="#g-recaptcha-response"
+                    style="transform:scale(0.93);-webkit-transform:scale(0.93);transform-origin:0 0;-webkit-transform-origin:0 0; margin-left:20px">
+                </div>
+            </div>
             <a href="#" data-toggle="modal" data-target=".bd-example-modal-lg">Forgot your Password?</a>
             <button type="submit" id="submit1" value="Submit">Sign In</button>
         </form>
@@ -62,4 +68,31 @@
 </div>
 
 <script src="https://code.jquery.com/jquery-3.4.1.min.js"
-    integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script
+    integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+<script>
+    document.getElementById('sellersignin').addEventListener('submit', e => {
+        e.preventDefault();
+        const name = document.querySelector('#name').value;
+        const email = document.querySelector('#email').value;
+        const captcha = document.querySelector('#g-recaptcha-response').value;
+        return fetch('/subscribe', {
+            method: 'POST',
+            headers: { 'Content-type': 'application/json' },
+            body: JSON.stringify({ name, email, captcha })
+        })
+            .then(res => res.json())
+            .then(data => {
+                console.log(data);
+                alert(data.msg);
+                if (data.success) return location.reload();
+            });
+    });
+
+    window.onload = function () {
+        var $recaptcha = document.querySelector('#g-recaptcha-response');
+
+        if ($recaptcha) {
+            $recaptcha.setAttribute("required", "required");
+        }
+    };
+</script>
