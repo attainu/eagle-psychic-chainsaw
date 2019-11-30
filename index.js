@@ -124,6 +124,7 @@ app.post("/seller-product", upload.single("image"), controllers.addProduct);
 app.get("/seller-getProduct", controllers.getProduct);
 app.post("/seller-logout", authRoute.logout);
 app.post("/seller_find", controllers.find);
+app.post("/seller_mail", controllers.sendMail);
 app.post("/product-modification", controllers.get_Product);
 app.post("/product-modify", controllers.update_product);
 app.post("/product-delete", controllers.deleteProduct);

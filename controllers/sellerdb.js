@@ -13,8 +13,8 @@ cloudinary.config({
   api_secret: "biV0xzLr1Gg6HzFgAz6aaQB3Tkk"
 });
 var imageResult = null;
-SellerController.create = async function (req, res) {
-  await cloudinary.v2.uploader.upload(req.file.path, function (error, res1) {
+SellerController.create = async function(req, res) {
+  await cloudinary.v2.uploader.upload(req.file.path, function(error, res1) {
     console.log("error", error);
     imageResult = res1;
   });
@@ -28,7 +28,7 @@ SellerController.create = async function (req, res) {
       companyName: req.body.company,
       image: imageResult.secure_url
     },
-    function (error, response) {
+    function(error, response) {
       if (error) {
         return res.send({
           status: false,
@@ -40,12 +40,12 @@ SellerController.create = async function (req, res) {
     }
   );
 };
-SellerController.delete = function (req, res) {
+SellerController.delete = function(req, res) {
   Seller.deleteOne(
     {
       emailId: req.session.data.emailId
     },
-    function (error, response) {
+    function(error, response) {
       if (error) {
         return res.send({
           status: false,
@@ -54,14 +54,14 @@ SellerController.delete = function (req, res) {
         });
       }
 
-      req.session.destroy(function (err) {
+      req.session.destroy(function(err) {
         res.clearCookie("user-login");
         res.redirect("/");
       });
     }
   );
 };
-SellerController.update = function (req, res) {
+SellerController.update = function(req, res) {
   var data = req.body;
 
   Seller.findByIdAndUpdate(
@@ -70,7 +70,7 @@ SellerController.update = function (req, res) {
       $set: data
     },
     { multi: true, new: true },
-    function (error, seller) {
+    function(error, seller) {
       if (error) {
         return res.send({
           status: false,
@@ -85,8 +85,8 @@ SellerController.update = function (req, res) {
         });
       }
       console.log(seller);
-      return req.session.save(function (err) {
-        req.session.reload(function (err) {
+      return req.session.save(function(err) {
+        req.session.reload(function(err) {
           req.session.data = seller;
           res.status(200).redirect("/seller-profile");
         });
@@ -95,10 +95,10 @@ SellerController.update = function (req, res) {
   );
 };
 var flag = null;
-SellerController.signin = function (req, res) {
+SellerController.signin = function(req, res) {
   var data = req.body;
   var collection;
-  Seller.find({ emailId: data.email }, function (err, data) {
+  Seller.find({ emailId: data.email }, function(err, data) {
     collection = data;
 
     return data;
@@ -108,7 +108,7 @@ SellerController.signin = function (req, res) {
     {
       $and: [{ emailId: data.email }, { password: data.password }]
     },
-    function (err, user) {
+    function(err, user) {
       if (err) {
         return res.status(500).send(err);
       }
@@ -125,10 +125,10 @@ SellerController.signin = function (req, res) {
     }
   );
 };
-SellerController.find = function (req, res) {
+SellerController.find = function(req, res) {
   var email = req.body.email;
 
-  Seller.find({ emailId: email }, function (err, data) {
+  Seller.find({ emailId: email }, function(err, data) {
     if (err || !data.length) {
       res.status(200).json({
         error: "Error"
@@ -143,8 +143,8 @@ SellerController.find = function (req, res) {
 };
 /*------------------add product in seller db-------------------*/
 var flag;
-SellerController.addProduct = async function (req, res) {
-  await cloudinary.v2.uploader.upload(req.file.path, function (error, res1) {
+SellerController.addProduct = async function(req, res) {
+  await cloudinary.v2.uploader.upload(req.file.path, function(error, res1) {
     console.log("error", error);
     imageResult = res1;
   });
@@ -167,7 +167,7 @@ SellerController.addProduct = async function (req, res) {
         { emailId: req.session.data.emailId },
         { $push: { product: result._id } },
         { multi: true, new: true },
-        function (err, user) {
+        function(err, user) {
           if (err) {
             console.log(err);
           }
@@ -175,7 +175,7 @@ SellerController.addProduct = async function (req, res) {
           console.log(user);
         }
       );
-      res.redirect("/seller-profile")
+      res.redirect("/seller-profile");
     })
     .catch(err => {
       return res.status(500).json({
@@ -185,11 +185,11 @@ SellerController.addProduct = async function (req, res) {
 };
 
 /*----------Populate seller with product-------------------------*/
-SellerController.getProduct = function (req, res) {
+SellerController.getProduct = function(req, res) {
   Seller.findById(req.session.data._id)
     .populate("seller")
-    .exec(function (err, docs) {
-      var iter = function (user, callback) {
+    .exec(function(err, docs) {
+      var iter = function(user, callback) {
         Product.populate(
           user,
           {
@@ -205,10 +205,10 @@ SellerController.getProduct = function (req, res) {
 };
 /*------------------to get product details-------------------------------*/
 var result;
-SellerController.get_Product = function (req, res) {
+SellerController.get_Product = function(req, res) {
   var id = req.body.id;
 
-  Product.findById(id, function (err, product) {
+  Product.findById(id, function(err, product) {
     if (err) {
       return res.status(500).send(err);
     }
@@ -221,7 +221,7 @@ SellerController.get_Product = function (req, res) {
   });
 };
 /*---------------------to update product details-------------------------*/
-SellerController.update_product = function (req, res) {
+SellerController.update_product = function(req, res) {
   var id = req.body.productId;
   var data = req.body;
   Product.findByIdAndUpdate(
@@ -230,7 +230,7 @@ SellerController.update_product = function (req, res) {
       $set: data
     },
     { multi: true, new: true },
-    function (error, product) {
+    function(error, product) {
       if (error) {
         return res.send({
           status: false,
@@ -243,11 +243,11 @@ SellerController.update_product = function (req, res) {
   );
 };
 /*------------------to delete product----------------------------*/
-SellerController.deleteProduct = function (req, res) {
+SellerController.deleteProduct = function(req, res) {
   var id = req.body.idDelete;
   var idSellerProduct = "req.session.data.product" + id;
-  Seller.findByIdAndRemove(idSellerProduct, function (err, response) { });
-  Product.findByIdAndRemove(id, function (err, user) {
+  Seller.findByIdAndRemove(idSellerProduct, function(err, response) {});
+  Product.findByIdAndRemove(id, function(err, user) {
     if (err) {
       return res.status(500).send(err);
     }
@@ -258,4 +258,32 @@ SellerController.deleteProduct = function (req, res) {
     return res.status(200).redirect("/seller-profile");
   });
 };
+
+/*----------mail sending script--------------------------------*/
+var nodemailer = require("nodemailer");
+SellerController.sendMail = function(req, res) {
+  var smtpTransport = nodemailer.createTransport({
+    service: "Gmail",
+    auth: {
+      user: "eagle.ecommerce.app@gmail.com",
+      pass: "S@7abcd123"
+    }
+  });
+
+  var mailOptions = {
+    from: "learntocodeinfo@mail.com",
+    to: "sitanshu4@gmail.com",
+    subject: "Sending Email using Node.js",
+    text: "That was easy!"
+  };
+
+  smtpTransport.sendMail(mailOptions, function(error, info) {
+    if (error) {
+      console.log(error);
+    } else {
+      console.log("Email sent: " + info.response);
+    }
+  });
+};
+
 module.exports = SellerController;
