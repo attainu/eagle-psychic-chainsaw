@@ -106,14 +106,16 @@
                 <legend class="ml-3 text-white" style="width: auto;">
                     <h5>Address</h5>
                 </legend>
-                <p class="ml-3 text-white">23 A, Gr Flr, Avijah Building,<br>
-                    Jss Road, Opp Metro Cinema,<br>
-                    New Marine Lines, Mumbai,
-                    Maharashtra, 400002.<br>
-                    +91 9988776655</p>
-                <button type="button"
-                    class="btn mx-auto text-white drp click pt-1 btn-block btn-hover color-11"><b>Edit</b></button>
-
+                <p class="ml-3 text-white">{{product.address.0.name}}<br>
+                    {{product.address.0.user_address}}<br>
+                    {{product.address.0.locality}}<br>
+                    {{product.address.0.city}} {{product.address.0.state}}<br>
+                    {{product.address.0.pincode}}
+                    <form action="/user-add" class="inline" method="POST">
+                        <input name="id" value="{{product.address.0._id}}" style="display: none">
+                        <button type="submit"
+                            class="btn mx-auto text-white drp click pt-1 btn-block btn-hover color-11"><b>Edit</b></button>
+                    </form>
             </fieldset>
         </div>
         <div>
