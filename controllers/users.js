@@ -140,7 +140,13 @@ Controller.cart_get = function (req, res) {
         .findById(user._id)
         .populate("users")
         .exec(function (err, docs) {
+            
             var iter = function (user, callback) {
+                Users.address.populate(
+                    user,
+                    {
+                        path: "address"
+                    })
                 Product.populate(
                     user,
                     {
@@ -368,7 +374,6 @@ Controller.address_update = function (req, res) {
             if (!user) {
                 return res.status(400).send("Wrong ID");
             }
-
             return res.status(200).redirect("/user-profile");
         }
     );
