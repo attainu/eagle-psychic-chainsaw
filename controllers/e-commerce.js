@@ -2,11 +2,12 @@ const Controller = {};
 const model = require("./../models/E-Commerce.js");
 const user = require("./users");
 const seller = require("./sellerdb.js");
+var nodemailer = require("nodemailer");
 
 // Home route
-Controller.home = function (req, res) {
+Controller.home = function(req, res) {
   var random = null;
-  model.home(random, function (error, info) {
+  model.home(random, function(error, info) {
     if (req.session.user || req.session.data) {
       return res.render("homepage", {
         title: "E-Commerce Website",
@@ -24,9 +25,9 @@ Controller.home = function (req, res) {
 };
 
 // Product List
-Controller.list = function (req, res) {
+Controller.list = function(req, res) {
   var random = null;
-  model.list(random, function (error, info) {
+  model.list(random, function(error, info) {
     return res.render("listpage", {
       title: "E-Commerce Website",
       css: "style.css"
@@ -35,9 +36,9 @@ Controller.list = function (req, res) {
 };
 
 // Product Content
-Controller.product_display = function (req, res) {
+Controller.product_display = function(req, res) {
   var random = null;
-  model.product_display(random, function (error, info) {
+  model.product_display(random, function(error, info) {
     return res.render("product_display", {
       title: "E-Commerce Website",
       href: "../../public/product_display.css"
@@ -46,14 +47,14 @@ Controller.product_display = function (req, res) {
 };
 
 // Order Page
-Controller.cart = function (req, res) {
-  user.Controller.cart_get(req, function (error, info) {
+Controller.cart = function(req, res) {
+  user.Controller.cart_get(req, function(error, info) {
     var sum = 0;
-    var cursor = info.cart
+    var cursor = info.cart;
 
-    cursor.forEach(function (doc) {
-      sum = sum + parseFloat(doc.productPrice)
-      return sum
+    cursor.forEach(function(doc) {
+      sum = sum + parseFloat(doc.productPrice);
+      return sum;
     });
 
     return res.render("cartpage", {
@@ -68,9 +69,9 @@ Controller.cart = function (req, res) {
 };
 
 // Login/Registration (User)
-Controller.user_login = function (req, res) {
+Controller.user_login = function(req, res) {
   var random = null;
-  model.user_login(random, function (error, info) {
+  model.user_login(random, function(error, info) {
     return res.render("user-signup-signin", {
       title: "E-Commerce Website",
       css: "signup-signin.css",
@@ -80,9 +81,9 @@ Controller.user_login = function (req, res) {
 };
 
 // Login/Registration (Seller)
-Controller.seller_login = function (req, res) {
+Controller.seller_login = function(req, res) {
   var random = null;
-  model.seller_login(random, function (error, info) {
+  model.seller_login(random, function(error, info) {
     return res.render("seller-signin-signup", {
       title: "E-Commerce Website",
       css: "seller-signin-signup.css"
@@ -91,8 +92,8 @@ Controller.seller_login = function (req, res) {
 };
 
 // User Profile
-Controller.user_profile = function (req, res) {
-  user.Controller.address_get(req, function (error, info) {
+Controller.user_profile = function(req, res) {
+  user.Controller.address_get(req, function(error, info) {
     return res.render("profile-page", {
       title: "E-Commerce Website",
       css: "profile-page.css",
@@ -104,7 +105,7 @@ Controller.user_profile = function (req, res) {
 };
 
 // User Edit Form
-Controller.user_profile_edit = function (req, res) {
+Controller.user_profile_edit = function(req, res) {
   return res.render("edit-profile-page", {
     title: "E-Commerce Website",
     css: "edit-profile-page.css",
@@ -114,10 +115,10 @@ Controller.user_profile_edit = function (req, res) {
 };
 
 // Seller Profile
-Controller.seller_profile = function (req, res) {
+Controller.seller_profile = function(req, res) {
   if (req.session.data) {
     var random = null;
-    seller.getProduct(req, function (error, info) {
+    seller.getProduct(req, function(error, info) {
       return res.render("seller_profile", {
         title: "seller_profile",
         css: "seller_profile.css",
@@ -130,10 +131,10 @@ Controller.seller_profile = function (req, res) {
   }
 };
 
-Controller.seller_profile_modification = function (req, res) {
+Controller.seller_profile_modification = function(req, res) {
   var random = null;
   if (req.session.loggedin) {
-    model.seller_profile_modification(random, function (error, info) {
+    model.seller_profile_modification(random, function(error, info) {
       return res.render("seller-modification", {
         title: "seller profile",
         href: "../../public/seller-modification.css",
@@ -144,14 +145,14 @@ Controller.seller_profile_modification = function (req, res) {
 };
 
 // Order History
-Controller.order_history = function (req, res) {
-  user.Controller.order_get(req, function (error, info) {
+Controller.order_history = function(req, res) {
+  user.Controller.order_get(req, function(error, info) {
     var sum = 0;
     var cursor = info.order_history;
 
-    cursor.forEach(function (doc) {
-      sum = sum + parseFloat(doc.productPrice)
-      return sum
+    cursor.forEach(function(doc) {
+      sum = sum + parseFloat(doc.productPrice);
+      return sum;
     });
 
     return res.render("order-history", {
@@ -167,9 +168,9 @@ Controller.order_history = function (req, res) {
 };
 
 // Address Form
-Controller.add_form = function (req, res) {
+Controller.add_form = function(req, res) {
   var random = null;
-  model.add_form(random, function (error, info) {
+  model.add_form(random, function(error, info) {
     return res.render("address", {
       title: "E-Commerce Website",
       css: "address.css"
@@ -178,32 +179,81 @@ Controller.add_form = function (req, res) {
 };
 
 // Product Form
-Controller.product_form = function (req, res) {
+Controller.product_form = function(req, res) {
   var random = null;
-  model.product_form(random, function (error, info) {
+  model.product_form(random, function(error, info) {
     return res.render("product-list-form", {
       title: "E-Commerce Website"
     });
   });
 };
 // Product Registration Form
-Controller.product_registration = function (req, res) {
+Controller.product_registration = function(req, res) {
   var random = null;
-  model.product_form(random, function (error, info) {
+  model.product_form(random, function(error, info) {
     return res.render("product_registration", {
       title: "Product registration",
       href: "../../public/product_registration.css"
     });
   });
 };
-Controller.product_modification = function (req, res) {
+Controller.product_modification = function(req, res) {
   var random = null;
-  model.product_modification(random, function (error, info) {
+  model.product_modification(random, function(error, info) {
     return res.render("product-modification", {
       title: "Product modification",
       href: "../../public/product-modification.css"
     });
   });
 };
+/*---------------route for email verification----------------------*/
+var smtpTransport = nodemailer.createTransport({
+  service: "Gmail",
+  auth: {
+    user: "eagle.ecommerce.app@gmail.com",
+    pass: "S@7abcd123"
+  }
+});
+var rand, mailOptions, host, link;
+Controller.send_mail = function(req, res) {
+  rand = Math.floor(Math.random() * 100 + 54);
+  host = req.get("host");
+  link = "http://" + req.get("host") + "/verify?id=" + rand;
+  mailOptions = {
+    to: "rajputsitanshu@gmail.com",
+    subject: "Please confirm your Email account",
+    html:
+      "Hello,<br> Please Click on the link to verify your email.<br><a href=" +
+      link +
+      ">Click here to verify</a>"
+  };
+  console.log(mailOptions);
+  smtpTransport.sendMail(mailOptions, function(error, response) {
+    if (error) {
+      console.log(error);
+      res.end("error");
+    } else {
+      console.log("Message sent: " + response.message);
+      res.end("sent");
+    }
+  });
+};
 
+Controller.verify_mail = function(req, res) {
+  console.log(req.protocol + ":/" + req.get("host"));
+  if (req.protocol + "://" + req.get("host") == "http://" + host) {
+    console.log("Domain is matched. Information is from Authentic email");
+    if (req.query.id == rand) {
+      console.log("email is verified");
+
+      res.render("profile-page");
+    } else {
+      console.log("email is not verified");
+      res.end("<h1>Bad Request</h1>");
+    }
+  } else {
+    res.end("<h1>Request is from unknown source");
+  }
+};
+/*-------------------------------------------------------------------------------------*/
 module.exports = Controller;
