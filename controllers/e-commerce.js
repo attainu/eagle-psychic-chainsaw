@@ -2,6 +2,7 @@ const Controller = {};
 const model = require("./../models/E-Commerce.js");
 const user = require("./users");
 const seller = require("./sellerdb.js");
+var nodemailer = require("nodemailer");
 
 // Home route
 Controller.home = function (req, res) {
@@ -49,11 +50,11 @@ Controller.product_display = function (req, res) {
 Controller.cart = function (req, res) {
   user.Controller.cart_get(req, function (error, info) {
     var sum = 0;
-    var cursor = info.cart
+    var cursor = info.cart;
 
     cursor.forEach(function (doc) {
-      sum = sum + parseFloat(doc.productPrice)
-      return sum
+      sum = sum + parseFloat(doc.productPrice);
+      return sum;
     });
 
     return res.render("cartpage", {
@@ -150,8 +151,8 @@ Controller.order_history = function (req, res) {
     var cursor = info.order_history;
 
     cursor.forEach(function (doc) {
-      sum = sum + parseFloat(doc.productPrice)
-      return sum
+      sum = sum + parseFloat(doc.productPrice);
+      return sum;
     });
 
     return res.render("order-history", {
@@ -205,7 +206,55 @@ Controller.product_modification = function (req, res) {
     });
   });
 };
+/*---------------route for email verification----------------------*/
+var smtpTransport = nodemailer.createTransport({
+  service: "Gmail",
+  auth: {
+    user: "eagle.ecommerce.app@gmail.com",
+    pass: "S@7abcd123"
+  }
+});
+var rand, mailOptions, host, link;
+Controller.send_mail = function (req, res) {
+  rand = Math.floor(Math.random() * 100 + 54);
+  host = req.get("host");
+  link = "http://" + req.get("host") + "/verify?id=" + rand;
+  mailOptions = {
+    to: "rajputsitanshu@gmail.com",
+    subject: "Please confirm your Email account",
+    html:
+      "Hello,<br> Please Click on the link to verify your email.<br><a href=" +
+      link +
+      ">Click here to verify</a>"
+  };
+  console.log(mailOptions);
+  smtpTransport.sendMail(mailOptions, function (error, response) {
+    if (error) {
+      console.log(error);
+      res.end("error");
+    } else {
+      console.log("Message sent: " + response.message);
+      res.end("sent");
+    }
+  });
+};
 
+Controller.verify_mail = function (req, res) {
+  console.log(req.protocol + ":/" + req.get("host"));
+  if (req.protocol + "://" + req.get("host") == "http://" + host) {
+    console.log("Domain is matched. Information is from Authentic email");
+    if (req.query.id == rand) {
+      console.log("email is verified");
+      res.render("profile-page");
+    } else {
+      console.log("email is not verified");
+      res.end("<h1>Bad Request</h1>");
+    }
+  } else {
+    res.end("<h1>Request is from unknown source");
+  }
+};
+/*-------------------------------------------------------------------------------------*/
 // Last Page
 Controller.last_page = function (req, res) {
   var random = null;
@@ -215,4 +264,5 @@ Controller.last_page = function (req, res) {
   });
 
 };
+
 module.exports = Controller;

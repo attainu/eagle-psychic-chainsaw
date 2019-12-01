@@ -1,6 +1,5 @@
 $(document).ready(function() {
   $("#submit").click(function() {
-    console.log("hi");
     var password = $("#password").val();
     var Cpassword = $("#password1").val();
 

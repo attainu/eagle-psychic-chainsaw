@@ -150,7 +150,10 @@ app.use("/products", productRouter);
 app.get("/seller-login", pageController.seller_login);
 app.get("/seller-profile", pageController.seller_profile);
 app.get("/seller-profile-update", pageController.seller_profile_modification);
+/*----------route for email verification--------------------*/
 
+app.post("/send_mail", pageController.seller_login);
+app.get("/verify_mail", pageController.seller_login);
 // Order Page
 app.get("/cart", pageController.cart);
 app.post("/cart", user.Controller.cart);
@@ -210,7 +213,7 @@ app.post("/forgot-seller", forgot.forgot_seller);
 app.get("/reset-seller/:token", forgot.verify_seller);
 
 app.post("/reset-seller/:token", forgot.token_seller);
-
+/*------------------------------capthca code-----------------------*/
 app.post("/subscribe", async (req, res) => {
   if (!req.body.captcha)
     return res.json({ success: false, msg: "Please select captcha" });
