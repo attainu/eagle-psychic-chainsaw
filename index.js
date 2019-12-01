@@ -240,6 +240,9 @@ app.post("/subscribe", async (req, res) => {
   return res.json({ success: true, msg: "Captcha passed" });
 });
 
+//last page
+app.get("/last-page", pageController.last_page);
+
 //Port
 app
   .listen(PORT, HOST, function() {
