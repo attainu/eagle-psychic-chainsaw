@@ -95,7 +95,7 @@
     {{/each}}
     <div class="jumbotron place-order pt-3">
 
-        <form action="/order" method="GET" class="inline">
+        <form action={{#if product.cart}}"/order"{{else}}"#"{{/if}} method="GET" class="inline">
             <button type="submit" class="btn mx-auto text-white order-btn btn-lg btn-block btn-hover color-11"
                 data-toggle="modal" data-target=".bd-example-modal-sm">
                 <h4 class="mb-0"><b>PLACE ORDER</b></h4>

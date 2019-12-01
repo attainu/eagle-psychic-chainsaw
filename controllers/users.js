@@ -1,6 +1,7 @@
 const Controller = {};
 const async = require("async");
 const cloudinary = require("cloudinary");
+var nodemailer = require("nodemailer");
 var Users = require("../models/Users-db");
 var Product = require("../models/Products.js");
 
@@ -140,7 +141,7 @@ Controller.cart_get = function (req, res) {
         .findById(user._id)
         .populate("users")
         .exec(function (err, docs) {
-            
+
             var iter = function (user, callback) {
                 Users.address.populate(
                     user,
@@ -259,10 +260,30 @@ Controller.order = async function (req, res) {
                                 if (!user) {
                                     console.log("Wrong ID");
                                 }
+                                var smtpTransport = nodemailer.createTransport({
+                                    service: 'Gmail',
+                                    auth: {
+                                        user: 'eagle.ecommerce.app@gmail.com',
+                                        pass: 'S@7abcd123'
+                                    }
+                                });
+                                var mailOptions = {
+                                    to: user.email,
+                                    from: 'eagle.ecommerce.app@gmail.com',
+                                    subject: 'Ecommerce Order Placed',
+                                    text: 'Your order placed successfully.\n\n' +
+                                        'Click on the following link to shop our more amazing products:\n\n' +
+                                        'http://' + req.headers.host + '\n\n' +
+                                        'If you did not have placed ordered, please send a mail to inform Us about this.\n'
+                                };
+                                smtpTransport.sendMail(mailOptions, function (err) {
+                                    console.log('mail sent');
+
+                                });
                                 req.session.save(function (err) {
                                     req.session.reload(function (err) {
                                         req.session.user = user;
-                                        setTimeout(function () { return res.status(200).redirect('/cart') }, 1500)
+                                        setTimeout(function () { return res.status(200).redirect('/last-page') }, 1500)
 
                                     })
                                 })
