@@ -270,4 +270,13 @@ Controller.verify_mail = function(req, res) {
   }
 };
 /*-------------------------------------------------------------------------------------*/
+// Last Page
+Controller.last_page = function(req, res) {
+  var random = null;
+
+  return res.render("laspage", {
+    title: "E-Commerce Website"
+  });
+};
+
 module.exports = Controller;

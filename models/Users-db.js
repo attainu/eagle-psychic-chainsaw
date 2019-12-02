@@ -75,7 +75,8 @@ Users.verify = function (req, cb) {
         req.originalUrl === '/cart-delete' ||
         req.originalUrl === '/order-history' ||
         req.originalUrl === '/order' ||
-        req.originalUrl === '/address-form'
+        req.originalUrl === '/address-form' ||
+        req.originalUrl === '/last-page5'
     ) {
         if (typeof req.session.user === "undefined" && typeof req.session.data === "undefined") {
             return cb(null, true)
