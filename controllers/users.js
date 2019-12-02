@@ -408,22 +408,23 @@ Controller.address_delete = function (req, res) {
             return res.status(500).send(err);
         }
         if (!user) {
-            return res.status(400).send("Wrong ID");
+            return res.status(400).send("1Wrong ID");
         }
-        Users.register.findByIdAndUpdate(
-            id,
-            { $pull: { address: { $in: [id] } } },
-            function (err, user) {
-                if (err) {
-                    return res.status(500).send(err);
-                }
-                if (!user) {
-                    return res.status(400).send("Wrong ID");
-                }
-            }
-        );
-
+        // Users.register.findByIdAndUpdate(
+        //     id,
+        //     { $pull: { address: { $in: [id] } } },
+        //     function (err, add) {
+        //         if (err) {
+        //             return res.status(500).send(err);
+        //         }
+        //         if (!add) {
+        //             return res.status(400).send("2Wrong ID");
+        //         }
         return res.status(200).redirect("/user-profile");
+        //     }
+        // );
+
+
     });
 };
 
