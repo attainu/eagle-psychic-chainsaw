@@ -1,5 +1,6 @@
 const Controller = {};
 const model = require("./../models/E-Commerce.js");
+const Seller = require("../models/Sellerdb.js");
 const user = require("./users");
 const seller = require("./sellerdb.js");
 var nodemailer = require("nodemailer");
@@ -207,20 +208,22 @@ Controller.product_modification = function(req, res) {
   });
 };
 /*---------------route for email verification----------------------*/
-var smtpTransport = nodemailer.createTransport({
-  service: "Gmail",
-  auth: {
-    user: "eagle.ecommerce.app@gmail.com",
-    pass: "S@7abcd123"
-  }
-});
+
 var rand, mailOptions, host, link;
 Controller.send_mail = function(req, res) {
+  var smtpTransport = nodemailer.createTransport({
+    service: "Gmail",
+    auth: {
+      user: "eagle.ecommerce.app@gmail.com",
+      pass: "S@7abcd123"
+    }
+  });
   rand = Math.floor(Math.random() * 100 + 54);
   host = req.get("host");
-  link = "http://" + req.get("host") + "/verify?id=" + rand;
+  link = "http://" + req.get("host") + "/verify_mail?id=" + rand;
+
   mailOptions = {
-    to: "rajputsitanshu@gmail.com",
+    to: req.body.emailvalidation,
     subject: "Please confirm your Email account",
     html:
       "Hello,<br> Please Click on the link to verify your email.<br><a href=" +
@@ -233,8 +236,20 @@ Controller.send_mail = function(req, res) {
       console.log(error);
       res.end("error");
     } else {
+      Seller.findOneAndUpdate(
+        { emailId: req.body.emailvalidation },
+        { $set: { emailvalidate: undefined } },
+        { new: true },
+        (err, doc) => {
+          if (err) {
+            console.log("Something wrong when updating data!");
+          }
+
+          console.log(doc);
+        }
+      );
       console.log("Message sent: " + response.message);
-      res.end("sent");
+      res.render("emailsend");
     }
   });
 };
@@ -245,8 +260,7 @@ Controller.verify_mail = function(req, res) {
     console.log("Domain is matched. Information is from Authentic email");
     if (req.query.id == rand) {
       console.log("email is verified");
-
-      res.render("profile-page");
+      res.redirect("/seller-login");
     } else {
       console.log("email is not verified");
       res.end("<h1>Bad Request</h1>");

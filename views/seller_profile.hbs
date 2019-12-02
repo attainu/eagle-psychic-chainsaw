@@ -6,7 +6,8 @@
 
   <div class="menu-bar inline">
     <ul class="mainlist">
-      <li class="listheader"><a href="/product_registration"><button class="btn btn-outline-danger" style="border: 1px solid ;"> Add
+      <li class="listheader"><a href="/product_registration"><button class="btn btn-outline-danger"
+            style="border: 1px solid ;"> Add
             Item </button></a></li>
       <li class="listheader">
         <form action="/seller-delete" method="POST"
@@ -32,7 +33,7 @@
     <div class="col-md-4" id="property2">
       <div class="card" id="card1">
         <img class=" img-circle" src="{{collection.image}}" alt="John"
-          style=" border-radius: 60%; height:160px; margin-top:10px;" ;>
+          style=" border-radius: 60%; height:160px; margin-top:10px; margin-buttom:1px" ;>
         <h1>{{collection.sellerName}}</h1>
         <div class="input-container">
           <i class="fa fa-industry icon fa-2x"></i>
@@ -57,7 +58,19 @@
         <p><button class="btn1 text-white"><a href="/seller-profile-update" style="color: white;">Edit
               Profile</a> </button> </p>
       </div>
+      {{#if collection.emailvalidate}}
+
+
+      <form action="/send_mail" method="POST">
+        <input name="emailvalidation" value="{{collection.emailId}}" id="emailvalidate" style="display: none; ">
+        <button type="submit" class="btn btn-outline-warning" style="margin-bottom: 10px;" id="verifyemail">
+          <i class="fa fa-warning"></i>Click here to verify Email
+        </button>
+
+
+        {{/if}}
     </div>
+
     <div class="col-md-8">
       <div class="row" style="margin-top: 27px;">
         <div class="col-md-12">

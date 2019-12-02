@@ -16,6 +16,10 @@ const SellerSchema = new mongoose.Schema(
       required: true,
       unique: true
     },
+    emailvalidate: {
+      type: String,
+      default: "true"
+    },
     password: {
       type: String,
       required: true

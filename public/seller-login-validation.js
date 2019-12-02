@@ -27,6 +27,7 @@ $(document).ready(function() {
       }
     });
   });
+
   /*--------------to disable input box of seller modification form------------------------*/
   $("#check1").click(function() {
     $("#1").prop("disabled", false);

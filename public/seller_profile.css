@@ -59,7 +59,7 @@
     background-clip: border-box;
     border: 1px solid rgba(0, 0, 0, 0.125);
     border-radius: 0.25rem;
-    height: 590px;
+    height: 534px;
     margin-bottom: 15px;
     margin-top: 15px;
 }
@@ -173,8 +173,8 @@ td {
     border-radius: 60%;
     height: 158px;
     margin-top: 10px;
-    margin: auto;
     width: 158px;
+    margin-left: 52px;
 }
 
 #productimage {
