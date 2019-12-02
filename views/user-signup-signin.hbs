@@ -10,7 +10,7 @@
             <input type="email" name="email" id="r-email" placeholder="Email">
             <input type="number" name="number" id="r-number" placeholder="Mobile number">
             <input type="password" name="password" id="r-password" placeholder="Password">
-            <input type="password" name="confimr-password" id="r-password1" placeholder="Confirm-password">
+            <input type="password" name="confimr-password" id="r-password1" placeholder="Confirm-password" minlength="5">
             <button type="submit" id="r-submit" value="Submit">Sign Up</button>
         </form>
 
@@ -19,7 +19,7 @@
         <form onsubmit="return false;" class="form-group" id="login-form">
             <h1>Sign In</h1>
             <input type="email" name="email" id="l-email" placeholder="Email">
-            <input type="password" name="password" id="l-password" placeholder="Password">
+            <input type="password" name="password" id="l-password" placeholder="Password" minlength="5">
             <div class="form-group">
                 <div class="g-recaptcha" data-sitekey="6LcpXcUUAAAAABCQWg_H0dtHYJHjHkRraNME8aqJ"
                     id="#g-recaptcha-response"
