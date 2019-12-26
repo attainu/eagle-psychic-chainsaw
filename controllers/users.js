@@ -147,12 +147,13 @@ Controller.cart_get = function (req, res) {
                     user,
                     {
                         path: "address"
-                    })
+                    },callback)
                 Product.populate(
                     user,
                     {
                         path: "cart"
-                    }, callback)
+                    })
+                    
             };
 
             async.each(docs, iter, function done(err) {
