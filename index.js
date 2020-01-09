@@ -6,6 +6,7 @@ const session = require("express-session");
 const PORT = process.env.PORT || 9091;
 const HOST = "0.0.0.0";
 var passport = require("passport");
+let mongoDB = "mongodb+srv://eagle-ecommerce-app:eagle-ecommerce-app@ecommerce-app-ll9yl.mongodb.net/ecommerce-app?retryWrites=true&w=majority" || "mongodb://localhost:27017/eagle-ecommerce"
 
 var cookieParser = require("cookie-parser");
 var upload = require("./controllers/multer.js");
@@ -29,7 +30,7 @@ app.set("view engine", ".hbs");
 const mongoose = require("mongoose");
 
 mongoose.connect(
-  "mongodb+srv://eagle-ecommerce-app:eagle-ecommerce-app@ecommerce-app-ll9yl.mongodb.net/ecommerce-app?retryWrites=true&w=majority",
+  mongoDB,
   {
     useNewUrlParser: true,
     useUnifiedTopology: true,
