@@ -142,18 +142,18 @@ Controller.cart_get = function (req, res) {
         .populate("users")
         .exec(function (err, docs) {
 
-            var iter = function (user, callback) {
-                Users.address.populate(
+            var iter = async function (user, callback) {
+                await Users.address.populate(
                     user,
                     {
                         path: "address"
                     })
-                Product.populate(
+                await Product.populate(
                     user,
                     {
                         path: "cart"
-                    },callback)
-                    
+                    }, callback)
+
             };
 
             async.each(docs, iter, function done(err) {
