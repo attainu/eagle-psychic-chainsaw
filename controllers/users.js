@@ -265,7 +265,7 @@ Controller.order = async function (req, res) {
                                     service: 'Gmail',
                                     auth: {
                                         user: 'eagle.ecommerce.app@gmail.com',
-                                        pass: 'S@7abcd123'
+                                        pass: 'fKnyKSjgjSPHRkFkdMd!5xDka9cxbxna7Grvv6H7F$t*YY!UCz'
                                     }
                                 });
                                 var mailOptions = {
