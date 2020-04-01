@@ -1,0 +1,36 @@
+<a href="/"> <img src="https://i-love-png.com/images/characters-angry-birds-141904.png" class="ml-3 logo"></a>
+
+<div class="container mt-5">
+    <div class="row mb-2">
+        <div class="col-9">
+            <h5 class=""><b>products</b></h5>
+        </div>
+        <div class="col p-0">
+            <div class="dropdown">
+                Sort By:
+                <select class="btn btn-sm dropdown-toggle click text-white rec pl-4 text-white btn-hover color-11 m-0"
+                    type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true"
+                    aria-expanded="false">
+                    <option class="dropdown-item mx-auto drp" href="#">Recommended</option>
+                    <option class="dropdown-item mx-auto drp" href="#">Price L to H</option>
+                    <option class="dropdown-item mx-auto drp" href="#">Price H to L</option>
+                    <option class="dropdown-item mx-auto drp" href="#">Latest</option>
+                </select>
+            </div>
+        </div>
+    </div>
+
+    <div class="row mr-5">
+        {{#each products}}
+        <div class="col p-2 ml-5">
+            <img class="rounded img-box mb-1" src="{{this.productImage}}" alt="" height="230px" width="173px">
+            <div class="">
+                <p class="mb-0"><b>{{this.productName}}</b></p>
+                <p class="disc mb-0">{{this.productDescription}}</p>
+                <p class="disc mb-2">&#x20b9;{{this.productPrice}}</p>
+            </div>
+        </div>
+        {{/each}}
+    </div>
+</div>
+</div>

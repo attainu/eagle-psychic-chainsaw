@@ -1,0 +1,179 @@
+{{!-- section-1 --}}
+<div class="top-nav-bar">
+    <div class="search-box">
+        <a href="/"> <img src="https://i-love-png.com/images/characters-angry-birds-141904.png" class="ml-3 logo"></a>
+
+
+
+    </div>
+    <div class="menu-bar inline">
+        <ul class="inline">
+            <li class="pt-2"><a href="/user-logout">
+                    <div class="btn btn-outline-danger">Log Out </div>
+                </a>
+            </li>
+            <li class="pt-2 mt-1 mr-3"><a href="/cart"><i class="fa fa-shopping-cart fa-2x" aria-hidden="true"></i></a>
+            </li>
+        </ul>
+    </div>
+</div>
+<div class="container">
+
+    <div class="row mt-5 mb-5 my-list jumbotron">
+
+        <div class="col-md-4">
+            <div>
+                <img class="rounded-circle img" src="{{user.image}}" alt="Put Image Here">
+                <button type="submit" class="btn btn1" data-toggle="modal" data-target=".bd-example-modal-lg">+</button>
+            </div>
+        </div>
+        <div class="col-md-5">
+            <div>
+                <h1>User Information</h1>
+                <input class="input-field input-box" type="text" placeholder="User Name" name="usrnm" readonly="true"
+                    id="userdetail" value="{{user.username}}"><br>
+                <input class="input-field input-box" type="text" placeholder="User Email" name="email" readonly="true"
+                    id="userdetail" value="{{user.email}}"><br>
+                <input class="input-field input-box" type="text" placeholder="User Phone Number" name="phonenumber"
+                    readonly="true" id="userdetail" value="{{user.mobile_number}}"><br>
+                <input class="input-field input-box" type="text" placeholder="User Gender" name="gender" readonly="true"
+                    id="userdetail" value="{{user.gender}}"><br>
+                <input class="input-field input-box" type="text" placeholder="User Date of Birth" name="dob"
+                    readonly="true" id="userdetail" value="{{user.dob}}"><br><br>
+            </div>
+        </div>
+        <div class="col-md-3 m-auto text-white">
+            <a href="/user-update-form" class=" text-white btn user-btn color-gradient mt-3 mb-2">Edit Profie</a><br>
+            <a href="/cart" class="btn color-gradient text-white user-btn  mb-2">Your Cart</a><br>
+            <a href="/order-history" class="btn color-gradient user-btn text-white mb-2">Order History</a>
+            <form action="/user-delete" method="POST" class="">
+                <button type="submit" class="btn user-btn text-white color-gradient" data-toggle="modal"
+                    data-target=".delete">
+                    Delete Profile
+                </button>
+            </form>
+        </div>
+    </div>
+    <div class="row">
+
+        {{#each user.address}}
+        <div class=" col-md-5 jumbotron p-3" id="card-address">
+            <div class=" jumbotron-address pt-0">
+                <h2 class="text-center">Address {{inc @index}}</h2><br>
+                <div class="row">
+                    <div class="col-4">
+                        <h6>Area & Street :</h6>
+                    </div>
+                    <div class="col-8">
+                        <input class="input-field input-box-address" type="text" placeholder="Area & Street "
+                            name="address" readonly="true" id="userdetail" value="{{this.user_address}}"><br>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-4">
+                        <h6>Pincode :</h6>
+                    </div>
+                    <div class="col-8">
+                        <input class="input-field input-box-address" type="text" placeholder="Pincode" name="address"
+                            readonly="true" id="userdetail" value="{{this.pincode}}"><br>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-4">
+                        <h6>Locality :</h6>
+                    </div>
+                    <div class="col-8">
+                        <input class="input-field input-box-address" type="text" placeholder="Locality" name="address"
+                            readonly="true" id="userdetail" value="{{this.locality}}"><br>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-4">
+                        <h6>City :</h6>
+                    </div>
+                    <div class="col-8">
+                        <input class="input-field input-box-address" type="text" placeholder="City" name="address"
+                            readonly="true" id="userdetail" value="{{this.city}}"><br>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-4">
+                        <h6>State :</h6>
+                    </div>
+                    <div class="col-8">
+                        <input class="input-field input-box-address" type="text" placeholder="State" name="address"
+                            readonly="true" id="userdetail" value="{{this.state}}"><br>
+                    </div>
+                </div><br>
+
+                <div class="more-actions-address">
+                    <form action="/user-add" class="inline" method="POST">
+                        <input name="id" value="{{this._id}}" style="display: none">
+                        <button type="submit" class="btn text-white color-gradient" id="btn6 ">
+                            Edit Address
+                        </button>
+                    </form>
+                    <form action="/user-address-delete" class="inline" method="POST">
+                        <input name="value" value="{{this._id}}" style="display: none">
+                        <button type="submit" class="btn text-white color-gradient">
+                            Delete Address
+                        </button>
+                    </form>
+                </div><br>
+
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
+                    <label class="form-check-label" for="defaultCheck1">
+                        Deliver to this Address
+                    </label>
+                </div>
+            </div>
+        </div>
+        {{/each}}
+
+        <div class=" col-md-5 jumbotron pt-1" id="card-address">
+            <div class="my-list jumbotron">
+                <h1 class="add-address">
+                    <a href="/address-form"> <span>+</span>
+                        <span>
+                            <h2>Add Address</h2>
+                        </span>
+                    </a>
+
+                </h1>
+            </div>
+        </div>
+    </div>
+    <!-- Large modal -->
+
+
+    <div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="jumbotron w-50 mx-auto">
+                    <h4 class="text-center">Upload Profile Picture</h4>
+                    <form action="/user-image" method="POST" enctype="multipart/form-data">
+                        <div class="input-group">
+                            <div class="custom-file">
+                                <input type="file" class="custom-file-input" id="inputGroupFile01"
+                                    aria-describedby="inputGroupFileAddon01" name="user-image">
+                                <label class="custom-file-label" for="inputGroupFile01">Choose file</label>
+                            </div>
+                        </div><br>
+                        <input type="submit" class="btn btn-primary" value="Submit" style="margin-left: 130px ;">
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Small modal -->
+    <div class="modal fade delete bd-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog modal-sm text-center">
+            <div class="modal-content jumbotron">
+                Profile Deleted Successfully
+            </div>
+        </div>
+    </div>
+</div>

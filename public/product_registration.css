@@ -1,0 +1,31 @@
+#ui
+{
+ background-color: #000000db;;
+    padding: 20px;
+    margin-top: 5px;
+    border-radius: 10px;
+}
+#ui label,h1
+{
+	color:#fff;
+
+}
+input:focus{
+    outline: none;
+}
+body
+{ background-size: cover;  
+  background-position: center center; 
+  background-attachment: fixed;
+  background: -webkit-linear-gradient(right, #ff4b2ba8 , #ff194f9e);
+}
+input[type=button].btn-block, input[type=reset].btn-block, input[type=submit].btn-block {
+    width: 100%;
+    background-color: #FF516F;
+    margin-bottom: -27px;
+    border: none;
+}
+#sellerform {
+    margin-bottom: 3rem;
+    font-family: sans-serif;
+}

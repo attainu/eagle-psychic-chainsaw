@@ -1,0 +1,121 @@
+<div id="r-alert-box" role="alert" style="position: absolute; top:10px; left:650px"></div>
+<div class="container" id="container">
+	<div class="row">
+		<div class="col-lg-3"></div>
+		<div class="col-lg-6">
+			<div id="ui">
+				<h1 class="text-center">Product Registration Form
+					<hr style="background-color: white ">
+				</h1>
+				<form class="form-group text-center" id="sellerform" action="/seller-product" method="POST" enctype="multipart/form-data">
+					<div class="row ">
+						<div class="col-lg-6">
+							<label>Product Name</label>
+							<input type="text" name="productName" id="name" class="form-control"
+								placeholder="Enter Product Name" required>
+						</div>
+						<div class="col-lg-6">
+							<label>Product Serial Number</label>
+							<input type="Number" name="productSerialNumber" id="number" class="form-control"
+								placeholder="Enter Serial Number" required>
+						</div>
+					</div><br>
+					<div class="row">
+						<div class="col-lg-6">
+							<label>Product Sub Category</label>
+							<div class="input-group">
+								<select name="productCategory" id="category" class="custom-select" required>
+									<option>Choose...</option>
+									<option value="Mobiles">Mobile</option>
+									<option value="Laptops">Laptop</option>
+									<option value="Speakers">Speakers</option>
+									<option value="Camera">Camera</option>
+									<option value="Men's">Men's</option>
+									<option value="Women's">Women's</option>
+									<option value="Bags">Bags</option>
+									<option value="Decor">Decoration</option>
+									<option value="Cookware">Cookware</option>
+									<option value="Furniture">Furniture</option>
+								</select>
+							</div>
+							{{!-- <input type="text" name="productCategory" id="category" class="form-control"
+								placeholder="i.e Mobile,laptop,Men's Wear etc."> --}}
+						</div>
+						<div class="col-lg-6">
+							<label>MRP</label>
+							<input type="Number" name="productPrice" id="price" class="form-control"
+								placeholder="Enter MRP of the Product" required>
+						</div>
+					</div><br>
+					<div class="row">
+						<div class="col-lg-6">
+							<label>Product Category</label>
+							<div class="input-group">
+								<select name="productDescription" id="product" class="custom-select" required>
+									<option>Choose...</option>
+									<option value="Electronics">Electronics</option>
+									<option value="Fashion">Fashion</option>
+									<option value="Home&kitchen">Home&kitchen</option>
+								</select>
+							</div>
+							{{!-- <input type="text" name="productDescription" id="product" class="form-control"
+								placeholder="Electronics,Fasion,kitchen"> --}}
+						</div>
+						<div class="col-lg-6">
+							<label>Choose Manufacturing Date</label>
+							<input type="Date" name="productionDate" id="date" class="form-control" required>
+						</div>
+					</div><br>
+					<div class="row">
+						<div class="col-lg-6">
+							<label>Upload Product Image</label><br>
+							{{!-- <input type="url" name="productImage" id="image" class="form-control"
+								placeholder="Image url" required> --}}
+							<input type="file" class="custom-file-input" id="inputGroupFile01"
+								aria-describedby="inputGroupFileAddon01" name="image"><br>
+							<label class="custom-file-label" for="inputGroupFile01" style="margin-top: 32.4px;width: 236px;
+    margin-left: 14px;">Choose file</label>
+
+						</div>
+						<div class="col-lg-6">
+							<label> Product Feature1</label>
+							<input type="text" name="productHighlights1" id="feature1" class="form-control"
+								placeholder="write something about product" required>
+						</div>
+					</div><br>
+					<div class="row">
+						<div class="col-lg-6">
+							<label> Product Feature2</label>
+							<input type="text" name="productHighlights2" id="feature2" class="form-control"
+								placeholder="write something about product">
+						</div>
+						<div class="col-lg-6">
+							<label> Product Feature3</label>
+							<input type="text" name="productHighlights3" id="feature3" class="form-control"
+								placeholder="write something about product">
+						</div>
+					</div><br>
+					<div class="row">
+						<div class="col-md-6">
+							<input type="submit" name="submit" value="Register Product"
+								class="btn btn-primary btn-block btn-lg" id="r-submit">
+						</div>
+				</form>
+
+				<div class="col-md-6">
+					<form method="get" action="/seller-profile">
+						<input type="submit" name="submit" value="Cancel" class="btn btn-secondary btn-lg" style="width: 235px;"
+							id="r-submit">
+
+					</form>
+				</div>
+			</div>
+
+
+		</div>
+	</div>
+</div>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.4.1.min.js"
+	integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>

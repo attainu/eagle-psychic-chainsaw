@@ -1,0 +1,196 @@
+<div class="top-nav-bar">
+  <div class="search-box">
+    <a href="/"> <img src="https://i-love-png.com/images/characters-angry-birds-141904.png" class="ml-3 logo"></a>
+  </div>
+
+
+  <div class="menu-bar inline">
+    <ul class="mainlist">
+      <li class="listheader"><a href="/product_registration"><button class="btn btn-outline-danger"
+            style="border: 1px solid ;"> Add
+            Item </button></a></li>
+      <li class="listheader">
+        <form action="/seller-delete" method="POST"
+          onsubmit="return confirm('Do you really want to delete the account?');">
+          <button type="submit" class="btn btn-outline-danger" style="border: 1px solid ;" id="logout"><span
+              class="glyphicon glyphicon-user"></span> Delete Account
+          </button>
+        </form>
+      </li>
+
+      <li class="listheader">
+        <form action="/seller-logout" method="POST" onsubmit="return confirm('Are you sure to logout?');">
+          <button type="submit" class="btn btn-outline-danger" id="logout" style="border: 1px solid ;">
+            Logout &nbsp;<span class="glyphicon glyphicon-log-out"></span>
+          </button>
+        </form>
+      </li>
+    </ul>
+  </div>
+</div>
+<div class="container">
+  <div class="row">
+    <div class="col-md-4" id="property2">
+      <div class="card" id="card1">
+        <img class=" img-circle" src="{{collection.image}}" alt="John"
+          style=" border-radius: 60%; height:160px; margin-top:10px; margin-buttom:1px" ;>
+        <h1>{{collection.sellerName}}</h1>
+        <div class="input-container">
+          <i class="fa fa-industry icon fa-2x"></i>
+          <input class="input-field" type="text" name="usrnm" readonly="true" id="userdetail"
+            value="{{collection.companyName}}">
+        </div>
+        <div class="input-container">
+          <i class="fa fa-envelope icon fa-2x"></i>
+          <input class="input-field" type="text" placeholder="Seller@msn.com" name="email" readonly="true"
+            id="userdetail" value="{{collection.emailId}}">
+        </div>
+        <div class="input-container">
+          <i class="fa fa-mobile icon fa-2x"></i>
+          <input class="input-field" type="text" placeholder="Seller@msn.com" name="email" readonly="true"
+            id="userdetail" value="{{collection.contactNumber}}">
+        </div>
+        <div class="input-container">
+          <i class="fa fa-home icon fa-2x"></i>
+          <input class="input-field" type="password" placeholder="A-13 , Lord Angles" name="psw" id="userdetail"
+            readonly="true" value="">
+        </div>
+        <p><button class="btn1 text-white"><a href="/seller-profile-update" style="color: white;">Edit
+              Profile</a> </button> </p>
+      </div>
+      {{#if collection.emailvalidate}}
+
+
+      <form action="/send_mail" method="POST">
+        <input name="emailvalidation" value="{{collection.emailId}}" id="emailvalidate" style="display: none; ">
+        <button type="submit" class="btn btn-outline-warning" style="margin-bottom: 10px;" id="verifyemail">
+          <i class="fa fa-warning"></i>Click here to verify Email
+        </button>
+      </form>
+
+      {{/if}}
+    </div>
+
+    <div class="col-md-8">
+      <div class="row" style="margin-top: 27px;">
+        <div class="col-md-12">
+          <div class="row">
+            {{#each collection.product}}
+            <div class=" col-md-4">
+              <div class="my-list">
+                <img src="{{this.productImage}}"
+                  alt="https://previews.123rf.com/images/asmati/asmati1610/asmati161000086/63402708-shopping-cart-sign-white-icon-on-red-circle-.jpg"
+                  id="productimage" />
+                <h3><strong>{{this.productName}}</strong></h3>
+                <span><strong>Product ID:</strong></span> <span>{{this.productSerialNumber}}</span> <br>
+                <span><strong>Price:</strong></span> <span>{{this.productPrice}}</span> <br>
+                <div class="offer">
+                  {{this.productHighlights1}},{{this.productHighlights2}},{{this.productHighlights3}},</div>
+                <div class="detail">
+                  <img src="{{this.productImage}}" alt="dsadas" id="productimage" />
+                  <p><strong>More Actions</strong></p>
+                  <form action="/product-modification" class="inline" method="POST">
+                    <input name="id" value="{{this._id}}" style="display: none">
+                    <button type="submit" class="btn btn-info">
+                      Edit item
+                    </button>
+                  </form>
+                  <form action="/product-delete" class="inline" method="POST">
+                    <input name="idDelete" value="{{this._id}}" style="display: none">
+                    <button type="submit" class="btn btn-warning" style="margin-top: 10px;">
+                      Delete item
+                    </button>
+                  </form>
+                </div>
+              </div>
+            </div>
+
+            {{/each}}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Footer -->
+<footer class="jumbotron mb-0 page-footer font-small blue-grey lighten-5" id="footer">
+  <!-- Footer Links -->
+  <div class="container text-center text-md-left mt-5">
+
+    <!-- Grid row -->
+    <div class="row mt-3 dark-grey-text" style="margin-right: -393px;
+    margin-left: -111px;">
+
+      <!-- Grid column -->
+      <div class="col-md-3 col-lg-4 col-xl-3 mb-4">
+
+        <!-- Content -->
+        <h6 class="text-uppercase font-weight-bold">Company name</h6>
+        <hr class="teal accent-3 mb-4 mt-0 d-inline-block mx-auto" style="width: 60px; color:black">
+        <p class="text-sm-left" style="font-size: 16px;">Hope you liked our shopping web site do shopping on our website
+          we will
+          provide
+          great offers and cashbacks and we also have events you can participate and win.
+          Hope you enjoy shoping with us.If any concerns please feel free to contact Us.</p>
+
+      </div>
+      <!-- Grid column -->
+
+      <!-- Grid column -->
+      <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mb-4" style="margin-left:5px">
+
+        <!-- Links -->
+        <h6 class="text-uppercase font-weight-bold">Products</h6>
+        <hr class="teal accent-3 mb-4 mt-0 d-inline-block mx-auto" style="width: 60px;">
+        <p style="font-size: 16px;">
+          <a href="/product-category?id=Men's" class="dark-grey-text">Men's Wear </a>
+        </p>
+        <p style="font-size: 16px;">
+          <a href="/product-category?id=Women's" class="dark-grey-text">Women's Wear</a>
+        </p>
+        <p style="font-size: 16px;">
+          <a href="/product-category?id=Mobiles" class="dark-grey-text">Mobile</a>
+        </p>
+        <p style="font-size: 16px;">
+          <a href="/product-category?id=Laptops" class="dark-grey-text">Laptops</a>
+        </p>
+
+      </div>
+      <!-- Grid column -->
+
+      <!-- Grid column -->
+
+      <!-- Grid column -->
+
+      <!-- Grid column -->
+      <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mb-md-0 mb-4">
+
+        <!-- Links -->
+        <h6 class="text-uppercase font-weight-bold">Contact Us</h6>
+        <hr class="teal accent-3 mb-4 mt-0 d-inline-block mx-auto" style="width: 60px;">
+        <p style="font-size: 16px;">
+          <i class="fa fa-home fa-2x mr-3" style="font-size: 2em;"></i> New delhi, ND 10012, IND</p>
+        <p style="font-size: 16px;">
+          <i class="fa fa-envelope fa-2x mr-3"></i> info@example.com</p>
+        <p style="font-size: 16px;">
+          <i class="fa fa-phone fa-2x mr-3"></i> + 01 234 567 88</p>
+        <p style="font-size: 16px;">
+          <i class="fa fa-print fa-2x mr-3"></i> + 01 234 567 89</p>
+
+      </div>
+      <!-- Grid column -->
+
+    </div>
+    <!-- Grid row -->
+
+  </div>
+  <!-- Footer Links -->
+</footer>
+
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>

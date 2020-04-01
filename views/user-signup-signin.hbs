@@ -1,0 +1,94 @@
+<a href="/" class="" style="margin-right:700px ;"> <img
+        src="https://i-love-png.com/images/characters-angry-birds-141904.png" class="ml-3" height="45px"></a>
+</div>
+<div id="r-alert-box" role="alert" style="position: absolute; top:0px"></div>
+<div class="container" id="container">
+    <div class="form-container sign-up-container">
+        <form onsubmit="return false;" class="form-group" id="register-form">
+            <h1>Create Account</h1>
+            <input type="text" name="name" id="r-name" placeholder="Name">
+            <input type="email" name="email" id="r-email" placeholder="Email">
+            <input type="number" name="number" id="r-number" placeholder="Mobile number">
+            <input type="password" name="password" id="r-password" placeholder="Password">
+            <input type="password" name="confimr-password" id="r-password1" placeholder="Confirm-password" minlength="5">
+            <button type="submit" id="r-submit" value="Submit">Sign Up</button>
+        </form>
+
+    </div>
+    <div class="form-container sign-in-container">
+        <form onsubmit="return false;" class="form-group" id="login-form">
+            <h1>Sign In</h1>
+            <input type="email" name="email" id="l-email" placeholder="Email">
+            <input type="password" name="password" id="l-password" placeholder="Password" minlength="5">
+            <div class="form-group">
+                <div class="g-recaptcha" data-sitekey="6LcpXcUUAAAAABCQWg_H0dtHYJHjHkRraNME8aqJ"
+                    id="#g-recaptcha-response"
+                    style="transform:scale(0.93);-webkit-transform:scale(0.93);transform-origin:0 0;-webkit-transform-origin:0 0; margin-left:20px">
+                </div>
+            </div>
+            <a href="#" data-toggle="modal" data-target=".bd-example-modal-lg">Forgot your Password?</a>
+            <button type="submit" id="l-submit" value="Submit">Sign In</button>
+        </form>
+    </div>
+    <div class="overlay-container">
+        <div class="overlay">
+            <div class="overlay-panel overlay-left">
+                <h1>Welcome Back</h1>
+                <p>
+                    To keep shopping with us please login with your personal details.
+                </p>
+                <button class="transport" id="signIn">Sign In</button>
+            </div>
+            <div class="overlay-panel overlay-right">
+                <h1>Hello, Dear User!</h1>
+                <p>
+                    Enter your Personal details and start your shoping Jounery with Us.
+                </p>
+                <button class="transport" id="signUp">Sign Up</button>
+            </div>
+        </div>
+    </div>
+    <div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="w-50 mx-auto">
+                    <form action="/forgot" class="form-group text-center" method="POST">
+                        <legend>Forgot Password</legend>
+                        <label for="email">Email</label>
+                        <input type="email" name="email" autofocus>
+                        <input type="submit" class="btn btn-danger transport" value="Reset Password">
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{{!-- <script>
+    document.getElementById('login-form').addEventListener('submit', e => {
+        e.preventDefault();
+        const name = document.querySelector('#name').value;
+        const email = document.querySelector('#email').value;
+        const captcha = document.querySelector('#g-recaptcha-response').value;
+        return fetch('/subscribe', {
+            method: 'POST',
+            headers: { 'Content-type': 'application/json' },
+            body: JSON.stringify({ name, email, captcha })
+        })
+            .then(res => res.json())
+            .then(data => {
+                console.log(data);
+                alert(data.msg);
+                if (data.success) return location.reload();
+            });
+    });
+
+    window.onload = function () {
+        var $recaptcha = document.querySelector('#g-recaptcha-response');
+
+        if ($recaptcha) {
+            $recaptcha.setAttribute("required", "required");
+        }
+    };
+</script> --}}

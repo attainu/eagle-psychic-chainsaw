@@ -1,0 +1,98 @@
+<a href="/" class="" style="margin-right:700px ;"> <img
+        src="https://i-love-png.com/images/characters-angry-birds-141904.png" class="ml-3" height="45px"></a>
+<div id="r-alert-box" role="alert" style="position: absolute; top:0px"></div>
+
+<div class="container" id="container">
+    <div class="form-container sign-up-container">
+        <form action="/seller" method="POST" class="form-group" id="myform" enctype="multipart/form-data">
+            <h1>Create Account</h1>
+            <div id="error_msg"></div>
+            <input type="text" name="name" id="name" placeholder="Name" required>
+            <input type="email" name="email" id="email1" placeholder="Email" required>
+            <input type="text" name="company" id="company" placeholder="company-Name" required>
+            <input type="number" name="number" id="number" placeholder="Mobile number" required>
+            <input type="password" name="password" id="password" placeholder="Password" required>
+            <input type="password" name="password1" id="password1" placeholder="Confirm-password" required>
+            <input type="file" name="image" id="image" required>
+            <button id="submit" onclick="validation()">Sign Up</button>
+        </form>
+    </div>
+    <div class=" form-container sign-in-container">
+        <form onsubmit="return false;" class="form-group" id="sellersignin">
+            <h1>Sign In</h1>
+            <input type="email" name="email" id="email2" placeholder="Email" required>
+            <input type="password" name="password" id="seller-password" placeholder="Password" required>
+            <div class="form-group">
+                <div class="g-recaptcha" data-sitekey="6LcpXcUUAAAAABCQWg_H0dtHYJHjHkRraNME8aqJ"
+                    id="#g-recaptcha-response"
+                    style="transform:scale(0.93);-webkit-transform:scale(0.93);transform-origin:0 0;-webkit-transform-origin:0 0; margin-left:20px">
+                </div>
+            </div>
+            <a href="#" data-toggle="modal" data-target=".bd-example-modal-lg">Forgot your Password?</a>
+            <button type="submit" id="submit1" value="Submit">Sign In</button>
+        </form>
+    </div>
+    <div class="overlay-container">
+        <div class="overlay">
+            <div class="overlay-panel overlay-left">
+                <h1>Welcome Back</h1>
+                <p>
+                    To Post your product for sale Please login with your personal details.
+                </p>
+                <button class="transport" id="signIn">Sign In</button>
+            </div>
+            <div class="overlay-panel overlay-right">
+                <h1>Hello, Dear Seller!</h1>
+                <p>
+                    Enter your Personal details and start your Business with Us.
+                </p>
+                <button class="transport" id="signUp">Sign Up</button>
+            </div>
+        </div>
+    </div>
+    <div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="w-50 mx-auto">
+                    <form action="/forgot-seller" class="form-group text-center" method="POST">
+                        <legend>Forgot Password</legend>
+                        <label for="email">Email</label>
+                        <input type="email" name="email" autofocus>
+                        <input type="submit" class="btn btn-danger transport" value="Reset Password">
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.4.1.min.js"
+    integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+<script>
+    document.getElementById('sellersignin').addEventListener('submit', e => {
+        e.preventDefault();
+        const name = document.querySelector('#name').value;
+        const email = document.querySelector('#email').value;
+        const captcha = document.querySelector('#g-recaptcha-response').value;
+        return fetch('/subscribe', {
+            method: 'POST',
+            headers: { 'Content-type': 'application/json' },
+            body: JSON.stringify({ name, email, captcha })
+        })
+            .then(res => res.json())
+            .then(data => {
+                console.log(data);
+                alert(data.msg);
+                if (data.success) return location.reload();
+            });
+    });
+
+    window.onload = function () {
+        var $recaptcha = document.querySelector('#g-recaptcha-response');
+
+        if ($recaptcha) {
+            $recaptcha.setAttribute("required", "required");
+        }
+    };
+</script>

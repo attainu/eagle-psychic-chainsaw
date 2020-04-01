@@ -1,0 +1,121 @@
+<div class="container">
+    {{#if flag}}
+    <h1>EDIT ADDRESS</h1>
+    <form action="/user-address-update" method="POST" class="form-group">
+    <input name="id" value="{{address._id}}" style="display: none">
+    {{else}}
+    <h1>ADD A NEW ADDRESS</h1>
+    <form action="/user-address" method="POST" class="form-group">
+    {{/if}}
+
+    <div class="form-row">
+        <div class="col mx-auto">
+            <input type="text" class="form-control" name="name" placeholder="Name" {{#if flag}} value="{{address.name}}"
+                {{/if}} required>
+        </div>
+        <div class="col mx-auto">
+            <input type="number" class="form-control" name="number" placeholder="10-digit mobile number" {{#if flag}}
+                value="{{address.number}}" {{/if}} required>
+        </div>
+    </div>
+
+    <div class="form-row ">
+        <div class="col mt-3 mx-auto">
+            <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"
+                placeholder="Address(Area and Street)" name="user_address"
+                class="form" required>{{#if flag}}{{address.user_address}} {{/if}}</textarea>
+        </div>
+    </div>
+
+    <div class="form-row">
+        <div class="col mt-3 mx-auto">
+            <input type="number" class="form-control" name="pincode" placeholder="Pincode" {{#if flag}}
+                value="{{address.pincode}}" {{/if}} required>
+        </div>
+        <div class="col mt-3 mx-auto">
+            <input type="text" class="form-control" name="locality" placeholder="Locality" {{#if flag}}
+                value="{{address.locality}}" {{/if}} required>
+        </div>
+    </div>
+    <div class="form-row">
+        <div class="col mt-3 mx-auto">
+            <input type="text" class="form-control" name="city" placeholder="City/Disrtict/Town" {{#if flag}}
+                value="{{address.city}}" {{/if}} required>
+        </div>
+        <div class="col mt-3 mx-auto">
+            <div class="input-group mb-3 ">
+                <select class="custom-select form" name="state" id="inputGroupSelect" required>
+                    <option selected>{{#if flag}}{{address.state}} {{else}} Select State {{/if}}</option>
+                    <option value="Andhra Pradesh">Andhra Pradesh</option>
+                    <option value="Assam">Assam</option>
+                    <option value="Arunachal Pradesh">Arunachal Pradesh</option>
+                    <option value="Bihar">Bihar</option>
+                    <option value="Chhattisgarh">Chhattisgarh</option>
+                    <option value="Delhi">Delhi</option>
+                    <option value="Gujarat">Gujarat</option>
+                    <option value="Goa">Goa</option>
+                    <option value="Haryana">Haryana</option>
+                    <option value="Himachal Pradesh">Himachal Pradesh</option>
+                    <option value="Jharkhand">Jharkhand</option>
+                    <option value="Jammu Kashmir">Jammu and Kashmir</option>
+                    <option value="Karnataka">Karnataka</option>
+                    <option value="Kerala">Kerala</option>
+                    <option value="Madhya Pradesh">Madhya Pradesh</option>
+                    <option value="Maharashtra">Maharashtra</option>
+                    <option value="Mizoram">Mizoram</option>
+                    <option value="Manipur">Manipur</option>
+                    <option value="Meghalaya">Meghalaya</option>
+                    <option value="Nagaland">Nagaland</option>
+                    <option value="Odisha">Odisha</option>
+                    <option value="Punjab">Punjab</option>
+                    <option value="Rajasthan">Rajasthan</option>
+                    <option value="Sikkim">Sikkim</option>
+                    <option value="Tamil Nadu">Tamil Nadu</option>
+                    <option value="Telangana">Telangana</option>
+                    <option value="Tripura">Tripura</option>
+                    <option value="Uttar Pradesh">Uttar Pradesh</option>
+                    <option value="Uttarakhand">Uttarakhand</option>
+                    <option value="West West Bengal">West Bengal</option>
+                </select>
+            </div>
+        </div>
+    </div>
+    <div class="form-row">
+        <div class="col mt-3 mx-auto">
+            <input type="text" class="form-control" name="landmark" placeholder="Landmark(optional)" {{#if flag}}
+                value="{{address.landmark}}" {{/if}} >
+        </div>
+        <div class="col mt-3 mx-auto">
+            <input type="number" class="form-control" name="temp_number" placeholder="Alternate Phone(optional)"
+                {{#if flag}} value="{{address.temp_number}}" {{/if}} >
+        </div>
+    </div>
+
+    <h3 class="mt-2">Address Type</h3>
+    <div class="form-row">
+        <label class="form-radio" >Home
+            <input type="radio" name="add_type" value="Home" required>
+            <span class="checkmark"></span>
+        </label>
+        <label class="form-radio">Work
+            <input type="radio" name="add_type" value="Work">
+            <span class="checkmark"></span>
+        </label>
+        <label class="form-radio">Other
+            <input type="radio" name="add_type" value="Other">
+            <span class="checkmark"></span>
+        </label>
+    </div>
+    <div class="form-row">
+        <div class="form-check-inline mt-3">
+            <button type="submit" class="button1">SAVE</button>
+        </div>
+        </form>
+        <div class="form-check-inline mt-3">
+        <form method="get" action="../user-profile">
+        <button type="submit" class="button2">Cancel</button>
+        </form>
+        </div>
+    </div>
+
+</div>

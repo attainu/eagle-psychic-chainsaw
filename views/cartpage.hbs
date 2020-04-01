@@ -1,0 +1,157 @@
+{{!-- section-1 --}}
+<div class="top-nav-bar">
+    <form action="/product-category/search" method="GET" class="inline">
+        <div class="search-box">
+            <a href="/"> <img src="https://i-love-png.com/images/characters-angry-birds-141904.png"
+                    class="ml-3 logo"></a>
+
+            <input type="text" class="form-control srch inline" name="searchText">
+            <button type="submit" class="input-group-text inline" id="search"><i class="fa fa-search inline"
+                    aria-hidden="true"></i></button>
+
+        </div>
+        <div class="menu-bar inline">
+            <ul class="inline">
+                {{#if user}}
+                <li class="pt-2"><a href="/user-profile">
+                        <div class="btn btn-outline-danger">Profile </div>
+                    </a>
+                </li>
+                <li class="pt-2"><a href="/user-logout">
+                        <div class="btn btn-outline-danger">Log Out </div>
+                    </a>
+                </li>
+                {{else}}
+                <li class="pt-2"><a href="/user-login">
+                        <div class="btn btn-outline-danger">Log In & Sign
+                            Up</div>
+                    </a></li>
+                {{/if}}
+                <li class="pt-2 mt-1 mr-3"><a href="/cart"><i class="fa fa-shopping-cart fa-2x"
+                            aria-hidden="true"></i></a>
+                </li>
+            </ul>
+        </div>
+    </form>
+</div>
+
+<div class="container mt-5">
+    <div class="row mb-2">
+        <div class="col-6">
+            <h5 class=""><b>My Shopping Bag</b></h5>
+        </div>
+        <div class="col-2">
+            <h5 class=""><b>Total : {{total}}</b></h5>
+        </div>
+    </div>
+    {{#each product.cart}}
+    {{#if this.productName}}
+    <div class="row">
+        <div class="col-8  list-box p-2 jumbotron">
+            <img class="rounded img-box" src="{{this.productImage}}" alt="" height="230px" width="173px">
+            <div class="float-right mt-4 mr-5"><b>₹{{this.productPrice}}</b></div>
+            <div class="desc ml-4">
+                <p class="mb-0"><b>{{this.productName}}</b></p>
+                <p class="disc mb-0">{{this.productHighlights1}}</p>
+                <p class="disc mb-0">{{this.productHighlights2}}</p>
+                <p class="disc">{{this.productHighlights3}}</p>
+                <br><br><br>
+                {{!-- <div class="dropdown">
+                    Size:
+                    <select
+                        class="btn btn-sm dropdown-toggle click text-white drp pl-4 text-white btn-hover color-11 m-0"
+                        type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true"
+                        aria-expanded="false">
+                        <option class="dropdown-item mx-auto drp" href="#">9</option>
+                        <option class="dropdown-item mx-auto drp" href="#">10</option>
+                        <option class="dropdown-item mx-auto drp" href="#">11</option>
+                        <option class="dropdown-item mx-auto drp" href="#">12</option>
+                    </select>
+                </div> --}}
+                {{!-- <div class="dropdown ml-3">
+                    Quantity:
+                    <select
+                        class="btn btn-sm dropdown-toggle click text-white drp pl-4 text-white btn-hover color-11 m-0"
+                        type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true"
+                        aria-expanded="false">
+                        <option class="dropdown-item mx-auto drp" href="#">1</option>
+                        <option class="dropdown-item mx-auto drp" href="#">2</option>
+                        <option class="dropdown-item mx-auto drp" href="#">3</option>
+                        <option class="dropdown-item mx-auto drp" href="#">4</option>
+                        <option class="dropdown-item mx-auto drp" href="#">5</option>
+                        <option class="dropdown-item mx-auto drp" href="#">6</option>
+                        <option class="dropdown-item mx-auto drp" href="#">7</option>
+                        <option class="dropdown-item mx-auto drp" href="#">8</option>
+                    </select>
+                </div><br> --}}
+
+            </div>
+            <div><a href="/cart-delete?id={{this._id}}" id="delete"><i
+                        class="fa fa-trash bottom-right red fa-2x"></i></a>
+            </div>
+        </div>
+    </div>
+    {{/if}}
+    {{/each}}
+    <div class="jumbotron place-order pt-3">
+
+        <form action={{#if product.cart}}"/order"{{else}}"#"{{/if}} method="GET" class="inline">
+            <button type="submit" class="btn mx-auto text-white order-btn btn-lg btn-block btn-hover color-11"
+                data-toggle="modal" data-target=".bd-example-modal-sm">
+                <h4 class="mb-0"><b>PLACE ORDER</b></h4>
+            </button>
+        </form>
+        <div>
+            <fieldset class="jumbotron random-box p-0 mt-4">
+                <legend class="ml-3 text-white" style="width: auto;">
+                    <h5>Address</h5>
+                </legend>
+                <p class="ml-3 text-white">{{#if product.address.0.name}}{{product.address.0.name}} - {{product.address.0.number}}<br>
+                    {{product.address.0.user_address}}<br>
+                    {{product.address.0.locality}}<br>
+                    {{product.address.0.city}}, {{product.address.0.state}}<br>
+                    {{product.address.0.pincode}} ({{product.address.0.add_type}})
+                    {{else}}No Product Selected{{/if}}
+                    <form action="/user-add" class="inline" method="POST">
+                        <input name="id" value="{{product.address.0._id}}" style="display: none">
+                        <button type="submit"
+                            class="btn mx-auto text-white drp click pt-1 btn-block btn-hover color-11"><b>Edit</b></button>
+                    </form>
+            </fieldset>
+        </div>
+        <div>
+            <fieldset class="jumbotron random-box p-0 mt-3">
+                <legend class="ml-3 text-white" style="width: auto;">
+                    <h5 class="mx-auto">Payment Options</h5>
+                </legend>
+
+                <form action="#" class="text-white ml-3">
+                    <p class="mb-0">
+                        <input type="radio" id="test1" name="radio-group" checked>
+                        <label for="test1">Cash On Dilvery</lhsabel>
+                    </p>
+                    <p class="mb-0">
+                        <input type="radio" id="test2" name="radio-group">
+                        <label for="test2">Credit/Debit Card</label>
+                    </p>
+                    <p class="mb-0">
+                        <input type="radio" id="test3" name="radio-group">
+                        <label for="test3">Paytm</label>
+                    </p>
+                </form>
+
+            </fieldset>
+        </div>
+
+    </div>
+
+    <!-- Small modal -->
+    <div class="modal fade bd-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog modal-sm text-center">
+            <div class="modal-content jumbotron">
+                {{#if product.cart}}Your Order Placed Succefully{{else}}No Product in Cart{{/if}}
+            </div>
+        </div>
+    </div>
+</div>

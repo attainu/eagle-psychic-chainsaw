@@ -1,0 +1,53 @@
+.note {
+    text-align: center;
+    height: 80px;
+    background: -webkit-linear-gradient(left, #FF4B2B, #FF416C);
+    color: #fff;
+    font-weight: bold;
+    line-height: 80px;
+}
+
+#form-content {
+    padding: 0%;
+    border: 1px solid #ced4da;
+    margin-bottom: 2%;
+}
+
+.form-control {
+    border-radius: 1.5rem;
+}
+
+.btnSubmit {
+    border: none;
+    border-radius: 1.5rem;
+    padding: 1%;
+    width: 20%;
+    cursor: pointer;
+    background: #ff4747e3;
+    color: #fff;
+    margin-left: 16pc;
+    margin-top: 25px;
+    margin-bottom: 8px;
+}
+
+.btnSubmit1 {
+    border: none;
+    border-radius: 1.5rem;
+    padding: 1%;
+    width: 39%;
+    margin-left: 12pc;
+    margin-top: 25px;
+    cursor: pointer;
+    background: #ff4747e3;
+    color: #fff;
+    height: 2pc;
+    margin-bottom: 14px;
+}
+
+input[type=checkbox],
+input[type=radio] {
+    box-sizing: border-box;
+    padding: 0;
+    margin-top: 14px;
+    border-radius: 91px;
+}
